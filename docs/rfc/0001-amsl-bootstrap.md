@@ -4,6 +4,7 @@
 
 | | |
 | :--- | :--- |
+| **Author** | [David Ndungu](https://ndungu.dev/) |
 | **Status** | Public proposal · open for feedback |
 | **Revision** | 3 · September 22, 2026 · editorial refinement |
 | **Initial language** | Go |
