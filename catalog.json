@@ -299,6 +299,11 @@
           "assessment": "Use standard cryptography; AMSL may own the lifecycle integration.",
           "name": "Go crypto/rand",
           "url": "https://pkg.go.dev/crypto/rand"
+        },
+        {
+          "assessment": "Attributed persistence-pattern extraction; owner/resource authority, mandatory expiry and storage errors require an explicit hardened contract.",
+          "name": "Existing public scoped-key and bbolt storage implementation",
+          "url": "https://github.com/zerfoo/zerfoo/tree/main/serve/security"
         }
       ],
       "disposition": "EXTRACT",
@@ -308,27 +313,51 @@
           "basis": "Candidate boundary informed by maintainer source inspection; identifying evidence is not published. No AMSL consumer adoption is claimed.",
           "verification": "MAINTAINER_REPORTED",
           "visibility": "RESTRICTED"
+        },
+        {
+          "basis": "Candidate lifecycle and durable adapter source, contract tests and public-source provenance are available for review. Test fixtures are not consumer adoption.",
+          "url": "https://github.com/ajent-social/go/tree/b482cdf508200db1abc1a182421d8f5c8ddaac90/servicecred",
+          "verification": "PUBLICLY_REPRODUCIBLE",
+          "visibility": "PUBLIC"
+        },
+        {
+          "basis": "One real application branch imports the package with durable storage. Maintainer-reported build, vet, browser-enabled race tests and cross-process revocation checks passed locally. Consumer identity and artifacts are not publicly reproducible; no merged release or production deployment is claimed.",
+          "verification": "MAINTAINER_REPORTED",
+          "visibility": "RESTRICTED"
         }
       ],
       "failure_modes": [
         "Cross-owner access",
         "Revoked credential accepted",
-        "Secret disclosed in logs"
+        "Secret disclosed in logs",
+        "Storage unavailable or corrupt: verification fails closed",
+        "Already admitted work may finish after revocation",
+        "Caller supplies an untrusted issuance ceiling or skips resource authorization",
+        "Local storage is not a distributed or multi-host database"
       ],
       "id": "identity.service-credentials",
-      "implementations": [],
+      "implementations": [
+        {
+          "revision": "b482cdf508200db1abc1a182421d8f5c8ddaac90",
+          "url": "https://github.com/ajent-social/go/tree/b482cdf508200db1abc1a182421d8f5c8ddaac90/servicecred"
+        }
+      ],
       "name": "Scoped service credentials",
       "non_goals": [
         "General authorization engine",
         "Browser-publishable key model"
       ],
       "open_questions": [
-        "Set storage atomicity, account-status and scope-checking contracts."
+        "Human maintainer review of the security API and source/adoption evidence is pending; retain CANDIDATE.",
+        "A second independent consumer has not adopted this API.",
+        "Applications needing immediate cancellation on revocation or multi-host storage must establish separate contracts."
       ],
       "proposed_guarantees": [
-        "Stable owner/resource binding",
-        "Hashed secret verification",
-        "Explicit expiry and revocation"
+        "Exact owner/resource binding and explicit required scopes",
+        "Issue-once random secrets with stored SHA-256 verifiers",
+        "Mandatory expiry and authoritative request-time revocation",
+        "Atomic create-without-overwrite and binding-checked durable revoke",
+        "Sanitized metadata listing; issuance cannot exceed a caller-authorized ceiling"
       ],
       "schema_version": 1,
       "status": "CANDIDATE",
@@ -336,7 +365,28 @@
       "use_when": [
         "An application admits authenticated machine requests."
       ],
-      "verification": []
+      "verification": [
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/c2e89c9b92576c828de7853a9d54cd3b9390d044/docs/servicecred-worklog.md",
+          "kind": "CONTRACT_TEST",
+          "result": "PASS"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/c2e89c9b92576c828de7853a9d54cd3b9390d044/docs/servicecred-worklog.md",
+          "kind": "SECURITY_TEST",
+          "result": "PASS"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/c2e89c9b92576c828de7853a9d54cd3b9390d044/docs/servicecred-worklog.md",
+          "kind": "REAL_CONSUMER",
+          "result": "PASS"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/pull/1",
+          "kind": "HUMAN_REVIEW",
+          "result": "NOT_RUN"
+        }
+      ]
     },
     {
       "alternatives": [
