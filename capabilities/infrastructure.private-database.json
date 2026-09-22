@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "infrastructure.private-database",
+  "name": "Private database profile",
+  "domain": "infrastructure",
+  "status": "CANDIDATE",
+  "disposition": "EXTRACT",
+  "summary": "Specify protected database connectivity and lifecycle policy.",
+  "use_when": [
+    "An application needs a managed private database."
+  ],
+  "non_goals": [
+    "Universal availability or retention defaults"
+  ],
+  "proposed_guarantees": [
+    "Private reachability by default",
+    "Explicit backup and deletion policy"
+  ],
+  "failure_modes": [
+    "Public exposure",
+    "Unverified restore procedure"
+  ],
+  "evidence": [
+    {
+      "visibility": "RESTRICTED",
+      "basis": "Candidate boundary informed by maintainer source inspection; identifying evidence is not published. No AMSL consumer adoption is claimed.",
+      "verification": "MAINTAINER_REPORTED"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "Pulumi",
+      "url": "https://www.pulumi.com/docs/iac/",
+      "assessment": "Use provider resources and policy checks; verify live behavior separately."
+    }
+  ],
+  "implementations": [],
+  "verification": [],
+  "open_questions": [
+    "Define one provider profile and cost/recovery choices."
+  ]
+}

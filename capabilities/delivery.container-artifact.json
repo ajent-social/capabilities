@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "id": "delivery.container-artifact",
+  "name": "Verified container artifact",
+  "domain": "delivery",
+  "status": "CANDIDATE",
+  "disposition": "EXTRACT",
+  "summary": "Produce a scanned and signed artifact tied to source.",
+  "use_when": [
+    "A product publishes deployable container images."
+  ],
+  "non_goals": [
+    "Universal builder or deployer"
+  ],
+  "proposed_guarantees": [
+    "Verified digest returned only after required checks"
+  ],
+  "failure_modes": [
+    "Published image mistaken for approved image",
+    "Mutable tag substitution"
+  ],
+  "evidence": [
+    {
+      "visibility": "RESTRICTED",
+      "basis": "Candidate boundary informed by maintainer source inspection; identifying evidence is not published. No AMSL consumer adoption is claimed.",
+      "verification": "MAINTAINER_REPORTED"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "Sigstore Cosign",
+      "url": "https://docs.sigstore.dev/cosign/",
+      "assessment": "Use established signing tooling; specify promotion gates."
+    }
+  ],
+  "implementations": [],
+  "verification": [],
+  "open_questions": [
+    "Define scan failure and provenance verification behavior."
+  ]
+}

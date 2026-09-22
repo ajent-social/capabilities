@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "infrastructure.deployment-identity",
+  "name": "Deployment identity",
+  "domain": "infrastructure",
+  "status": "CANDIDATE",
+  "disposition": "EXTRACT",
+  "summary": "Bind deployment authority to intended workload and resource scope.",
+  "use_when": [
+    "CI needs cloud access without static cloud keys."
+  ],
+  "non_goals": [
+    "Universal cloud abstraction"
+  ],
+  "proposed_guarantees": [
+    "Explicit trust subject and audience",
+    "Explicit resource scope"
+  ],
+  "failure_modes": [
+    "Overbroad trust",
+    "Wrong environment assumes identity"
+  ],
+  "evidence": [
+    {
+      "visibility": "RESTRICTED",
+      "basis": "Candidate boundary informed by maintainer source inspection; identifying evidence is not published. No AMSL consumer adoption is claimed.",
+      "verification": "MAINTAINER_REPORTED"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "GitHub OIDC",
+      "url": "https://docs.github.com/en/actions/concepts/security/openid-connect",
+      "assessment": "Use provider federation; components encode narrow policy."
+    }
+  ],
+  "implementations": [],
+  "verification": [],
+  "open_questions": [
+    "Select one provider and publishable disposable verification environment."
+  ]
+}

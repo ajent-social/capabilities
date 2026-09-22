@@ -1,0 +1,508 @@
+{
+  "capabilities": [
+    {
+      "alternatives": [
+        {
+          "assessment": "Delegate provider calls and signatures; investigate local orchestration.",
+          "name": "Stripe Go SDK",
+          "url": "https://github.com/stripe/stripe-go"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "billing",
+      "evidence": [
+        {
+          "basis": "Candidate boundary informed by maintainer source inspection; identifying evidence is not published. No AMSL consumer adoption is claimed.",
+          "verification": "MAINTAINER_REPORTED",
+          "visibility": "RESTRICTED"
+        }
+      ],
+      "failure_modes": [
+        "Response lost after provider success",
+        "Concurrent duplicate customer creation"
+      ],
+      "id": "billing.customer-checkout",
+      "implementations": [],
+      "name": "Customer linkage and checkout",
+      "non_goals": [
+        "Price engine",
+        "Payment processing"
+      ],
+      "open_questions": [
+        "Define durable recovery and provider idempotency-window behavior."
+      ],
+      "proposed_guarantees": [
+        "Attempt identity survives retries",
+        "Local customer association is explicit"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "Associate local customers and recover checkout attempts safely.",
+      "use_when": [
+        "A product integrates hosted subscription checkout."
+      ],
+      "verification": []
+    },
+    {
+      "alternatives": [
+        {
+          "assessment": "Use provider verification; local state/recovery still needs a contract.",
+          "name": "Stripe webhooks",
+          "url": "https://docs.stripe.com/webhooks"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "billing",
+      "evidence": [
+        {
+          "basis": "Candidate boundary informed by maintainer source inspection; identifying evidence is not published. No AMSL consumer adoption is claimed.",
+          "verification": "MAINTAINER_REPORTED",
+          "visibility": "RESTRICTED"
+        }
+      ],
+      "failure_modes": [
+        "Out-of-order events",
+        "Concurrent reconciliations"
+      ],
+      "id": "billing.subscription-reconciliation",
+      "implementations": [],
+      "name": "Subscription reconciliation",
+      "non_goals": [
+        "Universal entitlement policy",
+        "Multi-provider framework"
+      ],
+      "open_questions": [
+        "Resolve ordering and multi-instance persistence semantics."
+      ],
+      "proposed_guarantees": [
+        "Duplicate event application is harmless",
+        "Recovery can converge to provider state"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "Maintain recoverable local subscription projections.",
+      "use_when": [
+        "Local access decisions depend on provider subscription state."
+      ],
+      "verification": []
+    },
+    {
+      "alternatives": [
+        {
+          "assessment": "Use established signing tooling; specify promotion gates.",
+          "name": "Sigstore Cosign",
+          "url": "https://docs.sigstore.dev/cosign/"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "delivery",
+      "evidence": [
+        {
+          "basis": "Candidate boundary informed by maintainer source inspection; identifying evidence is not published. No AMSL consumer adoption is claimed.",
+          "verification": "MAINTAINER_REPORTED",
+          "visibility": "RESTRICTED"
+        }
+      ],
+      "failure_modes": [
+        "Published image mistaken for approved image",
+        "Mutable tag substitution"
+      ],
+      "id": "delivery.container-artifact",
+      "implementations": [],
+      "name": "Verified container artifact",
+      "non_goals": [
+        "Universal builder or deployer"
+      ],
+      "open_questions": [
+        "Define scan failure and provenance verification behavior."
+      ],
+      "proposed_guarantees": [
+        "Verified digest returned only after required checks"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "Produce a scanned and signed artifact tied to source.",
+      "use_when": [
+        "A product publishes deployable container images."
+      ],
+      "verification": []
+    },
+    {
+      "alternatives": [
+        {
+          "assessment": "Prefer existing release tooling; share justified validation around it.",
+          "name": "GoReleaser",
+          "url": "https://goreleaser.com/"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "delivery",
+      "evidence": [
+        {
+          "basis": "Candidate boundary informed by maintainer source inspection; identifying evidence is not published. No AMSL consumer adoption is claimed.",
+          "verification": "MAINTAINER_REPORTED",
+          "visibility": "RESTRICTED"
+        }
+      ],
+      "failure_modes": [
+        "Wrong version stamp",
+        "Missing architecture asset"
+      ],
+      "id": "delivery.go-release",
+      "implementations": [],
+      "name": "Go release verification",
+      "non_goals": [
+        "Universal version scheme"
+      ],
+      "open_questions": [
+        "Set source/tag binding and product gate preservation."
+      ],
+      "proposed_guarantees": [
+        "Required assets checked before publication",
+        "Version matches intended release"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "Verify source revision, version and expected release assets.",
+      "use_when": [
+        "A Go application publishes binary releases."
+      ],
+      "verification": []
+    },
+    {
+      "alternatives": [
+        {
+          "assessment": "Use workflow_call for complete jobs.",
+          "name": "GitHub reusable workflows",
+          "url": "https://docs.github.com/en/actions/how-tos/reuse-automations/reuse-workflows"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "delivery",
+      "evidence": [
+        {
+          "basis": "Candidate boundary informed by maintainer source inspection; identifying evidence is not published. No AMSL consumer adoption is claimed.",
+          "verification": "MAINTAINER_REPORTED",
+          "visibility": "RESTRICTED"
+        }
+      ],
+      "failure_modes": [
+        "Required check skipped",
+        "Caller events lost"
+      ],
+      "id": "delivery.go-validation",
+      "implementations": [],
+      "name": "Go validation",
+      "non_goals": [
+        "Universal CI orchestration"
+      ],
+      "open_questions": [
+        "Verify in two real modules without weakening caller gates."
+      ],
+      "proposed_guarantees": [
+        "Explicit module/toolchain",
+        "Failed checks propagate"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "Run bounded credential-free Go checks with predictable outcomes.",
+      "use_when": [
+        "A Go module needs CI validation."
+      ],
+      "verification": []
+    },
+    {
+      "alternatives": [
+        {
+          "assessment": "Reuse native tooling with constrained caller trust.",
+          "name": "Pulumi GitHub Actions",
+          "url": "https://www.pulumi.com/docs/iac/using-pulumi/continuous-delivery/github-actions/"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "delivery",
+      "evidence": [
+        {
+          "basis": "Candidate boundary informed by maintainer source inspection; identifying evidence is not published. No AMSL consumer adoption is claimed.",
+          "verification": "MAINTAINER_REPORTED",
+          "visibility": "RESTRICTED"
+        }
+      ],
+      "failure_modes": [
+        "Untrusted code accesses secrets",
+        "Preview mistaken for enforcement"
+      ],
+      "id": "delivery.infrastructure-preview",
+      "implementations": [],
+      "name": "Infrastructure preview",
+      "non_goals": [
+        "Automatic production apply"
+      ],
+      "open_questions": [
+        "Set trusted-event rules and live permission tests."
+      ],
+      "proposed_guarantees": [
+        "Narrow preview identity",
+        "Bounded outcome reporting"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "Run infrastructure previews with explicit authority and results.",
+      "use_when": [
+        "Changes need provider-aware infrastructure review."
+      ],
+      "verification": []
+    },
+    {
+      "alternatives": [
+        {
+          "assessment": "Use a maintained password hashing implementation with reviewed parameters.",
+          "name": "Go x/crypto",
+          "url": "https://pkg.go.dev/golang.org/x/crypto"
+        }
+      ],
+      "disposition": "REFERENCE_EXISTING",
+      "domain": "identity",
+      "evidence": [
+        {
+          "basis": "Candidate boundary informed by maintainer source inspection; identifying evidence is not published. No AMSL consumer adoption is claimed.",
+          "verification": "MAINTAINER_REPORTED",
+          "visibility": "RESTRICTED"
+        }
+      ],
+      "failure_modes": [
+        "Unsafe parameters or secret leakage"
+      ],
+      "id": "identity.password-hashing",
+      "implementations": [],
+      "name": "Password hashing",
+      "non_goals": [
+        "New cryptographic algorithm"
+      ],
+      "open_questions": [
+        "Reconsider only for a demonstrated integration gap, not new crypto."
+      ],
+      "proposed_guarantees": [
+        "Delegate cryptographic primitives to maintained libraries"
+      ],
+      "schema_version": 1,
+      "status": "REJECTED",
+      "summary": "Do not create an AMSL password hashing primitive.",
+      "use_when": [
+        "Password authentication is required."
+      ],
+      "verification": []
+    },
+    {
+      "alternatives": [
+        {
+          "assessment": "Use standard cryptography; AMSL may own the lifecycle integration.",
+          "name": "Go crypto/rand",
+          "url": "https://pkg.go.dev/crypto/rand"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "identity",
+      "evidence": [
+        {
+          "basis": "Candidate boundary informed by maintainer source inspection; identifying evidence is not published. No AMSL consumer adoption is claimed.",
+          "verification": "MAINTAINER_REPORTED",
+          "visibility": "RESTRICTED"
+        }
+      ],
+      "failure_modes": [
+        "Cross-owner access",
+        "Revoked credential accepted",
+        "Secret disclosed in logs"
+      ],
+      "id": "identity.service-credentials",
+      "implementations": [],
+      "name": "Scoped service credentials",
+      "non_goals": [
+        "General authorization engine",
+        "Browser-publishable key model"
+      ],
+      "open_questions": [
+        "Set storage atomicity, account-status and scope-checking contracts."
+      ],
+      "proposed_guarantees": [
+        "Stable owner/resource binding",
+        "Hashed secret verification",
+        "Explicit expiry and revocation"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "Issue, verify, expire and revoke secret service credentials.",
+      "use_when": [
+        "An application admits authenticated machine requests."
+      ],
+      "verification": []
+    },
+    {
+      "alternatives": [
+        {
+          "assessment": "Evaluate session management before building another engine.",
+          "name": "SCS",
+          "url": "https://github.com/alexedwards/scs"
+        }
+      ],
+      "disposition": "REFERENCE_EXISTING",
+      "domain": "identity",
+      "evidence": [
+        {
+          "basis": "Candidate boundary informed by maintainer source inspection; identifying evidence is not published. No AMSL consumer adoption is claimed.",
+          "verification": "MAINTAINER_REPORTED",
+          "visibility": "RESTRICTED"
+        }
+      ],
+      "failure_modes": [
+        "Stale session after account disable"
+      ],
+      "id": "identity.sessions",
+      "implementations": [],
+      "name": "Browser session lifecycle",
+      "non_goals": [
+        "Universal token architecture"
+      ],
+      "open_questions": [
+        "Determine residual integration not already provided."
+      ],
+      "proposed_guarantees": [
+        "Proposed integration preserves expiration and revocation"
+      ],
+      "schema_version": 1,
+      "status": "DISCOVERED",
+      "summary": "Evaluate existing opaque-session implementations before extracting integration.",
+      "use_when": [
+        "An application needs revocable browser sessions."
+      ],
+      "verification": []
+    },
+    {
+      "alternatives": [
+        {
+          "assessment": "Use provider federation; components encode narrow policy.",
+          "name": "GitHub OIDC",
+          "url": "https://docs.github.com/en/actions/concepts/security/openid-connect"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "infrastructure",
+      "evidence": [
+        {
+          "basis": "Candidate boundary informed by maintainer source inspection; identifying evidence is not published. No AMSL consumer adoption is claimed.",
+          "verification": "MAINTAINER_REPORTED",
+          "visibility": "RESTRICTED"
+        }
+      ],
+      "failure_modes": [
+        "Overbroad trust",
+        "Wrong environment assumes identity"
+      ],
+      "id": "infrastructure.deployment-identity",
+      "implementations": [],
+      "name": "Deployment identity",
+      "non_goals": [
+        "Universal cloud abstraction"
+      ],
+      "open_questions": [
+        "Select one provider and publishable disposable verification environment."
+      ],
+      "proposed_guarantees": [
+        "Explicit trust subject and audience",
+        "Explicit resource scope"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "Bind deployment authority to intended workload and resource scope.",
+      "use_when": [
+        "CI needs cloud access without static cloud keys."
+      ],
+      "verification": []
+    },
+    {
+      "alternatives": [
+        {
+          "assessment": "Use provider resources and policy checks; verify live behavior separately.",
+          "name": "Pulumi",
+          "url": "https://www.pulumi.com/docs/iac/"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "infrastructure",
+      "evidence": [
+        {
+          "basis": "Candidate boundary informed by maintainer source inspection; identifying evidence is not published. No AMSL consumer adoption is claimed.",
+          "verification": "MAINTAINER_REPORTED",
+          "visibility": "RESTRICTED"
+        }
+      ],
+      "failure_modes": [
+        "Public exposure",
+        "Unverified restore procedure"
+      ],
+      "id": "infrastructure.private-database",
+      "implementations": [],
+      "name": "Private database profile",
+      "non_goals": [
+        "Universal availability or retention defaults"
+      ],
+      "open_questions": [
+        "Define one provider profile and cost/recovery choices."
+      ],
+      "proposed_guarantees": [
+        "Private reachability by default",
+        "Explicit backup and deletion policy"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "Specify protected database connectivity and lifecycle policy.",
+      "use_when": [
+        "An application needs a managed private database."
+      ],
+      "verification": []
+    },
+    {
+      "alternatives": [
+        {
+          "assessment": "Reuse the SDK; product registers tools and enforces resource authorization.",
+          "name": "Official MCP Go SDK",
+          "url": "https://github.com/modelcontextprotocol/go-sdk"
+        }
+      ],
+      "disposition": "REFERENCE_EXISTING",
+      "domain": "protocol",
+      "evidence": [
+        {
+          "basis": "Candidate boundary informed by maintainer source inspection; identifying evidence is not published. No AMSL consumer adoption is claimed.",
+          "verification": "MAINTAINER_REPORTED",
+          "visibility": "RESTRICTED"
+        }
+      ],
+      "failure_modes": [
+        "Tool accesses another tenant resource"
+      ],
+      "id": "protocol.mcp-server",
+      "implementations": [],
+      "name": "MCP protocol server",
+      "non_goals": [
+        "New MCP stack",
+        "Product authorization policy"
+      ],
+      "open_questions": [
+        "Reconsider only a separately demonstrated integration gap."
+      ],
+      "proposed_guarantees": [
+        "Delegate protocol behavior to an established SDK"
+      ],
+      "schema_version": 1,
+      "status": "REJECTED",
+      "summary": "Use the official SDK instead of a new AMSL protocol implementation.",
+      "use_when": [
+        "A product exposes MCP tools."
+      ],
+      "verification": []
+    }
+  ],
+  "schema_version": 1
+}

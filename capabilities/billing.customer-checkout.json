@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "id": "billing.customer-checkout",
+  "name": "Customer linkage and checkout",
+  "domain": "billing",
+  "status": "CANDIDATE",
+  "disposition": "EXTRACT",
+  "summary": "Associate local customers and recover checkout attempts safely.",
+  "use_when": [
+    "A product integrates hosted subscription checkout."
+  ],
+  "non_goals": [
+    "Price engine",
+    "Payment processing"
+  ],
+  "proposed_guarantees": [
+    "Attempt identity survives retries",
+    "Local customer association is explicit"
+  ],
+  "failure_modes": [
+    "Response lost after provider success",
+    "Concurrent duplicate customer creation"
+  ],
+  "evidence": [
+    {
+      "visibility": "RESTRICTED",
+      "basis": "Candidate boundary informed by maintainer source inspection; identifying evidence is not published. No AMSL consumer adoption is claimed.",
+      "verification": "MAINTAINER_REPORTED"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "Stripe Go SDK",
+      "url": "https://github.com/stripe/stripe-go",
+      "assessment": "Delegate provider calls and signatures; investigate local orchestration."
+    }
+  ],
+  "implementations": [],
+  "verification": [],
+  "open_questions": [
+    "Define durable recovery and provider idempotency-window behavior."
+  ]
+}

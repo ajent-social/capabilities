@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "delivery.go-validation",
+  "name": "Go validation",
+  "domain": "delivery",
+  "status": "CANDIDATE",
+  "disposition": "EXTRACT",
+  "summary": "Run bounded credential-free Go checks with predictable outcomes.",
+  "use_when": [
+    "A Go module needs CI validation."
+  ],
+  "non_goals": [
+    "Universal CI orchestration"
+  ],
+  "proposed_guarantees": [
+    "Explicit module/toolchain",
+    "Failed checks propagate"
+  ],
+  "failure_modes": [
+    "Required check skipped",
+    "Caller events lost"
+  ],
+  "evidence": [
+    {
+      "visibility": "RESTRICTED",
+      "basis": "Candidate boundary informed by maintainer source inspection; identifying evidence is not published. No AMSL consumer adoption is claimed.",
+      "verification": "MAINTAINER_REPORTED"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "GitHub reusable workflows",
+      "url": "https://docs.github.com/en/actions/how-tos/reuse-automations/reuse-workflows",
+      "assessment": "Use workflow_call for complete jobs."
+    }
+  ],
+  "implementations": [],
+  "verification": [],
+  "open_questions": [
+    "Verify in two real modules without weakening caller gates."
+  ]
+}

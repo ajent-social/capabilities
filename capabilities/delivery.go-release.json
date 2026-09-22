@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "delivery.go-release",
+  "name": "Go release verification",
+  "domain": "delivery",
+  "status": "CANDIDATE",
+  "disposition": "EXTRACT",
+  "summary": "Verify source revision, version and expected release assets.",
+  "use_when": [
+    "A Go application publishes binary releases."
+  ],
+  "non_goals": [
+    "Universal version scheme"
+  ],
+  "proposed_guarantees": [
+    "Required assets checked before publication",
+    "Version matches intended release"
+  ],
+  "failure_modes": [
+    "Wrong version stamp",
+    "Missing architecture asset"
+  ],
+  "evidence": [
+    {
+      "visibility": "RESTRICTED",
+      "basis": "Candidate boundary informed by maintainer source inspection; identifying evidence is not published. No AMSL consumer adoption is claimed.",
+      "verification": "MAINTAINER_REPORTED"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "GoReleaser",
+      "url": "https://goreleaser.com/",
+      "assessment": "Prefer existing release tooling; share justified validation around it."
+    }
+  ],
+  "implementations": [],
+  "verification": [],
+  "open_questions": [
+    "Set source/tag binding and product gate preservation."
+  ]
+}

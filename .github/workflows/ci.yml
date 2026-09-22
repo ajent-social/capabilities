@@ -1,0 +1,20 @@
+name: catalog
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: catalog-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          persist-credentials: false
+      - run: python3 -m pip install -r requirements.txt
+      - run: python3 tools/catalog.py --check
+      - run: python3 -m unittest discover -s tests

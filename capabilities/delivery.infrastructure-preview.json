@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "id": "delivery.infrastructure-preview",
+  "name": "Infrastructure preview",
+  "domain": "delivery",
+  "status": "CANDIDATE",
+  "disposition": "EXTRACT",
+  "summary": "Run infrastructure previews with explicit authority and results.",
+  "use_when": [
+    "Changes need provider-aware infrastructure review."
+  ],
+  "non_goals": [
+    "Automatic production apply"
+  ],
+  "proposed_guarantees": [
+    "Narrow preview identity",
+    "Bounded outcome reporting"
+  ],
+  "failure_modes": [
+    "Untrusted code accesses secrets",
+    "Preview mistaken for enforcement"
+  ],
+  "evidence": [
+    {
+      "visibility": "RESTRICTED",
+      "basis": "Candidate boundary informed by maintainer source inspection; identifying evidence is not published. No AMSL consumer adoption is claimed.",
+      "verification": "MAINTAINER_REPORTED"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "Pulumi GitHub Actions",
+      "url": "https://www.pulumi.com/docs/iac/using-pulumi/continuous-delivery/github-actions/",
+      "assessment": "Reuse native tooling with constrained caller trust."
+    }
+  ],
+  "implementations": [],
+  "verification": [],
+  "open_questions": [
+    "Set trusted-event rules and live permission tests."
+  ]
+}

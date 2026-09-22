@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "id": "billing.subscription-reconciliation",
+  "name": "Subscription reconciliation",
+  "domain": "billing",
+  "status": "CANDIDATE",
+  "disposition": "EXTRACT",
+  "summary": "Maintain recoverable local subscription projections.",
+  "use_when": [
+    "Local access decisions depend on provider subscription state."
+  ],
+  "non_goals": [
+    "Universal entitlement policy",
+    "Multi-provider framework"
+  ],
+  "proposed_guarantees": [
+    "Duplicate event application is harmless",
+    "Recovery can converge to provider state"
+  ],
+  "failure_modes": [
+    "Out-of-order events",
+    "Concurrent reconciliations"
+  ],
+  "evidence": [
+    {
+      "visibility": "RESTRICTED",
+      "basis": "Candidate boundary informed by maintainer source inspection; identifying evidence is not published. No AMSL consumer adoption is claimed.",
+      "verification": "MAINTAINER_REPORTED"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "Stripe webhooks",
+      "url": "https://docs.stripe.com/webhooks",
+      "assessment": "Use provider verification; local state/recovery still needs a contract."
+    }
+  ],
+  "implementations": [],
+  "verification": [],
+  "open_questions": [
+    "Resolve ordering and multi-instance persistence semantics."
+  ]
+}

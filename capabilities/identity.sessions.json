@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "id": "identity.sessions",
+  "name": "Browser session lifecycle",
+  "domain": "identity",
+  "status": "DISCOVERED",
+  "disposition": "REFERENCE_EXISTING",
+  "summary": "Evaluate existing opaque-session implementations before extracting integration.",
+  "use_when": [
+    "An application needs revocable browser sessions."
+  ],
+  "non_goals": [
+    "Universal token architecture"
+  ],
+  "proposed_guarantees": [
+    "Proposed integration preserves expiration and revocation"
+  ],
+  "failure_modes": [
+    "Stale session after account disable"
+  ],
+  "evidence": [
+    {
+      "visibility": "RESTRICTED",
+      "basis": "Candidate boundary informed by maintainer source inspection; identifying evidence is not published. No AMSL consumer adoption is claimed.",
+      "verification": "MAINTAINER_REPORTED"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "SCS",
+      "url": "https://github.com/alexedwards/scs",
+      "assessment": "Evaluate session management before building another engine."
+    }
+  ],
+  "implementations": [],
+  "verification": [],
+  "open_questions": [
+    "Determine residual integration not already provided."
+  ]
+}

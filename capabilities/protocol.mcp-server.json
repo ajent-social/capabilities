@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "id": "protocol.mcp-server",
+  "name": "MCP protocol server",
+  "domain": "protocol",
+  "status": "REJECTED",
+  "disposition": "REFERENCE_EXISTING",
+  "summary": "Use the official SDK instead of a new AMSL protocol implementation.",
+  "use_when": [
+    "A product exposes MCP tools."
+  ],
+  "non_goals": [
+    "New MCP stack",
+    "Product authorization policy"
+  ],
+  "proposed_guarantees": [
+    "Delegate protocol behavior to an established SDK"
+  ],
+  "failure_modes": [
+    "Tool accesses another tenant resource"
+  ],
+  "evidence": [
+    {
+      "visibility": "RESTRICTED",
+      "basis": "Candidate boundary informed by maintainer source inspection; identifying evidence is not published. No AMSL consumer adoption is claimed.",
+      "verification": "MAINTAINER_REPORTED"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "Official MCP Go SDK",
+      "url": "https://github.com/modelcontextprotocol/go-sdk",
+      "assessment": "Reuse the SDK; product registers tools and enforces resource authorization."
+    }
+  ],
+  "implementations": [],
+  "verification": [],
+  "open_questions": [
+    "Reconsider only a separately demonstrated integration gap."
+  ]
+}

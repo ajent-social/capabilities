@@ -1,0 +1,229 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/ajent-social/capabilities/schema/capability.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "name",
+    "domain",
+    "status",
+    "disposition",
+    "summary",
+    "use_when",
+    "non_goals",
+    "proposed_guarantees",
+    "failure_modes",
+    "evidence",
+    "alternatives",
+    "implementations",
+    "verification",
+    "open_questions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^(identity|billing|infrastructure|delivery|protocol)\\.[a-z][a-z0-9-]*$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "domain": {
+      "enum": [
+        "identity",
+        "billing",
+        "infrastructure",
+        "delivery",
+        "protocol"
+      ]
+    },
+    "status": {
+      "enum": [
+        "DISCOVERED",
+        "CANDIDATE",
+        "EXPERIMENTAL",
+        "STABLE",
+        "DEPRECATED",
+        "REJECTED"
+      ]
+    },
+    "disposition": {
+      "enum": [
+        "INVESTIGATE",
+        "EXTRACT",
+        "REFERENCE_EXISTING",
+        "REJECT"
+      ]
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1
+    },
+    "use_when": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "non_goals": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "proposed_guarantees": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "failure_modes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "open_questions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "visibility",
+          "basis",
+          "verification"
+        ],
+        "properties": {
+          "visibility": {
+            "enum": [
+              "PUBLIC",
+              "RESTRICTED"
+            ]
+          },
+          "basis": {
+            "type": "string",
+            "minLength": 1
+          },
+          "verification": {
+            "enum": [
+              "MAINTAINER_REPORTED",
+              "PUBLICLY_REPRODUCIBLE"
+            ]
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    "alternatives": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "url",
+          "assessment"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "assessment": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "implementations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "url",
+          "revision"
+        ],
+        "properties": {
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "revision": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "verification": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "kind",
+          "result",
+          "evidence_url"
+        ],
+        "properties": {
+          "kind": {
+            "enum": [
+              "CONTRACT_TEST",
+              "SECURITY_TEST",
+              "REAL_CONSUMER",
+              "HUMAN_REVIEW"
+            ]
+          },
+          "result": {
+            "enum": [
+              "PASS",
+              "FAIL",
+              "NOT_RUN"
+            ]
+          },
+          "evidence_url": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    }
+  }
+}

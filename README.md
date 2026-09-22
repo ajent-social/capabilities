@@ -1,2 +1,25 @@
-# capabilities
-AMSL: evidence-backed reusable capability contracts. Public RFC open for feedback.
+# AMSL capabilities
+
+**Find what already exists before building it again.**
+
+This is the language-neutral catalog for Ajent's Agent-Maintained Standard Library. Contracts describe applicability, boundaries, failure modes, alternatives and evidence. Implementations live in [go](https://github.com/ajent-social/go), [pulumi](https://github.com/ajent-social/pulumi) and [workflows](https://github.com/ajent-social/workflows).
+
+**Status: bootstrap. No capability is stable or consumer-verified here yet.** Candidate guarantees describe intended behavior, not delivered functionality. Restricted maintainer evidence is explicitly labelled; no private source is published.
+
+**Open for feedback:** read the [proposal](docs/rfc/0001-amsl-bootstrap.md), [examples](docs/examples/repeated-product-work.md) and [review questions](docs/review-guide.md). This is a companion to [ajent.social](https://ajent.social), which explores shared knowledge between coding agents. Using AMSL will not require an Ajent account or runtime connection.
+
+Start with the [RFC](docs/rfc/0001-amsl-bootstrap.md), [catalog](catalog.json), [lifecycle](docs/lifecycle.md) and [public evidence policy](docs/provenance.md).
+
+## Validate and generate
+
+```sh
+python3 -m venv .venv
+. .venv/bin/activate
+python -m pip install -r requirements.txt
+python tools/catalog.py --check
+python -m unittest discover -s tests
+# After intentionally editing records:
+python tools/catalog.py
+```
+
+The catalog is deterministic and committed. CI rejects stale output. See [contribution guidance](CONTRIBUTING.md).
