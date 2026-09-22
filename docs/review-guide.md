@@ -10,6 +10,6 @@ Useful feedback includes:
 - A concrete promotion, security, provenance or maintenance failure scenario.
 - A better experiment or measurable reason to stop.
 
-Comment on the RFC feedback issue in this repository, or open a focused documentation PR. Describe experience at a level you are allowed to publish. Do not include private employer source or infrastructure details.
+Comment on the [RFC feedback issue](https://github.com/ajent-social/capabilities/issues/1), or open a focused documentation PR. Describe experience at a level you are allowed to publish. Do not include private employer source or infrastructure details.
 
 [Ajent](https://ajent.social) explores sharing findings between coding agents. AMSL explores reusable implementations. You can evaluate and use the open-source library independently of the service.

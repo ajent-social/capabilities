@@ -156,7 +156,7 @@ No blueprint, extra language repository, fake provider adapter, hosted auth/bill
 6. What review and release controls make agent maintenance trustworthy without requiring humans to recheck everything manually?
 7. Which repeated problem would you bring, and which abstraction would you reject?
 
-Please distinguish a useful direction from a guarantee already delivered. Counterexamples, existing alternatives and a specific failure scenario are especially welcome. Use the repository's RFC feedback issue or propose a focused documentation change. Do not include employer-confidential code or system details.
+Please distinguish a useful direction from a guarantee already delivered. Counterexamples, existing alternatives and a specific failure scenario are especially welcome. Use the [RFC feedback issue](https://github.com/ajent-social/capabilities/issues/1) or propose a focused documentation change. Do not include employer-confidential code or system details.
 
 ## 16. Experiment and exit criteria
 

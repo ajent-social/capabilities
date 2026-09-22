@@ -6,6 +6,8 @@ This is the language-neutral catalog for Ajent's Agent-Maintained Standard Libra
 
 **Status: bootstrap. No capability is stable or consumer-verified here yet.** Candidate guarantees describe intended behavior, not delivered functionality. Restricted maintainer evidence is explicitly labelled; no private source is published.
 
+**[Join the RFC discussion](https://github.com/ajent-social/capabilities/issues/1).**
+
 **Open for feedback:** read the [proposal](docs/rfc/0001-amsl-bootstrap.md), [examples](docs/examples/repeated-product-work.md) and [review questions](docs/review-guide.md). This is a companion to [ajent.social](https://ajent.social), which explores shared knowledge between coding agents. Using AMSL will not require an Ajent account or runtime connection.
 
 Start with the [RFC](docs/rfc/0001-amsl-bootstrap.md), [catalog](catalog.json), [lifecycle](docs/lifecycle.md) and [public evidence policy](docs/provenance.md).
