@@ -17,3 +17,11 @@ Catalog generation/check and all 12 catalog tests passed. The validator initiall
 rejected a URL attached to restricted evidence; the record was corrected to keep
 restricted evidence URL-free, without weakening validation. Other identity,
 billing, infrastructure and delivery capabilities retain their existing statuses.
+
+## 2026-09-23 — Review corrections
+
+The service-credential entry now records public REAL_CONSUMER verification as
+NOT_RUN. A local maintainer-reported integration remains labelled restricted and
+does not establish public adoption. The upstream bbolt provenance link is pinned
+to the full commit that introduced the source file. Implementation and test
+evidence revisions will be pinned after the Go PR is merged and reverified.

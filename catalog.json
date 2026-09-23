@@ -303,7 +303,7 @@
         {
           "assessment": "Attributed persistence-pattern extraction; owner/resource authority, mandatory expiry and storage errors require an explicit hardened contract.",
           "name": "Existing public scoped-key and bbolt storage implementation",
-          "url": "https://github.com/zerfoo/zerfoo/tree/6019d04/serve/security"
+          "url": "https://github.com/zerfoo/zerfoo/tree/51ab5efe2a78534bcb5da19ee6df98dddd2e633c/serve/security"
         }
       ],
       "disposition": "EXTRACT",
@@ -357,7 +357,7 @@
         "Exact owner/resource binding and explicit required scopes",
         "Issue-once random secrets with stored SHA-256 verifiers",
         "Mandatory expiry and revocation checked on every verification request; work already admitted may finish",
-        "Atomic create-without-overwrite and binding-checked durable revoke with writer-priority local locking",
+        "Atomic create-without-overwrite and binding-checked durable revoke with bounded lock waits on supported local filesystems",
         "Sanitized metadata listing; issuance cannot exceed a caller-authorized ceiling"
       ],
       "schema_version": 1,
