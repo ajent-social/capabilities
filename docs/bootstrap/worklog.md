@@ -20,8 +20,12 @@ billing, infrastructure and delivery capabilities retain their existing statuses
 
 ## 2026-09-23 — Review corrections
 
-The service-credential entry now records public REAL_CONSUMER verification as
+The service-credential entry records public REAL_CONSUMER verification as
 NOT_RUN. A local maintainer-reported integration remains labelled restricted and
 does not establish public adoption. The upstream bbolt provenance link is pinned
-to the full commit that introduced the source file. Implementation and test
-evidence revisions will be pinned after the Go PR is merged and reverified.
+to an immutable commit. Go PR #1 is merged at
+`2bb7b6d4f54e35a676c61d90ffce1e18b365e60a`; implementation and verification
+links now point to that merged revision and its exact CI run. Two headless
+Opus 5.5 review rounds and focused follow-ups found and corrected security,
+portability and evidence issues. AI review does not count as human maintainer
+review; the capability remains CANDIDATE and HUMAN_REVIEW is NOT_RUN.

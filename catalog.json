@@ -316,7 +316,7 @@
         },
         {
           "basis": "Candidate lifecycle and durable adapter source, contract tests and public-source provenance are available for review. Test fixtures are not consumer adoption.",
-          "url": "https://github.com/ajent-social/go/tree/b482cdf508200db1abc1a182421d8f5c8ddaac90/servicecred",
+          "url": "https://github.com/ajent-social/go/tree/2bb7b6d4f54e35a676c61d90ffce1e18b365e60a/servicecred",
           "verification": "PUBLICLY_REPRODUCIBLE",
           "visibility": "PUBLIC"
         },
@@ -338,8 +338,8 @@
       "id": "identity.service-credentials",
       "implementations": [
         {
-          "revision": "b482cdf508200db1abc1a182421d8f5c8ddaac90",
-          "url": "https://github.com/ajent-social/go/tree/b482cdf508200db1abc1a182421d8f5c8ddaac90/servicecred"
+          "revision": "2bb7b6d4f54e35a676c61d90ffce1e18b365e60a",
+          "url": "https://github.com/ajent-social/go/tree/2bb7b6d4f54e35a676c61d90ffce1e18b365e60a/servicecred"
         }
       ],
       "name": "Scoped service credentials",
@@ -368,22 +368,22 @@
       ],
       "verification": [
         {
-          "evidence_url": "https://github.com/ajent-social/go/pull/1",
+          "evidence_url": "https://github.com/ajent-social/go/actions/runs/35924303496/job/107395568182",
           "kind": "CONTRACT_TEST",
           "result": "PASS"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/pull/1",
+          "evidence_url": "https://github.com/ajent-social/go/actions/runs/35924303496/job/107395568182",
           "kind": "SECURITY_TEST",
           "result": "PASS"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/pull/1",
+          "evidence_url": "https://github.com/ajent-social/go/blob/2bb7b6d4f54e35a676c61d90ffce1e18b365e60a/docs/servicecred-worklog.md",
           "kind": "REAL_CONSUMER",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/pull/1",
+          "evidence_url": "https://github.com/ajent-social/go/blob/2bb7b6d4f54e35a676c61d90ffce1e18b365e60a/docs/servicecred-worklog.md",
           "kind": "HUMAN_REVIEW",
           "result": "NOT_RUN"
         }
