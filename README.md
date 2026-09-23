@@ -4,7 +4,7 @@
 
 This is the language-neutral catalog for Ajent's Agent-Maintained Standard Library. Contracts describe applicability, boundaries, failure modes, alternatives and evidence. Implementations live in [go](https://github.com/ajent-social/go), [pulumi](https://github.com/ajent-social/pulumi) and [workflows](https://github.com/ajent-social/workflows).
 
-**Status: bootstrap. No capability is stable or consumer-verified here yet.** Candidate guarantees describe intended behavior, not delivered functionality. Restricted maintainer evidence is explicitly labelled; no private source is published.
+**Status: bootstrap plus the first candidate implementation merged in Go. No capability is stable.** Scoped service credentials have source and contract tests plus a restricted maintainer-reported integration note. Public REAL_CONSUMER verification remains NOT_RUN; no merged consumer release or production deployment is claimed. Restricted evidence is explicitly labelled; no private source is published.
 
 **[Join the RFC discussion](https://github.com/ajent-social/capabilities/issues/1).**
 
