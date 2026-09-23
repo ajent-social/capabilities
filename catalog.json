@@ -303,7 +303,7 @@
         {
           "assessment": "Attributed persistence-pattern extraction; owner/resource authority, mandatory expiry and storage errors require an explicit hardened contract.",
           "name": "Existing public scoped-key and bbolt storage implementation",
-          "url": "https://github.com/zerfoo/zerfoo/tree/main/serve/security"
+          "url": "https://github.com/zerfoo/zerfoo/tree/6019d04/serve/security"
         }
       ],
       "disposition": "EXTRACT",
@@ -321,7 +321,7 @@
           "visibility": "PUBLIC"
         },
         {
-          "basis": "One real application branch imports the package with durable storage. Maintainer-reported build, vet, browser-enabled race tests and cross-process revocation checks passed locally. Consumer identity and artifacts are not publicly reproducible; no merged release or production deployment is claimed.",
+          "basis": "A local integration was reported by the maintainer, but its source and artifacts are restricted and readers cannot independently reproduce it. It establishes no public AMSL adoption, merged release or production deployment.",
           "verification": "MAINTAINER_REPORTED",
           "visibility": "RESTRICTED"
         }
@@ -350,13 +350,14 @@
       "open_questions": [
         "Human maintainer review of the security API and source/adoption evidence is pending; retain CANDIDATE.",
         "A second independent consumer has not adopted this API.",
-        "Applications needing immediate cancellation on revocation or multi-host storage must establish separate contracts."
+        "Verify checks expiry when a request is admitted; already admitted work can finish after revocation.",
+        "The bbolt adapter uses local cross-process locks and is not for distributed or multi-host storage."
       ],
       "proposed_guarantees": [
         "Exact owner/resource binding and explicit required scopes",
         "Issue-once random secrets with stored SHA-256 verifiers",
-        "Mandatory expiry and authoritative request-time revocation",
-        "Atomic create-without-overwrite and binding-checked durable revoke",
+        "Mandatory expiry and revocation checked on every verification request; work already admitted may finish",
+        "Atomic create-without-overwrite and binding-checked durable revoke with writer-priority local locking",
         "Sanitized metadata listing; issuance cannot exceed a caller-authorized ceiling"
       ],
       "schema_version": 1,
@@ -367,19 +368,19 @@
       ],
       "verification": [
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/c2e89c9b92576c828de7853a9d54cd3b9390d044/docs/servicecred-worklog.md",
+          "evidence_url": "https://github.com/ajent-social/go/pull/1",
           "kind": "CONTRACT_TEST",
           "result": "PASS"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/c2e89c9b92576c828de7853a9d54cd3b9390d044/docs/servicecred-worklog.md",
+          "evidence_url": "https://github.com/ajent-social/go/pull/1",
           "kind": "SECURITY_TEST",
           "result": "PASS"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/c2e89c9b92576c828de7853a9d54cd3b9390d044/docs/servicecred-worklog.md",
+          "evidence_url": "https://github.com/ajent-social/go/pull/1",
           "kind": "REAL_CONSUMER",
-          "result": "PASS"
+          "result": "NOT_RUN"
         },
         {
           "evidence_url": "https://github.com/ajent-social/go/pull/1",
