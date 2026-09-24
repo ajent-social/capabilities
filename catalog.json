@@ -276,6 +276,78 @@
     {
       "alternatives": [
         {
+          "assessment": "Compose provider resources; enforce digest pinning in the component.",
+          "name": "Pulumi AWS ECS Service",
+          "url": "https://www.pulumi.com/registry/packages/aws/api-docs/ecs/service/"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "delivery",
+      "evidence": [
+        {
+          "basis": "AWS ECS Fargate component CANDIDATE; no live AWS apply claimed.",
+          "url": "https://github.com/ajent-social/pulumi/tree/06dadb01f708ec3f31de022fd03e24573ccc82b5/aws/containerdeploy",
+          "verification": "PUBLICLY_REPRODUCIBLE",
+          "visibility": "PUBLIC"
+        }
+      ],
+      "failure_modes": [
+        "Deploy from :latest",
+        "Unintended public ENI"
+      ],
+      "id": "delivery.container-deploy",
+      "implementations": [
+        {
+          "revision": "06dadb01f708ec3f31de022fd03e24573ccc82b5",
+          "url": "https://github.com/ajent-social/pulumi/tree/06dadb01f708ec3f31de022fd03e24573ccc82b5/aws/containerdeploy"
+        }
+      ],
+      "name": "Container deploy",
+      "non_goals": [
+        "Building or scanning images",
+        "Creating clusters or load balancers",
+        "Multi-tenant schedulers"
+      ],
+      "open_questions": [
+        "CloudWatch log group creation ownership.",
+        "Human review pending; retain CANDIDATE."
+      ],
+      "proposed_guarantees": [
+        "Mutable tags rejected",
+        "Public IP off unless explicitly enabled"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "Run one Fargate service from an immutable ECR digest with private networking defaults.",
+      "use_when": [
+        "A product deploys a scanned container image by digest onto ECS Fargate."
+      ],
+      "verification": [
+        {
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/06dadb01f708ec3f31de022fd03e24573ccc82b5/contracts/container-deploy.md",
+          "kind": "CONTRACT_TEST",
+          "result": "PASS"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/06dadb01f708ec3f31de022fd03e24573ccc82b5/contracts/container-deploy.md",
+          "kind": "SECURITY_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/06dadb01f708ec3f31de022fd03e24573ccc82b5/contracts/container-deploy.md",
+          "kind": "REAL_CONSUMER",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/06dadb01f708ec3f31de022fd03e24573ccc82b5/contracts/container-deploy.md",
+          "kind": "HUMAN_REVIEW",
+          "result": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "alternatives": [
+        {
           "assessment": "Prefer existing release tooling; share justified validation around it.",
           "name": "GoReleaser",
           "url": "https://goreleaser.com/"
@@ -725,6 +797,80 @@
     {
       "alternatives": [
         {
+          "assessment": "Use the maintained verifier; this package coordinates state, bindings and redirect policy.",
+          "name": "coreos/go-oidc",
+          "url": "https://github.com/coreos/go-oidc"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "identity",
+      "evidence": [
+        {
+          "basis": "Original OIDC coordinator CANDIDATE around go-oidc / x/oauth2; not a session store.",
+          "url": "https://github.com/ajent-social/go/tree/7e2966857d3e277e48a484c9b45810b469eb4472/oidc",
+          "verification": "PUBLICLY_REPRODUCIBLE",
+          "visibility": "PUBLIC"
+        }
+      ],
+      "failure_modes": [
+        "Redirect URI derived from request Host",
+        "State replay",
+        "Missing or invalid id_token"
+      ],
+      "id": "identity.oidc-social",
+      "implementations": [
+        {
+          "revision": "7e2966857d3e277e48a484c9b45810b469eb4472",
+          "url": "https://github.com/ajent-social/go/tree/7e2966857d3e277e48a484c9b45810b469eb4472/oidc"
+        }
+      ],
+      "name": "OIDC social login",
+      "non_goals": [
+        "Session minting",
+        "Non-OIDC OAuth providers (e.g. GitHub without ID token)",
+        "Universal IdP marketplace"
+      ],
+      "open_questions": [
+        "Whether a separate non-OIDC GitHub adapter belongs in AMSL.",
+        "Human review pending; retain CANDIDATE."
+      ],
+      "proposed_guarantees": [
+        "Redirect URIs are configured absolutes (https or loopback http)",
+        "Auth state is consume-once",
+        "ID token verified before Identity is returned"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "Coordinate OIDC authorization-code social login around go-oidc with consume-once state and account bindings.",
+      "use_when": [
+        "A product needs Google/Apple (or other OIDC issuer) browser login linked to a thin account registry."
+      ],
+      "verification": [
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/7e2966857d3e277e48a484c9b45810b469eb4472/docs/oidc-social.md",
+          "kind": "CONTRACT_TEST",
+          "result": "PASS"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/7e2966857d3e277e48a484c9b45810b469eb4472/docs/oidc-social.md",
+          "kind": "SECURITY_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/7e2966857d3e277e48a484c9b45810b469eb4472/docs/oidc-social.md",
+          "kind": "REAL_CONSUMER",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/7e2966857d3e277e48a484c9b45810b469eb4472/docs/oidc-social.md",
+          "kind": "HUMAN_REVIEW",
+          "result": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "alternatives": [
+        {
           "assessment": "Required dependency for protocol validation; AMSL owns ceremony/credential coordination.",
           "name": "go-webauthn",
           "url": "https://github.com/go-webauthn/webauthn"
@@ -1041,9 +1187,10 @@
       "domain": "infrastructure",
       "evidence": [
         {
-          "basis": "Candidate boundary informed by maintainer source inspection; identifying evidence is not published. No AMSL consumer adoption is claimed.",
-          "verification": "MAINTAINER_REPORTED",
-          "visibility": "RESTRICTED"
+          "basis": "AWS RDS component CANDIDATE with PubliclyAccessible=false and managed master secret ARN; no live AWS apply claimed.",
+          "url": "https://github.com/ajent-social/pulumi/tree/06dadb01f708ec3f31de022fd03e24573ccc82b5/aws/privatedatabase",
+          "verification": "PUBLICLY_REPRODUCIBLE",
+          "visibility": "PUBLIC"
         }
       ],
       "failure_modes": [
@@ -1051,13 +1198,19 @@
         "Unverified restore procedure"
       ],
       "id": "infrastructure.private-database",
-      "implementations": [],
+      "implementations": [
+        {
+          "revision": "06dadb01f708ec3f31de022fd03e24573ccc82b5",
+          "url": "https://github.com/ajent-social/pulumi/tree/06dadb01f708ec3f31de022fd03e24573ccc82b5/aws/privatedatabase"
+        }
+      ],
       "name": "Private database profile",
       "non_goals": [
         "Universal availability or retention defaults"
       ],
       "open_questions": [
-        "Define one provider profile and cost/recovery choices."
+        "Restore drill evidence before claiming recoverability.",
+        "Human review pending; retain CANDIDATE."
       ],
       "proposed_guarantees": [
         "Private reachability by default",
@@ -1069,7 +1222,174 @@
       "use_when": [
         "An application needs a managed private database."
       ],
-      "verification": []
+      "verification": [
+        {
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/06dadb01f708ec3f31de022fd03e24573ccc82b5/contracts/private-database.md",
+          "kind": "CONTRACT_TEST",
+          "result": "PASS"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/06dadb01f708ec3f31de022fd03e24573ccc82b5/contracts/private-database.md",
+          "kind": "SECURITY_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/06dadb01f708ec3f31de022fd03e24573ccc82b5/contracts/private-database.md",
+          "kind": "REAL_CONSUMER",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/06dadb01f708ec3f31de022fd03e24573ccc82b5/contracts/private-database.md",
+          "kind": "HUMAN_REVIEW",
+          "result": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "alternatives": [
+        {
+          "assessment": "Compose provider resources with explicit wildcard SAN and validation DNS.",
+          "name": "Pulumi AWS ACM Certificate",
+          "url": "https://www.pulumi.com/registry/packages/aws/api-docs/acm/certificate/"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "infrastructure",
+      "evidence": [
+        {
+          "basis": "AWS ACM + Route53 component CANDIDATE; no live AWS apply claimed.",
+          "url": "https://github.com/ajent-social/pulumi/tree/06dadb01f708ec3f31de022fd03e24573ccc82b5/aws/tenantdnstls",
+          "verification": "PUBLICLY_REPRODUCIBLE",
+          "visibility": "PUBLIC"
+        }
+      ],
+      "failure_modes": [
+        "Public Host header used as SAN",
+        "Certificate issued without validation records"
+      ],
+      "id": "infrastructure.tenant-dns-tls",
+      "implementations": [
+        {
+          "revision": "06dadb01f708ec3f31de022fd03e24573ccc82b5",
+          "url": "https://github.com/ajent-social/pulumi/tree/06dadb01f708ec3f31de022fd03e24573ccc82b5/aws/tenantdnstls"
+        }
+      ],
+      "name": "Tenant DNS and TLS",
+      "non_goals": [
+        "Registering the apex domain",
+        "Global CDN",
+        "Deriving SANs from request Host"
+      ],
+      "open_questions": [
+        "Whether multi-option ACM validation records need a second Route53 record when apex and wildcard diverge.",
+        "Human review pending; retain CANDIDATE."
+      ],
+      "proposed_guarantees": [
+        "Certificate request includes baseDomain and *.baseDomain",
+        "DNS validation records are created in the caller-owned hosted zone"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "Wildcard ACM certificate and optional slug DNS for product.cloud hosted instances.",
+      "use_when": [
+        "A product needs *.baseDomain TLS and slug.baseDomain aliases into a load balancer."
+      ],
+      "verification": [
+        {
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/06dadb01f708ec3f31de022fd03e24573ccc82b5/contracts/tenant-dns-tls.md",
+          "kind": "CONTRACT_TEST",
+          "result": "PASS"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/06dadb01f708ec3f31de022fd03e24573ccc82b5/contracts/tenant-dns-tls.md",
+          "kind": "SECURITY_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/06dadb01f708ec3f31de022fd03e24573ccc82b5/contracts/tenant-dns-tls.md",
+          "kind": "REAL_CONSUMER",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/06dadb01f708ec3f31de022fd03e24573ccc82b5/contracts/tenant-dns-tls.md",
+          "kind": "HUMAN_REVIEW",
+          "result": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "alternatives": [
+        {
+          "assessment": "Keep cloud applies in product Runtime; this package owns durable state transitions.",
+          "name": "Product control plane only",
+          "url": "https://github.com/ajent-social/capabilities/blob/main/docs/rfc/0001-amsl-bootstrap.md"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "infrastructure",
+      "evidence": [
+        {
+          "basis": "Original tenant lifecycle CANDIDATE; Runtime is a product/Pulumi seam.",
+          "url": "https://github.com/ajent-social/go/tree/7e2966857d3e277e48a484c9b45810b469eb4472/tenant",
+          "verification": "PUBLICLY_REPRODUCIBLE",
+          "visibility": "PUBLIC"
+        }
+      ],
+      "failure_modes": [
+        "Slug collision",
+        "Provision without entitlement",
+        "Broken Runtime left as ready"
+      ],
+      "id": "infrastructure.tenant-instance",
+      "implementations": [
+        {
+          "revision": "7e2966857d3e277e48a484c9b45810b469eb4472",
+          "url": "https://github.com/ajent-social/go/tree/7e2966857d3e277e48a484c9b45810b469eb4472/tenant"
+        }
+      ],
+      "name": "Tenant instance lifecycle",
+      "non_goals": [
+        "Calling cloud APIs directly",
+        "Entitlement or billing policy",
+        "Multi-region orchestration"
+      ],
+      "open_questions": [
+        "SQL store adapter timing for multi-host control planes.",
+        "Human review pending; retain CANDIDATE."
+      ],
+      "proposed_guarantees": [
+        "Explicit lifecycle states with lease-epoch CAS",
+        "Runtime failures mark failed without silent success",
+        "Hostname = slug.baseDomain from configured base"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "Durable lifecycle for dedicated product instances (request \u2192 provision \u2192 ready \u2192 upgrade/destroy) around a Runtime seam.",
+      "use_when": [
+        "A paid product needs one hostname and deployable instance per account under a product base domain."
+      ],
+      "verification": [
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/7e2966857d3e277e48a484c9b45810b469eb4472/docs/tenant-instance.md",
+          "kind": "CONTRACT_TEST",
+          "result": "PASS"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/7e2966857d3e277e48a484c9b45810b469eb4472/docs/tenant-instance.md",
+          "kind": "SECURITY_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/7e2966857d3e277e48a484c9b45810b469eb4472/docs/tenant-instance.md",
+          "kind": "REAL_CONSUMER",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/7e2966857d3e277e48a484c9b45810b469eb4472/docs/tenant-instance.md",
+          "kind": "HUMAN_REVIEW",
+          "result": "NOT_RUN"
+        }
+      ]
     },
     {
       "alternatives": [

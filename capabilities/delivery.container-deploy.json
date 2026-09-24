@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "delivery.container-deploy",
+  "name": "Container deploy",
+  "domain": "delivery",
+  "status": "CANDIDATE",
+  "disposition": "EXTRACT",
+  "summary": "Run one Fargate service from an immutable ECR digest with private networking defaults.",
+  "use_when": [
+    "A product deploys a scanned container image by digest onto ECS Fargate."
+  ],
+  "non_goals": [
+    "Building or scanning images",
+    "Creating clusters or load balancers",
+    "Multi-tenant schedulers"
+  ],
+  "proposed_guarantees": [
+    "Mutable tags rejected",
+    "Public IP off unless explicitly enabled"
+  ],
+  "failure_modes": [
+    "Deploy from :latest",
+    "Unintended public ENI"
+  ],
+  "evidence": [
+    {
+      "visibility": "PUBLIC",
+      "basis": "AWS ECS Fargate component CANDIDATE; no live AWS apply claimed.",
+      "verification": "PUBLICLY_REPRODUCIBLE",
+      "url": "https://github.com/ajent-social/pulumi/tree/06dadb01f708ec3f31de022fd03e24573ccc82b5/aws/containerdeploy"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "Pulumi AWS ECS Service",
+      "url": "https://www.pulumi.com/registry/packages/aws/api-docs/ecs/service/",
+      "assessment": "Compose provider resources; enforce digest pinning in the component."
+    }
+  ],
+  "implementations": [
+    {
+      "url": "https://github.com/ajent-social/pulumi/tree/06dadb01f708ec3f31de022fd03e24573ccc82b5/aws/containerdeploy",
+      "revision": "06dadb01f708ec3f31de022fd03e24573ccc82b5"
+    }
+  ],
+  "verification": [
+    {
+      "kind": "CONTRACT_TEST",
+      "result": "PASS",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/06dadb01f708ec3f31de022fd03e24573ccc82b5/contracts/container-deploy.md"
+    },
+    {
+      "kind": "SECURITY_TEST",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/06dadb01f708ec3f31de022fd03e24573ccc82b5/contracts/container-deploy.md"
+    },
+    {
+      "kind": "REAL_CONSUMER",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/06dadb01f708ec3f31de022fd03e24573ccc82b5/contracts/container-deploy.md"
+    },
+    {
+      "kind": "HUMAN_REVIEW",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/06dadb01f708ec3f31de022fd03e24573ccc82b5/contracts/container-deploy.md"
+    }
+  ],
+  "open_questions": [
+    "CloudWatch log group creation ownership.",
+    "Human review pending; retain CANDIDATE."
+  ]
+}

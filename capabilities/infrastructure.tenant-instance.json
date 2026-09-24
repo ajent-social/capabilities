@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "id": "infrastructure.tenant-instance",
+  "name": "Tenant instance lifecycle",
+  "domain": "infrastructure",
+  "status": "CANDIDATE",
+  "disposition": "EXTRACT",
+  "summary": "Durable lifecycle for dedicated product instances (request → provision → ready → upgrade/destroy) around a Runtime seam.",
+  "use_when": [
+    "A paid product needs one hostname and deployable instance per account under a product base domain."
+  ],
+  "non_goals": [
+    "Calling cloud APIs directly",
+    "Entitlement or billing policy",
+    "Multi-region orchestration"
+  ],
+  "proposed_guarantees": [
+    "Explicit lifecycle states with lease-epoch CAS",
+    "Runtime failures mark failed without silent success",
+    "Hostname = slug.baseDomain from configured base"
+  ],
+  "failure_modes": [
+    "Slug collision",
+    "Provision without entitlement",
+    "Broken Runtime left as ready"
+  ],
+  "evidence": [
+    {
+      "visibility": "PUBLIC",
+      "basis": "Original tenant lifecycle CANDIDATE; Runtime is a product/Pulumi seam.",
+      "verification": "PUBLICLY_REPRODUCIBLE",
+      "url": "https://github.com/ajent-social/go/tree/7e2966857d3e277e48a484c9b45810b469eb4472/tenant"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "Product control plane only",
+      "url": "https://github.com/ajent-social/capabilities/blob/main/docs/rfc/0001-amsl-bootstrap.md",
+      "assessment": "Keep cloud applies in product Runtime; this package owns durable state transitions."
+    }
+  ],
+  "implementations": [
+    {
+      "url": "https://github.com/ajent-social/go/tree/7e2966857d3e277e48a484c9b45810b469eb4472/tenant",
+      "revision": "7e2966857d3e277e48a484c9b45810b469eb4472"
+    }
+  ],
+  "verification": [
+    {
+      "kind": "CONTRACT_TEST",
+      "result": "PASS",
+      "evidence_url": "https://github.com/ajent-social/go/blob/7e2966857d3e277e48a484c9b45810b469eb4472/docs/tenant-instance.md"
+    },
+    {
+      "kind": "SECURITY_TEST",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/7e2966857d3e277e48a484c9b45810b469eb4472/docs/tenant-instance.md"
+    },
+    {
+      "kind": "REAL_CONSUMER",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/7e2966857d3e277e48a484c9b45810b469eb4472/docs/tenant-instance.md"
+    },
+    {
+      "kind": "HUMAN_REVIEW",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/7e2966857d3e277e48a484c9b45810b469eb4472/docs/tenant-instance.md"
+    }
+  ],
+  "open_questions": [
+    "SQL store adapter timing for multi-host control planes.",
+    "Human review pending; retain CANDIDATE."
+  ]
+}

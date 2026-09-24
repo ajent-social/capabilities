@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "id": "identity.oidc-social",
+  "name": "OIDC social login",
+  "domain": "identity",
+  "status": "CANDIDATE",
+  "disposition": "EXTRACT",
+  "summary": "Coordinate OIDC authorization-code social login around go-oidc with consume-once state and account bindings.",
+  "use_when": [
+    "A product needs Google/Apple (or other OIDC issuer) browser login linked to a thin account registry."
+  ],
+  "non_goals": [
+    "Session minting",
+    "Non-OIDC OAuth providers (e.g. GitHub without ID token)",
+    "Universal IdP marketplace"
+  ],
+  "proposed_guarantees": [
+    "Redirect URIs are configured absolutes (https or loopback http)",
+    "Auth state is consume-once",
+    "ID token verified before Identity is returned"
+  ],
+  "failure_modes": [
+    "Redirect URI derived from request Host",
+    "State replay",
+    "Missing or invalid id_token"
+  ],
+  "evidence": [
+    {
+      "visibility": "PUBLIC",
+      "basis": "Original OIDC coordinator CANDIDATE around go-oidc / x/oauth2; not a session store.",
+      "verification": "PUBLICLY_REPRODUCIBLE",
+      "url": "https://github.com/ajent-social/go/tree/7e2966857d3e277e48a484c9b45810b469eb4472/oidc"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "coreos/go-oidc",
+      "url": "https://github.com/coreos/go-oidc",
+      "assessment": "Use the maintained verifier; this package coordinates state, bindings and redirect policy."
+    }
+  ],
+  "implementations": [
+    {
+      "url": "https://github.com/ajent-social/go/tree/7e2966857d3e277e48a484c9b45810b469eb4472/oidc",
+      "revision": "7e2966857d3e277e48a484c9b45810b469eb4472"
+    }
+  ],
+  "verification": [
+    {
+      "kind": "CONTRACT_TEST",
+      "result": "PASS",
+      "evidence_url": "https://github.com/ajent-social/go/blob/7e2966857d3e277e48a484c9b45810b469eb4472/docs/oidc-social.md"
+    },
+    {
+      "kind": "SECURITY_TEST",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/7e2966857d3e277e48a484c9b45810b469eb4472/docs/oidc-social.md"
+    },
+    {
+      "kind": "REAL_CONSUMER",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/7e2966857d3e277e48a484c9b45810b469eb4472/docs/oidc-social.md"
+    },
+    {
+      "kind": "HUMAN_REVIEW",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/7e2966857d3e277e48a484c9b45810b469eb4472/docs/oidc-social.md"
+    }
+  ],
+  "open_questions": [
+    "Whether a separate non-OIDC GitHub adapter belongs in AMSL.",
+    "Human review pending; retain CANDIDATE."
+  ]
+}
