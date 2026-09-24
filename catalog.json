@@ -286,7 +286,7 @@
       "evidence": [
         {
           "basis": "AWS ECS Fargate component CANDIDATE; no live AWS apply claimed.",
-          "url": "https://github.com/ajent-social/pulumi/tree/06dadb01f708ec3f31de022fd03e24573ccc82b5/aws/containerdeploy",
+          "url": "https://github.com/ajent-social/pulumi/tree/2efcae3c164d724777cff558bbf34bb4ba1de297/aws/containerdeploy",
           "verification": "PUBLICLY_REPRODUCIBLE",
           "visibility": "PUBLIC"
         }
@@ -298,8 +298,8 @@
       "id": "delivery.container-deploy",
       "implementations": [
         {
-          "revision": "06dadb01f708ec3f31de022fd03e24573ccc82b5",
-          "url": "https://github.com/ajent-social/pulumi/tree/06dadb01f708ec3f31de022fd03e24573ccc82b5/aws/containerdeploy"
+          "revision": "2efcae3c164d724777cff558bbf34bb4ba1de297",
+          "url": "https://github.com/ajent-social/pulumi/tree/2efcae3c164d724777cff558bbf34bb4ba1de297/aws/containerdeploy"
         }
       ],
       "name": "Container deploy",
@@ -324,22 +324,22 @@
       ],
       "verification": [
         {
-          "evidence_url": "https://github.com/ajent-social/pulumi/blob/06dadb01f708ec3f31de022fd03e24573ccc82b5/contracts/container-deploy.md",
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/2efcae3c164d724777cff558bbf34bb4ba1de297/contracts/container-deploy.md",
           "kind": "CONTRACT_TEST",
           "result": "PASS"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/pulumi/blob/06dadb01f708ec3f31de022fd03e24573ccc82b5/contracts/container-deploy.md",
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/2efcae3c164d724777cff558bbf34bb4ba1de297/contracts/container-deploy.md",
           "kind": "SECURITY_TEST",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/pulumi/blob/06dadb01f708ec3f31de022fd03e24573ccc82b5/contracts/container-deploy.md",
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/2efcae3c164d724777cff558bbf34bb4ba1de297/contracts/container-deploy.md",
           "kind": "REAL_CONSUMER",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/pulumi/blob/06dadb01f708ec3f31de022fd03e24573ccc82b5/contracts/container-deploy.md",
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/2efcae3c164d724777cff558bbf34bb4ba1de297/contracts/container-deploy.md",
           "kind": "HUMAN_REVIEW",
           "result": "NOT_RUN"
         }
@@ -807,7 +807,7 @@
       "evidence": [
         {
           "basis": "Original OIDC coordinator CANDIDATE around go-oidc / x/oauth2; not a session store.",
-          "url": "https://github.com/ajent-social/go/tree/7e2966857d3e277e48a484c9b45810b469eb4472/oidc",
+          "url": "https://github.com/ajent-social/go/tree/044131c18919cfe2ff9c5c0038ecb9ecf59335e1/oidc",
           "verification": "PUBLICLY_REPRODUCIBLE",
           "visibility": "PUBLIC"
         }
@@ -820,8 +820,8 @@
       "id": "identity.oidc-social",
       "implementations": [
         {
-          "revision": "7e2966857d3e277e48a484c9b45810b469eb4472",
-          "url": "https://github.com/ajent-social/go/tree/7e2966857d3e277e48a484c9b45810b469eb4472/oidc"
+          "revision": "044131c18919cfe2ff9c5c0038ecb9ecf59335e1",
+          "url": "https://github.com/ajent-social/go/tree/044131c18919cfe2ff9c5c0038ecb9ecf59335e1/oidc"
         }
       ],
       "name": "OIDC social login",
@@ -847,22 +847,22 @@
       ],
       "verification": [
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7e2966857d3e277e48a484c9b45810b469eb4472/docs/oidc-social.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/044131c18919cfe2ff9c5c0038ecb9ecf59335e1/docs/oidc-social.md",
           "kind": "CONTRACT_TEST",
           "result": "PASS"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7e2966857d3e277e48a484c9b45810b469eb4472/docs/oidc-social.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/044131c18919cfe2ff9c5c0038ecb9ecf59335e1/docs/oidc-social.md",
           "kind": "SECURITY_TEST",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7e2966857d3e277e48a484c9b45810b469eb4472/docs/oidc-social.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/044131c18919cfe2ff9c5c0038ecb9ecf59335e1/docs/oidc-social.md",
           "kind": "REAL_CONSUMER",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7e2966857d3e277e48a484c9b45810b469eb4472/docs/oidc-social.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/044131c18919cfe2ff9c5c0038ecb9ecf59335e1/docs/oidc-social.md",
           "kind": "HUMAN_REVIEW",
           "result": "NOT_RUN"
         }
@@ -1188,7 +1188,7 @@
       "evidence": [
         {
           "basis": "AWS RDS component CANDIDATE with PubliclyAccessible=false and managed master secret ARN; no live AWS apply claimed.",
-          "url": "https://github.com/ajent-social/pulumi/tree/06dadb01f708ec3f31de022fd03e24573ccc82b5/aws/privatedatabase",
+          "url": "https://github.com/ajent-social/pulumi/tree/2efcae3c164d724777cff558bbf34bb4ba1de297/aws/privatedatabase",
           "verification": "PUBLICLY_REPRODUCIBLE",
           "visibility": "PUBLIC"
         }
@@ -1200,8 +1200,8 @@
       "id": "infrastructure.private-database",
       "implementations": [
         {
-          "revision": "06dadb01f708ec3f31de022fd03e24573ccc82b5",
-          "url": "https://github.com/ajent-social/pulumi/tree/06dadb01f708ec3f31de022fd03e24573ccc82b5/aws/privatedatabase"
+          "revision": "2efcae3c164d724777cff558bbf34bb4ba1de297",
+          "url": "https://github.com/ajent-social/pulumi/tree/2efcae3c164d724777cff558bbf34bb4ba1de297/aws/privatedatabase"
         }
       ],
       "name": "Private database profile",
@@ -1224,22 +1224,22 @@
       ],
       "verification": [
         {
-          "evidence_url": "https://github.com/ajent-social/pulumi/blob/06dadb01f708ec3f31de022fd03e24573ccc82b5/contracts/private-database.md",
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/2efcae3c164d724777cff558bbf34bb4ba1de297/contracts/private-database.md",
           "kind": "CONTRACT_TEST",
           "result": "PASS"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/pulumi/blob/06dadb01f708ec3f31de022fd03e24573ccc82b5/contracts/private-database.md",
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/2efcae3c164d724777cff558bbf34bb4ba1de297/contracts/private-database.md",
           "kind": "SECURITY_TEST",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/pulumi/blob/06dadb01f708ec3f31de022fd03e24573ccc82b5/contracts/private-database.md",
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/2efcae3c164d724777cff558bbf34bb4ba1de297/contracts/private-database.md",
           "kind": "REAL_CONSUMER",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/pulumi/blob/06dadb01f708ec3f31de022fd03e24573ccc82b5/contracts/private-database.md",
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/2efcae3c164d724777cff558bbf34bb4ba1de297/contracts/private-database.md",
           "kind": "HUMAN_REVIEW",
           "result": "NOT_RUN"
         }
@@ -1258,7 +1258,7 @@
       "evidence": [
         {
           "basis": "AWS ACM + Route53 component CANDIDATE; no live AWS apply claimed.",
-          "url": "https://github.com/ajent-social/pulumi/tree/06dadb01f708ec3f31de022fd03e24573ccc82b5/aws/tenantdnstls",
+          "url": "https://github.com/ajent-social/pulumi/tree/2efcae3c164d724777cff558bbf34bb4ba1de297/aws/tenantdnstls",
           "verification": "PUBLICLY_REPRODUCIBLE",
           "visibility": "PUBLIC"
         }
@@ -1270,8 +1270,8 @@
       "id": "infrastructure.tenant-dns-tls",
       "implementations": [
         {
-          "revision": "06dadb01f708ec3f31de022fd03e24573ccc82b5",
-          "url": "https://github.com/ajent-social/pulumi/tree/06dadb01f708ec3f31de022fd03e24573ccc82b5/aws/tenantdnstls"
+          "revision": "2efcae3c164d724777cff558bbf34bb4ba1de297",
+          "url": "https://github.com/ajent-social/pulumi/tree/2efcae3c164d724777cff558bbf34bb4ba1de297/aws/tenantdnstls"
         }
       ],
       "name": "Tenant DNS and TLS",
@@ -1281,7 +1281,7 @@
         "Deriving SANs from request Host"
       ],
       "open_questions": [
-        "Whether multi-option ACM validation records need a second Route53 record when apex and wildcard diverge.",
+        "Apex+wildcard share one ACM DNS validation CNAME under current AWS behavior; distinct unrelated SANs remain out of scope.",
         "Human review pending; retain CANDIDATE."
       ],
       "proposed_guarantees": [
@@ -1296,22 +1296,22 @@
       ],
       "verification": [
         {
-          "evidence_url": "https://github.com/ajent-social/pulumi/blob/06dadb01f708ec3f31de022fd03e24573ccc82b5/contracts/tenant-dns-tls.md",
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/2efcae3c164d724777cff558bbf34bb4ba1de297/contracts/tenant-dns-tls.md",
           "kind": "CONTRACT_TEST",
           "result": "PASS"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/pulumi/blob/06dadb01f708ec3f31de022fd03e24573ccc82b5/contracts/tenant-dns-tls.md",
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/2efcae3c164d724777cff558bbf34bb4ba1de297/contracts/tenant-dns-tls.md",
           "kind": "SECURITY_TEST",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/pulumi/blob/06dadb01f708ec3f31de022fd03e24573ccc82b5/contracts/tenant-dns-tls.md",
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/2efcae3c164d724777cff558bbf34bb4ba1de297/contracts/tenant-dns-tls.md",
           "kind": "REAL_CONSUMER",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/pulumi/blob/06dadb01f708ec3f31de022fd03e24573ccc82b5/contracts/tenant-dns-tls.md",
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/2efcae3c164d724777cff558bbf34bb4ba1de297/contracts/tenant-dns-tls.md",
           "kind": "HUMAN_REVIEW",
           "result": "NOT_RUN"
         }
@@ -1330,7 +1330,7 @@
       "evidence": [
         {
           "basis": "Original tenant lifecycle CANDIDATE; Runtime is a product/Pulumi seam.",
-          "url": "https://github.com/ajent-social/go/tree/7e2966857d3e277e48a484c9b45810b469eb4472/tenant",
+          "url": "https://github.com/ajent-social/go/tree/044131c18919cfe2ff9c5c0038ecb9ecf59335e1/tenant",
           "verification": "PUBLICLY_REPRODUCIBLE",
           "visibility": "PUBLIC"
         }
@@ -1343,8 +1343,8 @@
       "id": "infrastructure.tenant-instance",
       "implementations": [
         {
-          "revision": "7e2966857d3e277e48a484c9b45810b469eb4472",
-          "url": "https://github.com/ajent-social/go/tree/7e2966857d3e277e48a484c9b45810b469eb4472/tenant"
+          "revision": "044131c18919cfe2ff9c5c0038ecb9ecf59335e1",
+          "url": "https://github.com/ajent-social/go/tree/044131c18919cfe2ff9c5c0038ecb9ecf59335e1/tenant"
         }
       ],
       "name": "Tenant instance lifecycle",
@@ -1370,22 +1370,22 @@
       ],
       "verification": [
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7e2966857d3e277e48a484c9b45810b469eb4472/docs/tenant-instance.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/044131c18919cfe2ff9c5c0038ecb9ecf59335e1/docs/tenant-instance.md",
           "kind": "CONTRACT_TEST",
           "result": "PASS"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7e2966857d3e277e48a484c9b45810b469eb4472/docs/tenant-instance.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/044131c18919cfe2ff9c5c0038ecb9ecf59335e1/docs/tenant-instance.md",
           "kind": "SECURITY_TEST",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7e2966857d3e277e48a484c9b45810b469eb4472/docs/tenant-instance.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/044131c18919cfe2ff9c5c0038ecb9ecf59335e1/docs/tenant-instance.md",
           "kind": "REAL_CONSUMER",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7e2966857d3e277e48a484c9b45810b469eb4472/docs/tenant-instance.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/044131c18919cfe2ff9c5c0038ecb9ecf59335e1/docs/tenant-instance.md",
           "kind": "HUMAN_REVIEW",
           "result": "NOT_RUN"
         }

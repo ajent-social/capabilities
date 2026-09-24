@@ -5,7 +5,7 @@
   "domain": "infrastructure",
   "status": "CANDIDATE",
   "disposition": "EXTRACT",
-  "summary": "Durable lifecycle for dedicated product instances (request → provision → ready → upgrade/destroy) around a Runtime seam.",
+  "summary": "Durable lifecycle for dedicated product instances (request \u2192 provision \u2192 ready \u2192 upgrade/destroy) around a Runtime seam.",
   "use_when": [
     "A paid product needs one hostname and deployable instance per account under a product base domain."
   ],
@@ -29,7 +29,7 @@
       "visibility": "PUBLIC",
       "basis": "Original tenant lifecycle CANDIDATE; Runtime is a product/Pulumi seam.",
       "verification": "PUBLICLY_REPRODUCIBLE",
-      "url": "https://github.com/ajent-social/go/tree/7e2966857d3e277e48a484c9b45810b469eb4472/tenant"
+      "url": "https://github.com/ajent-social/go/tree/044131c18919cfe2ff9c5c0038ecb9ecf59335e1/tenant"
     }
   ],
   "alternatives": [
@@ -41,30 +41,30 @@
   ],
   "implementations": [
     {
-      "url": "https://github.com/ajent-social/go/tree/7e2966857d3e277e48a484c9b45810b469eb4472/tenant",
-      "revision": "7e2966857d3e277e48a484c9b45810b469eb4472"
+      "url": "https://github.com/ajent-social/go/tree/044131c18919cfe2ff9c5c0038ecb9ecf59335e1/tenant",
+      "revision": "044131c18919cfe2ff9c5c0038ecb9ecf59335e1"
     }
   ],
   "verification": [
     {
       "kind": "CONTRACT_TEST",
       "result": "PASS",
-      "evidence_url": "https://github.com/ajent-social/go/blob/7e2966857d3e277e48a484c9b45810b469eb4472/docs/tenant-instance.md"
+      "evidence_url": "https://github.com/ajent-social/go/blob/044131c18919cfe2ff9c5c0038ecb9ecf59335e1/docs/tenant-instance.md"
     },
     {
       "kind": "SECURITY_TEST",
       "result": "NOT_RUN",
-      "evidence_url": "https://github.com/ajent-social/go/blob/7e2966857d3e277e48a484c9b45810b469eb4472/docs/tenant-instance.md"
+      "evidence_url": "https://github.com/ajent-social/go/blob/044131c18919cfe2ff9c5c0038ecb9ecf59335e1/docs/tenant-instance.md"
     },
     {
       "kind": "REAL_CONSUMER",
       "result": "NOT_RUN",
-      "evidence_url": "https://github.com/ajent-social/go/blob/7e2966857d3e277e48a484c9b45810b469eb4472/docs/tenant-instance.md"
+      "evidence_url": "https://github.com/ajent-social/go/blob/044131c18919cfe2ff9c5c0038ecb9ecf59335e1/docs/tenant-instance.md"
     },
     {
       "kind": "HUMAN_REVIEW",
       "result": "NOT_RUN",
-      "evidence_url": "https://github.com/ajent-social/go/blob/7e2966857d3e277e48a484c9b45810b469eb4472/docs/tenant-instance.md"
+      "evidence_url": "https://github.com/ajent-social/go/blob/044131c18919cfe2ff9c5c0038ecb9ecf59335e1/docs/tenant-instance.md"
     }
   ],
   "open_questions": [
