@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "identity.accounts",
+  "name": "Thin account registry",
+  "domain": "identity",
+  "status": "CANDIDATE",
+  "disposition": "EXTRACT",
+  "summary": "Minimal subject registry for linking auth methods without a universal user model.",
+  "use_when": [
+    "A product needs create/lookup/disable for subjects that own credentials and billing."
+  ],
+  "non_goals": [
+    "Organizations and RBAC",
+    "Profile UI",
+    "Billing entitlement"
+  ],
+  "proposed_guarantees": [
+    "Disabled accounts are distinguishable for fail-closed auth"
+  ],
+  "failure_modes": [
+    "Duplicate email",
+    "Auth after disable"
+  ],
+  "evidence": [
+    {
+      "visibility": "PUBLIC",
+      "basis": "Original thin registry CANDIDATE; not a universal IAM.",
+      "verification": "PUBLICLY_REPRODUCIBLE",
+      "url": "https://github.com/ajent-social/go/tree/23975e354f3daa66c7a2009081be8932f2bcb1df/accounts"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "Product-owned user table",
+      "url": "https://github.com/ajent-social/capabilities/blob/main/docs/rfc/0001-amsl-bootstrap.md",
+      "assessment": "RFC rejects a universal user model; this package stays intentionally thin."
+    }
+  ],
+  "implementations": [
+    {
+      "url": "https://github.com/ajent-social/go/tree/23975e354f3daa66c7a2009081be8932f2bcb1df/accounts",
+      "revision": "23975e354f3daa66c7a2009081be8932f2bcb1df"
+    }
+  ],
+  "verification": [
+    {
+      "kind": "CONTRACT_TEST",
+      "result": "PASS",
+      "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/accounts.md"
+    },
+    {
+      "kind": "SECURITY_TEST",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/accounts.md"
+    },
+    {
+      "kind": "REAL_CONSUMER",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/accounts.md"
+    },
+    {
+      "kind": "HUMAN_REVIEW",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/accounts.md"
+    }
+  ],
+  "open_questions": [
+    "Whether Path C consumers prefer product tables only.",
+    "Human review pending; retain CANDIDATE."
+  ]
+}

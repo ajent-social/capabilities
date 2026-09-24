@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "identity.magic-link",
+  "name": "Email magic-link challenges",
+  "domain": "identity",
+  "status": "CANDIDATE",
+  "disposition": "EXTRACT",
+  "summary": "Issue and consume single-use hashed email sign-in challenges.",
+  "use_when": [
+    "A product offers passwordless email login or email verification."
+  ],
+  "non_goals": [
+    "Mail transport",
+    "HTML templates",
+    "Session cookies"
+  ],
+  "proposed_guarantees": [
+    "Tokens are stored hashed",
+    "Consume is single-use"
+  ],
+  "failure_modes": [
+    "Token replay",
+    "Expired challenge"
+  ],
+  "evidence": [
+    {
+      "visibility": "PUBLIC",
+      "basis": "Original CANDIDATE package; mail delivery left to Mailer seam.",
+      "verification": "PUBLICLY_REPRODUCIBLE",
+      "url": "https://github.com/ajent-social/go/tree/23975e354f3daa66c7a2009081be8932f2bcb1df/magiclink"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "Provider magic-link (Auth0, Clerk, etc.)",
+      "url": "https://auth0.com/docs/authenticate/passwordless",
+      "assessment": "Prefer when the product already commits to a hosted IdP; otherwise local challenge storage remains."
+    }
+  ],
+  "implementations": [
+    {
+      "url": "https://github.com/ajent-social/go/tree/23975e354f3daa66c7a2009081be8932f2bcb1df/magiclink",
+      "revision": "23975e354f3daa66c7a2009081be8932f2bcb1df"
+    }
+  ],
+  "verification": [
+    {
+      "kind": "CONTRACT_TEST",
+      "result": "PASS",
+      "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/magic-link.md"
+    },
+    {
+      "kind": "SECURITY_TEST",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/magic-link.md"
+    },
+    {
+      "kind": "REAL_CONSUMER",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/magic-link.md"
+    },
+    {
+      "kind": "HUMAN_REVIEW",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/magic-link.md"
+    }
+  ],
+  "open_questions": [
+    "SQL Store and rate-limit guidance for multi-host.",
+    "Human review pending; retain CANDIDATE."
+  ]
+}
