@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "identity.publishable-key",
+  "name": "Publishable key",
+  "domain": "identity",
+  "status": "CANDIDATE",
+  "disposition": "EXTRACT",
+  "summary": "Issue-once browser-embeddable public identifiers with hashed storage and origin allowlists.",
+  "use_when": [
+    "A product embeds a public key in a customer website with origin binding."
+  ],
+  "non_goals": [
+    "Backend machine secrets",
+    "Session minting"
+  ],
+  "proposed_guarantees": [
+    "Plaintext returned once",
+    "Origin never from request Host"
+  ],
+  "failure_modes": [
+    "Treating publishable key as machine credential",
+    "Host header as origin"
+  ],
+  "evidence": [
+    {
+      "visibility": "PUBLIC",
+      "basis": "Original public CANDIDATE; behavioral boundaries informed by restricted maintainer inspection without copying private source.",
+      "verification": "PUBLICLY_REPRODUCIBLE",
+      "url": "https://github.com/ajent-social/go/tree/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/publishablekey"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "Product-local implementation",
+      "url": "https://github.com/ajent-social/capabilities/blob/main/docs/rfc/0001-amsl-bootstrap.md",
+      "assessment": "Extract only coordination seams; keep product policy local."
+    }
+  ],
+  "implementations": [
+    {
+      "url": "https://github.com/ajent-social/go/tree/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/publishablekey",
+      "revision": "7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001"
+    }
+  ],
+  "verification": [
+    {
+      "kind": "CONTRACT_TEST",
+      "result": "PASS",
+      "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/publishable-key.md"
+    },
+    {
+      "kind": "SECURITY_TEST",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/publishable-key.md"
+    },
+    {
+      "kind": "REAL_CONSUMER",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/publishable-key.md"
+    },
+    {
+      "kind": "HUMAN_REVIEW",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/publishable-key.md"
+    }
+  ],
+  "open_questions": [
+    "Human review pending; retain CANDIDATE."
+  ]
+}

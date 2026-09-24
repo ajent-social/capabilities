@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "id": "identity.mcp-client-oauth",
+  "name": "MCP client OAuth",
+  "domain": "identity",
+  "status": "CANDIDATE",
+  "disposition": "EXTRACT",
+  "summary": "OAuth 2.1 PKCE client with sealed tokens when the product connects to remote MCP authorization servers.",
+  "use_when": [
+    "A product must obtain and refresh tokens for remote MCP servers as an OAuth client."
+  ],
+  "non_goals": [
+    "Authorization server role",
+    "KMS key management",
+    "MCP transport"
+  ],
+  "proposed_guarantees": [
+    "State is consume-once",
+    "Redirect URLs are configured absolutes",
+    "Tokens stored only as caller-sealed ciphertext"
+  ],
+  "failure_modes": [
+    "State replay",
+    "Plaintext token logging",
+    "Host-derived redirect"
+  ],
+  "evidence": [
+    {
+      "visibility": "PUBLIC",
+      "basis": "Original public CANDIDATE; behavioral boundaries informed by restricted maintainer inspection without copying private source.",
+      "verification": "PUBLICLY_REPRODUCIBLE",
+      "url": "https://github.com/ajent-social/go/tree/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/mcpclientoauth"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "Product-local implementation",
+      "url": "https://github.com/ajent-social/capabilities/blob/main/docs/rfc/0001-amsl-bootstrap.md",
+      "assessment": "Extract only coordination seams; keep product policy local."
+    }
+  ],
+  "implementations": [
+    {
+      "url": "https://github.com/ajent-social/go/tree/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/mcpclientoauth",
+      "revision": "7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001"
+    }
+  ],
+  "verification": [
+    {
+      "kind": "CONTRACT_TEST",
+      "result": "PASS",
+      "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/mcp-client-oauth.md"
+    },
+    {
+      "kind": "SECURITY_TEST",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/mcp-client-oauth.md"
+    },
+    {
+      "kind": "REAL_CONSUMER",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/mcp-client-oauth.md"
+    },
+    {
+      "kind": "HUMAN_REVIEW",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/mcp-client-oauth.md"
+    }
+  ],
+  "open_questions": [
+    "Human review pending; retain CANDIDATE."
+  ]
+}
