@@ -57,3 +57,7 @@ and passing public library CI evidence. Linked the real Serenity consumer PR
 evidence; public consumer CI and human maintainer review remain pending.
 Status remains CANDIDATE. No private source identity or production adoption
 is published. Catalog generation/check and all 12 schema tests pass.
+
+Consumer evidence update: Serenity PR #271 public hosted-browser job passes
+six real-service signup/consent flows. REAL_CONSUMER is PASS for that candidate
+integration only; no production adoption or cloud qualification is inferred.

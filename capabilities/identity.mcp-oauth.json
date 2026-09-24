@@ -110,8 +110,8 @@
     },
     {
       "kind": "REAL_CONSUMER",
-      "result": "NOT_RUN",
-      "evidence_url": "https://github.com/sirerun/serenity/blob/292904ba47ab1004291f9d0713600339e400c40e/docs/launch/hosted-mcp-oauth.md"
+      "result": "PASS",
+      "evidence_url": "https://github.com/sirerun/serenity/actions/runs/35955704360/job/107493462867"
     },
     {
       "kind": "HUMAN_REVIEW",
@@ -121,7 +121,7 @@
   ],
   "open_questions": [
     "Candidate implementation is pinned and public CI passes; security API maintainer review and release approval remain pending.",
-    "Serenity consumer integration is in PR #271 with local native-client evidence and reproducible regression tests; public consumer CI is pending and no merged production adoption is claimed.",
+    "Serenity PR #271 consumes the pinned library; public real-service browser CI passes. This is a verified candidate integration, not a merged production adoption or cloud-client qualification.",
     "Human maintainer review of the security API is pending; AI review does not count. Retain CANDIDATE.",
     "Reviewers must decide whether go-oauth2/oauth2 or ory/fosite configured to this profile would make the AMSL implementation unjustified.",
     "Remote client metadata remains excluded; adding URL fetching requires a revised contract and SSRF review.",
