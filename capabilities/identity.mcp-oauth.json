@@ -100,6 +100,10 @@
     {
       "url": "https://github.com/ajent-social/go/tree/b90bbb417d9dd440e91906523dc54287ac530c43/mcpoauth",
       "revision": "b90bbb417d9dd440e91906523dc54287ac530c43"
+    },
+    {
+      "url": "https://github.com/ajent-social/go/tree/39ce0079c8b3e37eeff89291a0637c8d4fb5f2a4/mcpoauth/sqlstore",
+      "revision": "39ce0079c8b3e37eeff89291a0637c8d4fb5f2a4"
     }
   ],
   "verification": [
@@ -129,6 +133,7 @@
     "Reviewers must decide whether go-oauth2/oauth2 or ory/fosite configured to this profile would make the AMSL implementation unjustified.",
     "Remote client metadata remains excluded; adding URL fetching requires a revised contract and SSRF review.",
     "Consent CSRF, login and ownership policy remain product responsibilities; the contract should state the minimal product obligations a consumer must test.",
-    "Retain CANDIDATE as explicitly approved; independent security audit, broader consumer evidence and cloud-client qualification remain separate."
+    "Retain CANDIDATE as explicitly approved; independent security audit, broader consumer evidence and cloud-client qualification remain separate.",
+    "mcpoauth/sqlstore CANDIDATE shipped for multi-host; boltstore remains single-host reference."
   ]
 }
