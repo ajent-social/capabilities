@@ -26,7 +26,7 @@
       "visibility": "PUBLIC",
       "basis": "Original public CANDIDATE; behavioral boundaries informed by restricted maintainer inspection without copying private source.",
       "verification": "PUBLICLY_REPRODUCIBLE",
-      "url": "https://github.com/ajent-social/go/tree/c72ca838ed97072dda6042e8d99ba1d506b17556/webhookegress"
+      "url": "https://github.com/ajent-social/go/tree/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/webhookegress"
     }
   ],
   "alternatives": [
@@ -38,30 +38,30 @@
   ],
   "implementations": [
     {
-      "url": "https://github.com/ajent-social/go/tree/c72ca838ed97072dda6042e8d99ba1d506b17556/webhookegress",
-      "revision": "c72ca838ed97072dda6042e8d99ba1d506b17556"
+      "url": "https://github.com/ajent-social/go/tree/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/webhookegress",
+      "revision": "50c231b1a56cab0b857d5d82bcc8afffef25ddaf"
     }
   ],
   "verification": [
     {
       "kind": "CONTRACT_TEST",
       "result": "PASS",
-      "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/webhook-egress.md"
+      "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/webhook-egress.md"
     },
     {
       "kind": "SECURITY_TEST",
       "result": "NOT_RUN",
-      "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/webhook-egress.md"
+      "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/webhook-egress.md"
     },
     {
       "kind": "REAL_CONSUMER",
       "result": "NOT_RUN",
-      "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/webhook-egress.md"
+      "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/webhook-egress.md"
     },
     {
       "kind": "HUMAN_REVIEW",
       "result": "NOT_RUN",
-      "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/webhook-egress.md"
+      "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/webhook-egress.md"
     }
   ],
   "open_questions": [
