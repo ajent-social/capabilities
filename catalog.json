@@ -12,9 +12,15 @@
       "domain": "billing",
       "evidence": [
         {
-          "basis": "Candidate boundary informed by maintainer source inspection; identifying evidence is not published. No AMSL consumer adoption is claimed.",
+          "basis": "Candidate boundary informed by maintainer source inspection; identifying evidence is not published.",
           "verification": "MAINTAINER_REPORTED",
           "visibility": "RESTRICTED"
+        },
+        {
+          "basis": "Original CANDIDATE package with Store/Provider seams and race-tested attempt recovery. Package tests are not consumer adoption. Redirect is not treated as payment evidence.",
+          "url": "https://github.com/ajent-social/go/tree/522623ba40848bb1610dfaec01e63025495a902e/billing/checkout",
+          "verification": "PUBLICLY_REPRODUCIBLE",
+          "visibility": "PUBLIC"
         }
       ],
       "failure_modes": [
@@ -22,18 +28,27 @@
         "Concurrent duplicate customer creation"
       ],
       "id": "billing.customer-checkout",
-      "implementations": [],
+      "implementations": [
+        {
+          "revision": "522623ba40848bb1610dfaec01e63025495a902e",
+          "url": "https://github.com/ajent-social/go/tree/522623ba40848bb1610dfaec01e63025495a902e/billing/checkout"
+        }
+      ],
       "name": "Customer linkage and checkout",
       "non_goals": [
         "Price engine",
         "Payment processing"
       ],
       "open_questions": [
-        "Define durable recovery and provider idempotency-window behavior."
+        "Stripe SDK adapter and SQL Store not yet shipped.",
+        "Path C requires a real hosted consumer (e.g. Ferro test-mode) proving webhook-backed access.",
+        "Human maintainer review pending; retain CANDIDATE."
       ],
       "proposed_guarantees": [
         "Attempt identity survives retries",
-        "Local customer association is explicit"
+        "Local customer association is explicit",
+        "Changed approved checkout parameters conflict instead of silently diverging",
+        "Lost provider responses leave recoverable unknown state rather than unguarded recreate"
       ],
       "schema_version": 1,
       "status": "CANDIDATE",
@@ -41,7 +56,28 @@
       "use_when": [
         "A product integrates hosted subscription checkout."
       ],
-      "verification": []
+      "verification": [
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/522623ba40848bb1610dfaec01e63025495a902e/docs/billing-checkout-worklog.md",
+          "kind": "CONTRACT_TEST",
+          "result": "PASS"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/522623ba40848bb1610dfaec01e63025495a902e/docs/billing-checkout-worklog.md",
+          "kind": "SECURITY_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/522623ba40848bb1610dfaec01e63025495a902e/docs/billing-checkout-worklog.md",
+          "kind": "REAL_CONSUMER",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/522623ba40848bb1610dfaec01e63025495a902e/docs/billing-checkout-worklog.md",
+          "kind": "HUMAN_REVIEW",
+          "result": "NOT_RUN"
+        }
+      ]
     },
     {
       "alternatives": [
