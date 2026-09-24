@@ -27,7 +27,7 @@
       "visibility": "PUBLIC",
       "basis": "AWS ECS Fargate component CANDIDATE; no live AWS apply claimed.",
       "verification": "PUBLICLY_REPRODUCIBLE",
-      "url": "https://github.com/ajent-social/pulumi/tree/2efcae3c164d724777cff558bbf34bb4ba1de297/aws/containerdeploy"
+      "url": "https://github.com/ajent-social/pulumi/tree/ddc00fc74abb8f0ea60376c7d7940db121a0998f/aws/containerdeploy"
     }
   ],
   "alternatives": [
@@ -39,30 +39,30 @@
   ],
   "implementations": [
     {
-      "url": "https://github.com/ajent-social/pulumi/tree/2efcae3c164d724777cff558bbf34bb4ba1de297/aws/containerdeploy",
-      "revision": "2efcae3c164d724777cff558bbf34bb4ba1de297"
+      "url": "https://github.com/ajent-social/pulumi/tree/ddc00fc74abb8f0ea60376c7d7940db121a0998f/aws/containerdeploy",
+      "revision": "ddc00fc74abb8f0ea60376c7d7940db121a0998f"
     }
   ],
   "verification": [
     {
       "kind": "CONTRACT_TEST",
       "result": "PASS",
-      "evidence_url": "https://github.com/ajent-social/pulumi/blob/2efcae3c164d724777cff558bbf34bb4ba1de297/contracts/container-deploy.md"
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/ddc00fc74abb8f0ea60376c7d7940db121a0998f/contracts/container-deploy.md"
     },
     {
       "kind": "SECURITY_TEST",
       "result": "NOT_RUN",
-      "evidence_url": "https://github.com/ajent-social/pulumi/blob/2efcae3c164d724777cff558bbf34bb4ba1de297/contracts/container-deploy.md"
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/ddc00fc74abb8f0ea60376c7d7940db121a0998f/contracts/container-deploy.md"
     },
     {
       "kind": "REAL_CONSUMER",
       "result": "NOT_RUN",
-      "evidence_url": "https://github.com/ajent-social/pulumi/blob/2efcae3c164d724777cff558bbf34bb4ba1de297/contracts/container-deploy.md"
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/ddc00fc74abb8f0ea60376c7d7940db121a0998f/contracts/container-deploy.md"
     },
     {
       "kind": "HUMAN_REVIEW",
       "result": "NOT_RUN",
-      "evidence_url": "https://github.com/ajent-social/pulumi/blob/2efcae3c164d724777cff558bbf34bb4ba1de297/contracts/container-deploy.md"
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/ddc00fc74abb8f0ea60376c7d7940db121a0998f/contracts/container-deploy.md"
     }
   ],
   "open_questions": [
