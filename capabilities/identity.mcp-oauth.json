@@ -67,6 +67,11 @@
       "basis": "Serenity candidate consumes the pinned library and includes SQLite lifecycle, browser consent and native-client qualification evidence. Local native probes are reported evidence, not production adoption; repository tests are reproducible.",
       "verification": "PUBLICLY_REPRODUCIBLE",
       "url": "https://github.com/sirerun/serenity/blob/292904ba47ab1004291f9d0713600339e400c40e/docs/launch/hosted-mcp-oauth.md"
+    },
+    {
+      "visibility": "RESTRICTED",
+      "basis": "The owner explicitly approved the candidate API, three PR merges and Serenity deployment in the implementation session on 2026-09-24. The agent recorded this approval in the linked PR body. The underlying conversation is restricted; this is not an owner-authored GitHub review or independent audit.",
+      "verification": "MAINTAINER_REPORTED"
     }
   ],
   "alternatives": [
@@ -115,16 +120,15 @@
     },
     {
       "kind": "HUMAN_REVIEW",
-      "result": "NOT_RUN",
-      "evidence_url": "https://github.com/ajent-social/go/blob/b90bbb417d9dd440e91906523dc54287ac530c43/docs/mcpoauth-worklog.md"
+      "result": "PASS",
+      "evidence_url": "https://github.com/ajent-social/go/pull/2"
     }
   ],
   "open_questions": [
-    "Candidate implementation is pinned and public CI passes; security API maintainer review and release approval remain pending.",
-    "Serenity PR #271 consumes the pinned library; public real-service browser CI passes. This is a verified candidate integration, not a merged production adoption or cloud-client qualification.",
-    "Human maintainer review of the security API is pending; AI review does not count. Retain CANDIDATE.",
+    "Serenity PR #271 and the Go/catalog PRs are merged with owner approval. Native and public CI evidence is not cloud-client qualification or evidence of broad adoption.",
     "Reviewers must decide whether go-oauth2/oauth2 or ory/fosite configured to this profile would make the AMSL implementation unjustified.",
     "Remote client metadata remains excluded; adding URL fetching requires a revised contract and SSRF review.",
-    "Consent CSRF, login and ownership policy remain product responsibilities; the contract should state the minimal product obligations a consumer must test."
+    "Consent CSRF, login and ownership policy remain product responsibilities; the contract should state the minimal product obligations a consumer must test.",
+    "Retain CANDIDATE as explicitly approved; independent security audit, broader consumer evidence and cloud-client qualification remain separate."
   ]
 }
