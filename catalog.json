@@ -181,9 +181,21 @@
       "domain": "delivery",
       "evidence": [
         {
-          "basis": "Candidate boundary informed by maintainer source inspection; identifying evidence is not published. No AMSL consumer adoption is claimed.",
+          "basis": "Candidate boundary informed by maintainer source inspection; identifying evidence is not published.",
           "verification": "MAINTAINER_REPORTED",
           "visibility": "RESTRICTED"
+        },
+        {
+          "basis": "Reusable workflow_call source and contract documentation are public. Documentation CI is not consumer adoption.",
+          "url": "https://github.com/ajent-social/workflows/blob/2377e766f704dfe984a1e589933b91f2bc3c50a1/.github/workflows/go-validation.yml",
+          "verification": "PUBLICLY_REPRODUCIBLE",
+          "visibility": "PUBLIC"
+        },
+        {
+          "basis": "Adoption PRs for ajent-social/go and zerfoo/zerfoo call the pinned workflow; merged CI runs are recorded after those PRs land.",
+          "url": "https://github.com/ajent-social/go/pull/5",
+          "verification": "PUBLICLY_REPRODUCIBLE",
+          "visibility": "PUBLIC"
         }
       ],
       "failure_modes": [
@@ -191,17 +203,25 @@
         "Caller events lost"
       ],
       "id": "delivery.go-validation",
-      "implementations": [],
+      "implementations": [
+        {
+          "revision": "2377e766f704dfe984a1e589933b91f2bc3c50a1",
+          "url": "https://github.com/ajent-social/workflows/blob/2377e766f704dfe984a1e589933b91f2bc3c50a1/.github/workflows/go-validation.yml"
+        }
+      ],
       "name": "Go validation",
       "non_goals": [
         "Universal CI orchestration"
       ],
       "open_questions": [
-        "Verify in two real modules without weakening caller gates."
+        "Confirm two real modules adopt the pinned revision without weakening required checks.",
+        "Human maintainer review pending; retain CANDIDATE."
       ],
       "proposed_guarantees": [
-        "Explicit module/toolchain",
-        "Failed checks propagate"
+        "Explicit module/toolchain via go-version-file",
+        "Failed vet/test propagate to the caller job",
+        "No arbitrary shell hooks; packages input is pattern-validated",
+        "Optional Postgres service for sqlstore consumers"
       ],
       "schema_version": 1,
       "status": "CANDIDATE",
@@ -209,7 +229,28 @@
       "use_when": [
         "A Go module needs CI validation."
       ],
-      "verification": []
+      "verification": [
+        {
+          "evidence_url": "https://github.com/ajent-social/workflows/blob/2377e766f704dfe984a1e589933b91f2bc3c50a1/docs/go-validation-worklog.md",
+          "kind": "CONTRACT_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/workflows/blob/2377e766f704dfe984a1e589933b91f2bc3c50a1/docs/go-validation-worklog.md",
+          "kind": "SECURITY_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/workflows/blob/2377e766f704dfe984a1e589933b91f2bc3c50a1/docs/go-validation-worklog.md",
+          "kind": "REAL_CONSUMER",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/workflows/blob/2377e766f704dfe984a1e589933b91f2bc3c50a1/docs/go-validation-worklog.md",
+          "kind": "HUMAN_REVIEW",
+          "result": "NOT_RUN"
+        }
+      ]
     },
     {
       "alternatives": [
