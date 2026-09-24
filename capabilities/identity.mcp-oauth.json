@@ -1,0 +1,130 @@
+{
+  "schema_version": 1,
+  "id": "identity.mcp-oauth",
+  "name": "MCP OAuth authorization for a single protected resource",
+  "domain": "identity",
+  "status": "CANDIDATE",
+  "disposition": "EXTRACT",
+  "summary": "Bounded OAuth 2.1 authorization server and bearer verification for one MCP resource with public PKCE clients; the product owns login, consent and ownership policy.",
+  "use_when": [
+    "A product exposes an MCP server over HTTP and remote MCP clients must obtain user-authorized bearer tokens using the MCP authorization flow.",
+    "The authorization server, the protected MCP resource and the consent UI run in the same product and the issuer URL is fixed configuration."
+  ],
+  "non_goals": [
+    "OpenID Connect, identity provider federation or a universal user model",
+    "Hosted or multi-tenant authorization service",
+    "Replacing the MCP protocol implementation; the official SDK serves tools",
+    "Confidential clients, client secrets, implicit, device or client-credentials grants",
+    "Remote client metadata (CIMD, jwks_uri or client_uri fetches) in the first slice",
+    "Browser authentication, session management, consent page rendering and CSRF protection for the consent form",
+    "Rate limiting, abuse detection and durable storage backends beyond the reference adapter"
+  ],
+  "proposed_guarantees": [
+    "Authorization code grant for public clients with PKCE S256 only, plus rotating refresh tokens; plain PKCE and other grants are rejected",
+    "Exact redirect URI matching against registered URIs; HTTPS by default, numeric loopback HTTP and exact localhost HTTP with an explicit valid port available as separate opt-ins; no custom schemes or localhost subdomains",
+    "Redirect URI and client are validated before any redirect; earlier failures answer 400 directly and never redirect",
+    "RFC 8707 resource binding: authorization and token requests carrying a different resource are rejected and verification rejects tokens for any other resource",
+    "RFC 7591 dynamic client registration for public clients only, with bounded input, no client secret and no fetch of client-supplied URLs",
+    "RFC 8414 and RFC 9728 metadata derived from a fixed configured issuer, never from request Host headers",
+    "Scopes are bounded by a configured ceiling; requests may narrow it and approvals may narrow the request but never widen it",
+    "Consent records and authorization codes are single use and consumed atomically; a code is burned on any subsequent mismatch",
+    "Access tokens are opaque random secrets stored only as SHA-256 digests with mandatory expiry; revocation is checked on every verification",
+    "Verification fails closed on storage error, unknown, revoked, expired or resource-mismatched tokens",
+    "Approval requires an application-supplied subject and binding so the product can enforce live ownership on every request",
+    "Refresh tokens rotate atomically, never extend the absolute grant lifetime, and reuse by the bound client revokes the whole token family; verification checks grant revocation on every request"
+  ],
+  "failure_modes": [
+    "Product skips live subject or resource ownership checks after verification and serves another tenant's data",
+    "Product consent form lacks CSRF protection or an authenticated session, allowing forged approvals",
+    "Issuer or resource misconfiguration mismatches the deployed URL and clients cannot complete the flow",
+    "Loopback redirects enabled on a deployment that should not admit local clients",
+    "Storage unavailable or corrupt: authorization, token issuance and verification fail closed",
+    "Already admitted work may finish after revocation",
+    "Open dynamic registration without rate limiting permits client record exhaustion",
+    "Reference durable adapter is single process and not for distributed or multi-host storage",
+    "A lost committed refresh response or concurrent refresh by two client instances causes reuse revocation and requires reauthorization; no grace window"
+  ],
+  "evidence": [
+    {
+      "visibility": "RESTRICTED",
+      "basis": "Contract derived from an existing maintainer implementation serving MCP clients in one product; its source, revision and identifying details are not published and readers cannot verify it. No AMSL consumer adoption is claimed.",
+      "verification": "MAINTAINER_REPORTED"
+    },
+    {
+      "visibility": "PUBLIC",
+      "basis": "The MCP authorization specification requires OAuth 2.1 with PKCE, protected resource metadata, authorization server metadata, resource indicators and supports dynamic client registration; this defines the interoperability boundary the contract targets.",
+      "verification": "PUBLICLY_REPRODUCIBLE",
+      "url": "https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization"
+    },
+    {
+      "visibility": "PUBLIC",
+      "basis": "Candidate implementation and security regression tests are available at an immutable revision; automated tests and review are not a human approval or independent audit.",
+      "verification": "PUBLICLY_REPRODUCIBLE",
+      "url": "https://github.com/ajent-social/go/tree/b90bbb417d9dd440e91906523dc54287ac530c43/mcpoauth"
+    },
+    {
+      "visibility": "PUBLIC",
+      "basis": "Serenity candidate consumes the pinned library and includes SQLite lifecycle, browser consent and native-client qualification evidence. Local native probes are reported evidence, not production adoption; repository tests are reproducible.",
+      "verification": "PUBLICLY_REPRODUCIBLE",
+      "url": "https://github.com/sirerun/serenity/blob/292904ba47ab1004291f9d0713600339e400c40e/docs/launch/hosted-mcp-oauth.md"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "Official MCP Go SDK auth and oauthex packages",
+      "url": "https://github.com/modelcontextprotocol/go-sdk",
+      "assessment": "Provides resource-side bearer verification hooks, protected resource metadata and client-side OAuth primitives. It does not provide an authorization server with consent, registration, code issuance or token storage; reuse it for the MCP server and resource metadata."
+    },
+    {
+      "name": "golang.org/x/oauth2",
+      "url": "https://pkg.go.dev/golang.org/x/oauth2",
+      "assessment": "Client library only; no authorization server behavior."
+    },
+    {
+      "name": "go-oauth2/oauth2",
+      "url": "https://github.com/go-oauth2/oauth2",
+      "assessment": "General-purpose authorization server supporting many grants, confidential clients and refresh tokens. Reviewers should confirm whether a fail-closed, fixed-issuer, single-resource, public-client-only profile is easier to obtain by configuring it than by this contract."
+    },
+    {
+      "name": "ory/fosite",
+      "url": "https://github.com/ory/fosite",
+      "assessment": "Comprehensive OAuth 2 and OpenID Connect framework with PKCE and resource indicators. Broad surface and configuration burden; a bounded MCP profile may still be justified, which the review must decide."
+    }
+  ],
+  "implementations": [
+    {
+      "url": "https://github.com/ajent-social/go/tree/b90bbb417d9dd440e91906523dc54287ac530c43/mcpoauth",
+      "revision": "b90bbb417d9dd440e91906523dc54287ac530c43"
+    }
+  ],
+  "verification": [
+    {
+      "kind": "CONTRACT_TEST",
+      "result": "PASS",
+      "evidence_url": "https://github.com/ajent-social/go/actions/runs/35955271359/job/107492159319"
+    },
+    {
+      "kind": "SECURITY_TEST",
+      "result": "PASS",
+      "evidence_url": "https://github.com/ajent-social/go/actions/runs/35955271359/job/107492159319"
+    },
+    {
+      "kind": "REAL_CONSUMER",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/sirerun/serenity/blob/292904ba47ab1004291f9d0713600339e400c40e/docs/launch/hosted-mcp-oauth.md"
+    },
+    {
+      "kind": "HUMAN_REVIEW",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/b90bbb417d9dd440e91906523dc54287ac530c43/docs/mcpoauth-worklog.md"
+    }
+  ],
+  "open_questions": [
+    "Candidate implementation is pinned and public CI passes; security API maintainer review and release approval remain pending.",
+    "Serenity consumer integration is in PR #271 with local native-client evidence and reproducible regression tests; public consumer CI is pending and no merged production adoption is claimed.",
+    "Human maintainer review of the security API is pending; AI review does not count. Retain CANDIDATE.",
+    "Reviewers must decide whether go-oauth2/oauth2 or ory/fosite configured to this profile would make the AMSL implementation unjustified.",
+    "Remote client metadata remains excluded; adding URL fetching requires a revised contract and SSRF review.",
+    "Consent CSRF, login and ownership policy remain product responsibilities; the contract should state the minimal product obligations a consumer must test."
+  ]
+}
