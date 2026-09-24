@@ -525,7 +525,7 @@
       "evidence": [
         {
           "basis": "Original public CANDIDATE; behavioral boundaries informed by restricted maintainer inspection without copying private source.",
-          "url": "https://github.com/ajent-social/go/tree/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/webhookegress",
+          "url": "https://github.com/ajent-social/go/tree/c72ca838ed97072dda6042e8d99ba1d506b17556/webhookegress",
           "verification": "PUBLICLY_REPRODUCIBLE",
           "visibility": "PUBLIC"
         }
@@ -537,8 +537,8 @@
       "id": "delivery.webhook-egress",
       "implementations": [
         {
-          "revision": "7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001",
-          "url": "https://github.com/ajent-social/go/tree/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/webhookegress"
+          "revision": "c72ca838ed97072dda6042e8d99ba1d506b17556",
+          "url": "https://github.com/ajent-social/go/tree/c72ca838ed97072dda6042e8d99ba1d506b17556/webhookegress"
         }
       ],
       "name": "Webhook egress",
@@ -561,22 +561,22 @@
       ],
       "verification": [
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/webhook-egress.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/webhook-egress.md",
           "kind": "CONTRACT_TEST",
           "result": "PASS"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/webhook-egress.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/webhook-egress.md",
           "kind": "SECURITY_TEST",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/webhook-egress.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/webhook-egress.md",
           "kind": "REAL_CONSUMER",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/webhook-egress.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/webhook-egress.md",
           "kind": "HUMAN_REVIEW",
           "result": "NOT_RUN"
         }
@@ -666,7 +666,7 @@
       "evidence": [
         {
           "basis": "Original public CANDIDATE; behavioral boundaries informed by restricted maintainer inspection without copying private source.",
-          "url": "https://github.com/ajent-social/go/tree/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/deviceflow",
+          "url": "https://github.com/ajent-social/go/tree/c72ca838ed97072dda6042e8d99ba1d506b17556/deviceflow",
           "verification": "PUBLICLY_REPRODUCIBLE",
           "visibility": "PUBLIC"
         }
@@ -678,8 +678,8 @@
       "id": "identity.device-flow",
       "implementations": [
         {
-          "revision": "7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001",
-          "url": "https://github.com/ajent-social/go/tree/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/deviceflow"
+          "revision": "c72ca838ed97072dda6042e8d99ba1d506b17556",
+          "url": "https://github.com/ajent-social/go/tree/c72ca838ed97072dda6042e8d99ba1d506b17556/deviceflow"
         }
       ],
       "name": "OAuth device flow",
@@ -701,22 +701,22 @@
       ],
       "verification": [
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/device-flow.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/device-flow.md",
           "kind": "CONTRACT_TEST",
           "result": "PASS"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/device-flow.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/device-flow.md",
           "kind": "SECURITY_TEST",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/device-flow.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/device-flow.md",
           "kind": "REAL_CONSUMER",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/device-flow.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/device-flow.md",
           "kind": "HUMAN_REVIEW",
           "result": "NOT_RUN"
         }
@@ -807,7 +807,7 @@
       "evidence": [
         {
           "basis": "Original public CANDIDATE; behavioral boundaries informed by restricted maintainer inspection without copying private source.",
-          "url": "https://github.com/ajent-social/go/tree/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/mcpclientoauth",
+          "url": "https://github.com/ajent-social/go/tree/c72ca838ed97072dda6042e8d99ba1d506b17556/mcpclientoauth",
           "verification": "PUBLICLY_REPRODUCIBLE",
           "visibility": "PUBLIC"
         }
@@ -820,8 +820,8 @@
       "id": "identity.mcp-client-oauth",
       "implementations": [
         {
-          "revision": "7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001",
-          "url": "https://github.com/ajent-social/go/tree/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/mcpclientoauth"
+          "revision": "c72ca838ed97072dda6042e8d99ba1d506b17556",
+          "url": "https://github.com/ajent-social/go/tree/c72ca838ed97072dda6042e8d99ba1d506b17556/mcpclientoauth"
         }
       ],
       "name": "MCP client OAuth",
@@ -846,22 +846,22 @@
       ],
       "verification": [
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/mcp-client-oauth.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/mcp-client-oauth.md",
           "kind": "CONTRACT_TEST",
           "result": "PASS"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/mcp-client-oauth.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/mcp-client-oauth.md",
           "kind": "SECURITY_TEST",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/mcp-client-oauth.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/mcp-client-oauth.md",
           "kind": "REAL_CONSUMER",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/mcp-client-oauth.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/mcp-client-oauth.md",
           "kind": "HUMAN_REVIEW",
           "result": "NOT_RUN"
         }
@@ -1019,7 +1019,7 @@
       "evidence": [
         {
           "basis": "Original OIDC coordinator CANDIDATE around go-oidc / x/oauth2; not a session store.",
-          "url": "https://github.com/ajent-social/go/tree/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/oidc",
+          "url": "https://github.com/ajent-social/go/tree/c72ca838ed97072dda6042e8d99ba1d506b17556/oidc",
           "verification": "PUBLICLY_REPRODUCIBLE",
           "visibility": "PUBLIC"
         }
@@ -1032,8 +1032,8 @@
       "id": "identity.oidc-social",
       "implementations": [
         {
-          "revision": "7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001",
-          "url": "https://github.com/ajent-social/go/tree/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/oidc"
+          "revision": "c72ca838ed97072dda6042e8d99ba1d506b17556",
+          "url": "https://github.com/ajent-social/go/tree/c72ca838ed97072dda6042e8d99ba1d506b17556/oidc"
         }
       ],
       "name": "OIDC social login",
@@ -1059,22 +1059,22 @@
       ],
       "verification": [
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/oidc-social.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/oidc-social.md",
           "kind": "CONTRACT_TEST",
           "result": "PASS"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/oidc-social.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/oidc-social.md",
           "kind": "SECURITY_TEST",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/oidc-social.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/oidc-social.md",
           "kind": "REAL_CONSUMER",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/oidc-social.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/oidc-social.md",
           "kind": "HUMAN_REVIEW",
           "result": "NOT_RUN"
         }
@@ -1204,7 +1204,7 @@
       "evidence": [
         {
           "basis": "Original public CANDIDATE; behavioral boundaries informed by restricted maintainer inspection without copying private source.",
-          "url": "https://github.com/ajent-social/go/tree/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/passwordreset",
+          "url": "https://github.com/ajent-social/go/tree/c72ca838ed97072dda6042e8d99ba1d506b17556/passwordreset",
           "verification": "PUBLICLY_REPRODUCIBLE",
           "visibility": "PUBLIC"
         }
@@ -1216,8 +1216,8 @@
       "id": "identity.password-reset",
       "implementations": [
         {
-          "revision": "7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001",
-          "url": "https://github.com/ajent-social/go/tree/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/passwordreset"
+          "revision": "c72ca838ed97072dda6042e8d99ba1d506b17556",
+          "url": "https://github.com/ajent-social/go/tree/c72ca838ed97072dda6042e8d99ba1d506b17556/passwordreset"
         }
       ],
       "name": "Password reset",
@@ -1240,22 +1240,22 @@
       ],
       "verification": [
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/password-reset.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/password-reset.md",
           "kind": "CONTRACT_TEST",
           "result": "PASS"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/password-reset.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/password-reset.md",
           "kind": "SECURITY_TEST",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/password-reset.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/password-reset.md",
           "kind": "REAL_CONSUMER",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/password-reset.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/password-reset.md",
           "kind": "HUMAN_REVIEW",
           "result": "NOT_RUN"
         }
@@ -1274,7 +1274,7 @@
       "evidence": [
         {
           "basis": "Original public CANDIDATE; behavioral boundaries informed by restricted maintainer inspection without copying private source.",
-          "url": "https://github.com/ajent-social/go/tree/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/publishablekey",
+          "url": "https://github.com/ajent-social/go/tree/c72ca838ed97072dda6042e8d99ba1d506b17556/publishablekey",
           "verification": "PUBLICLY_REPRODUCIBLE",
           "visibility": "PUBLIC"
         }
@@ -1286,8 +1286,8 @@
       "id": "identity.publishable-key",
       "implementations": [
         {
-          "revision": "7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001",
-          "url": "https://github.com/ajent-social/go/tree/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/publishablekey"
+          "revision": "c72ca838ed97072dda6042e8d99ba1d506b17556",
+          "url": "https://github.com/ajent-social/go/tree/c72ca838ed97072dda6042e8d99ba1d506b17556/publishablekey"
         }
       ],
       "name": "Publishable key",
@@ -1310,22 +1310,22 @@
       ],
       "verification": [
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/publishable-key.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/publishable-key.md",
           "kind": "CONTRACT_TEST",
           "result": "PASS"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/publishable-key.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/publishable-key.md",
           "kind": "SECURITY_TEST",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/publishable-key.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/publishable-key.md",
           "kind": "REAL_CONSUMER",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/publishable-key.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/publishable-key.md",
           "kind": "HUMAN_REVIEW",
           "result": "NOT_RUN"
         }

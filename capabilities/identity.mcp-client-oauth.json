@@ -29,7 +29,7 @@
       "visibility": "PUBLIC",
       "basis": "Original public CANDIDATE; behavioral boundaries informed by restricted maintainer inspection without copying private source.",
       "verification": "PUBLICLY_REPRODUCIBLE",
-      "url": "https://github.com/ajent-social/go/tree/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/mcpclientoauth"
+      "url": "https://github.com/ajent-social/go/tree/c72ca838ed97072dda6042e8d99ba1d506b17556/mcpclientoauth"
     }
   ],
   "alternatives": [
@@ -41,30 +41,30 @@
   ],
   "implementations": [
     {
-      "url": "https://github.com/ajent-social/go/tree/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/mcpclientoauth",
-      "revision": "7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001"
+      "url": "https://github.com/ajent-social/go/tree/c72ca838ed97072dda6042e8d99ba1d506b17556/mcpclientoauth",
+      "revision": "c72ca838ed97072dda6042e8d99ba1d506b17556"
     }
   ],
   "verification": [
     {
       "kind": "CONTRACT_TEST",
       "result": "PASS",
-      "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/mcp-client-oauth.md"
+      "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/mcp-client-oauth.md"
     },
     {
       "kind": "SECURITY_TEST",
       "result": "NOT_RUN",
-      "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/mcp-client-oauth.md"
+      "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/mcp-client-oauth.md"
     },
     {
       "kind": "REAL_CONSUMER",
       "result": "NOT_RUN",
-      "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/mcp-client-oauth.md"
+      "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/mcp-client-oauth.md"
     },
     {
       "kind": "HUMAN_REVIEW",
       "result": "NOT_RUN",
-      "evidence_url": "https://github.com/ajent-social/go/blob/7ec48edc1fa9a1c14f06771b0cf3bbc3c4005001/docs/mcp-client-oauth.md"
+      "evidence_url": "https://github.com/ajent-social/go/blob/c72ca838ed97072dda6042e8d99ba1d506b17556/docs/mcp-client-oauth.md"
     }
   ],
   "open_questions": [
