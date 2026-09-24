@@ -21,6 +21,12 @@
           "url": "https://github.com/ajent-social/go/tree/522623ba40848bb1610dfaec01e63025495a902e/billing/checkout",
           "verification": "PUBLICLY_REPRODUCIBLE",
           "visibility": "PUBLIC"
+        },
+        {
+          "basis": "stripeadapt and sqlstore companions shipped for multi-host checkout; package tests are not consumer adoption.",
+          "url": "https://github.com/ajent-social/go/tree/39ce0079c8b3e37eeff89291a0637c8d4fb5f2a4/billing/checkout",
+          "verification": "PUBLICLY_REPRODUCIBLE",
+          "visibility": "PUBLIC"
         }
       ],
       "failure_modes": [
@@ -32,6 +38,10 @@
         {
           "revision": "522623ba40848bb1610dfaec01e63025495a902e",
           "url": "https://github.com/ajent-social/go/tree/522623ba40848bb1610dfaec01e63025495a902e/billing/checkout"
+        },
+        {
+          "revision": "39ce0079c8b3e37eeff89291a0637c8d4fb5f2a4",
+          "url": "https://github.com/ajent-social/go/tree/39ce0079c8b3e37eeff89291a0637c8d4fb5f2a4/billing/checkout"
         }
       ],
       "name": "Customer linkage and checkout",
@@ -40,7 +50,6 @@
         "Payment processing"
       ],
       "open_questions": [
-        "Stripe SDK adapter and SQL Store not yet shipped.",
         "Path C requires a real hosted consumer (e.g. Ferro test-mode) proving webhook-backed access.",
         "Human maintainer review pending; retain CANDIDATE."
       ],
@@ -94,6 +103,12 @@
           "basis": "Candidate boundary informed by maintainer source inspection; identifying evidence is not published. No AMSL consumer adoption is claimed.",
           "verification": "MAINTAINER_REPORTED",
           "visibility": "RESTRICTED"
+        },
+        {
+          "basis": "Original CANDIDATE package with verified-event inbox, lease-CAS projections, memory and SQL stores. Package tests are not consumer adoption.",
+          "url": "https://github.com/ajent-social/go/tree/39ce0079c8b3e37eeff89291a0637c8d4fb5f2a4/billing/subscription",
+          "verification": "PUBLICLY_REPRODUCIBLE",
+          "visibility": "PUBLIC"
         }
       ],
       "failure_modes": [
@@ -101,14 +116,20 @@
         "Concurrent reconciliations"
       ],
       "id": "billing.subscription-reconciliation",
-      "implementations": [],
+      "implementations": [
+        {
+          "revision": "39ce0079c8b3e37eeff89291a0637c8d4fb5f2a4",
+          "url": "https://github.com/ajent-social/go/tree/39ce0079c8b3e37eeff89291a0637c8d4fb5f2a4/billing/subscription"
+        }
+      ],
       "name": "Subscription reconciliation",
       "non_goals": [
         "Universal entitlement policy",
         "Multi-provider framework"
       ],
       "open_questions": [
-        "Resolve ordering and multi-instance persistence semantics."
+        "Path C consumer proving webhook \u2192 projection \u2192 access with redirect denied.",
+        "Human maintainer review pending; retain CANDIDATE."
       ],
       "proposed_guarantees": [
         "Duplicate event application is harmless",
@@ -120,7 +141,28 @@
       "use_when": [
         "Local access decisions depend on provider subscription state."
       ],
-      "verification": []
+      "verification": [
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/39ce0079c8b3e37eeff89291a0637c8d4fb5f2a4/docs/billing-subscription-worklog.md",
+          "kind": "CONTRACT_TEST",
+          "result": "PASS"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/39ce0079c8b3e37eeff89291a0637c8d4fb5f2a4/docs/billing-subscription-worklog.md",
+          "kind": "SECURITY_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/39ce0079c8b3e37eeff89291a0637c8d4fb5f2a4/docs/billing-subscription-worklog.md",
+          "kind": "REAL_CONSUMER",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/39ce0079c8b3e37eeff89291a0637c8d4fb5f2a4/docs/billing-subscription-worklog.md",
+          "kind": "HUMAN_REVIEW",
+          "result": "NOT_RUN"
+        }
+      ]
     },
     {
       "alternatives": [
@@ -401,6 +443,10 @@
         {
           "revision": "b90bbb417d9dd440e91906523dc54287ac530c43",
           "url": "https://github.com/ajent-social/go/tree/b90bbb417d9dd440e91906523dc54287ac530c43/mcpoauth"
+        },
+        {
+          "revision": "39ce0079c8b3e37eeff89291a0637c8d4fb5f2a4",
+          "url": "https://github.com/ajent-social/go/tree/39ce0079c8b3e37eeff89291a0637c8d4fb5f2a4/mcpoauth/sqlstore"
         }
       ],
       "name": "MCP OAuth authorization for a single protected resource",
@@ -418,7 +464,8 @@
         "Reviewers must decide whether go-oauth2/oauth2 or ory/fosite configured to this profile would make the AMSL implementation unjustified.",
         "Remote client metadata remains excluded; adding URL fetching requires a revised contract and SSRF review.",
         "Consent CSRF, login and ownership policy remain product responsibilities; the contract should state the minimal product obligations a consumer must test.",
-        "Retain CANDIDATE as explicitly approved; independent security audit, broader consumer evidence and cloud-client qualification remain separate."
+        "Retain CANDIDATE as explicitly approved; independent security audit, broader consumer evidence and cloud-client qualification remain separate.",
+        "mcpoauth/sqlstore CANDIDATE shipped for multi-host; boltstore remains single-host reference."
       ],
       "proposed_guarantees": [
         "Authorization code grant for public clients with PKCE S256 only, plus rotating refresh tokens; plain PKCE and other grants are rejected",

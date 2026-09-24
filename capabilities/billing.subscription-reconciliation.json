@@ -26,6 +26,12 @@
       "visibility": "RESTRICTED",
       "basis": "Candidate boundary informed by maintainer source inspection; identifying evidence is not published. No AMSL consumer adoption is claimed.",
       "verification": "MAINTAINER_REPORTED"
+    },
+    {
+      "visibility": "PUBLIC",
+      "basis": "Original CANDIDATE package with verified-event inbox, lease-CAS projections, memory and SQL stores. Package tests are not consumer adoption.",
+      "verification": "PUBLICLY_REPRODUCIBLE",
+      "url": "https://github.com/ajent-social/go/tree/39ce0079c8b3e37eeff89291a0637c8d4fb5f2a4/billing/subscription"
     }
   ],
   "alternatives": [
@@ -35,9 +41,36 @@
       "assessment": "Use provider verification; local state/recovery still needs a contract."
     }
   ],
-  "implementations": [],
-  "verification": [],
+  "implementations": [
+    {
+      "url": "https://github.com/ajent-social/go/tree/39ce0079c8b3e37eeff89291a0637c8d4fb5f2a4/billing/subscription",
+      "revision": "39ce0079c8b3e37eeff89291a0637c8d4fb5f2a4"
+    }
+  ],
+  "verification": [
+    {
+      "kind": "CONTRACT_TEST",
+      "result": "PASS",
+      "evidence_url": "https://github.com/ajent-social/go/blob/39ce0079c8b3e37eeff89291a0637c8d4fb5f2a4/docs/billing-subscription-worklog.md"
+    },
+    {
+      "kind": "SECURITY_TEST",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/39ce0079c8b3e37eeff89291a0637c8d4fb5f2a4/docs/billing-subscription-worklog.md"
+    },
+    {
+      "kind": "REAL_CONSUMER",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/39ce0079c8b3e37eeff89291a0637c8d4fb5f2a4/docs/billing-subscription-worklog.md"
+    },
+    {
+      "kind": "HUMAN_REVIEW",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/39ce0079c8b3e37eeff89291a0637c8d4fb5f2a4/docs/billing-subscription-worklog.md"
+    }
+  ],
   "open_questions": [
-    "Resolve ordering and multi-instance persistence semantics."
+    "Path C consumer proving webhook \u2192 projection \u2192 access with redirect denied.",
+    "Human maintainer review pending; retain CANDIDATE."
   ]
 }

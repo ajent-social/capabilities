@@ -34,6 +34,12 @@
       "basis": "Original CANDIDATE package with Store/Provider seams and race-tested attempt recovery. Package tests are not consumer adoption. Redirect is not treated as payment evidence.",
       "verification": "PUBLICLY_REPRODUCIBLE",
       "url": "https://github.com/ajent-social/go/tree/522623ba40848bb1610dfaec01e63025495a902e/billing/checkout"
+    },
+    {
+      "visibility": "PUBLIC",
+      "basis": "stripeadapt and sqlstore companions shipped for multi-host checkout; package tests are not consumer adoption.",
+      "verification": "PUBLICLY_REPRODUCIBLE",
+      "url": "https://github.com/ajent-social/go/tree/39ce0079c8b3e37eeff89291a0637c8d4fb5f2a4/billing/checkout"
     }
   ],
   "alternatives": [
@@ -47,6 +53,10 @@
     {
       "url": "https://github.com/ajent-social/go/tree/522623ba40848bb1610dfaec01e63025495a902e/billing/checkout",
       "revision": "522623ba40848bb1610dfaec01e63025495a902e"
+    },
+    {
+      "url": "https://github.com/ajent-social/go/tree/39ce0079c8b3e37eeff89291a0637c8d4fb5f2a4/billing/checkout",
+      "revision": "39ce0079c8b3e37eeff89291a0637c8d4fb5f2a4"
     }
   ],
   "verification": [
@@ -72,7 +82,6 @@
     }
   ],
   "open_questions": [
-    "Stripe SDK adapter and SQL Store not yet shipped.",
     "Path C requires a real hosted consumer (e.g. Ferro test-mode) proving webhook-backed access.",
     "Human maintainer review pending; retain CANDIDATE."
   ]
