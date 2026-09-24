@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "infrastructure.tenant-dns-tls",
+  "name": "Tenant DNS and TLS",
+  "domain": "infrastructure",
+  "status": "CANDIDATE",
+  "disposition": "EXTRACT",
+  "summary": "Wildcard ACM certificate and optional slug DNS for product.cloud hosted instances.",
+  "use_when": [
+    "A product needs *.baseDomain TLS and slug.baseDomain aliases into a load balancer."
+  ],
+  "non_goals": [
+    "Registering the apex domain",
+    "Global CDN",
+    "Deriving SANs from request Host"
+  ],
+  "proposed_guarantees": [
+    "Certificate request includes baseDomain and *.baseDomain",
+    "DNS validation records are created in the caller-owned hosted zone"
+  ],
+  "failure_modes": [
+    "Public Host header used as SAN",
+    "Certificate issued without validation records"
+  ],
+  "evidence": [
+    {
+      "visibility": "PUBLIC",
+      "basis": "AWS ACM + Route53 component CANDIDATE; no live AWS apply claimed.",
+      "verification": "PUBLICLY_REPRODUCIBLE",
+      "url": "https://github.com/ajent-social/pulumi/tree/3fad4a36f3802faac1f22ee4fbd207d22e1195fc/aws/tenantdnstls"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "Pulumi AWS ACM Certificate",
+      "url": "https://www.pulumi.com/registry/packages/aws/api-docs/acm/certificate/",
+      "assessment": "Compose provider resources with explicit wildcard SAN and validation DNS."
+    }
+  ],
+  "implementations": [
+    {
+      "url": "https://github.com/ajent-social/pulumi/tree/3fad4a36f3802faac1f22ee4fbd207d22e1195fc/aws/tenantdnstls",
+      "revision": "3fad4a36f3802faac1f22ee4fbd207d22e1195fc"
+    }
+  ],
+  "verification": [
+    {
+      "kind": "CONTRACT_TEST",
+      "result": "PASS",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/3fad4a36f3802faac1f22ee4fbd207d22e1195fc/contracts/tenant-dns-tls.md"
+    },
+    {
+      "kind": "SECURITY_TEST",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/3fad4a36f3802faac1f22ee4fbd207d22e1195fc/contracts/tenant-dns-tls.md"
+    },
+    {
+      "kind": "REAL_CONSUMER",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/3fad4a36f3802faac1f22ee4fbd207d22e1195fc/contracts/tenant-dns-tls.md"
+    },
+    {
+      "kind": "HUMAN_REVIEW",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/3fad4a36f3802faac1f22ee4fbd207d22e1195fc/contracts/tenant-dns-tls.md"
+    }
+  ],
+  "open_questions": [
+    "Apex+wildcard share one ACM DNS validation CNAME under current AWS behavior; distinct unrelated SANs remain out of scope.",
+    "Human review pending; retain CANDIDATE."
+  ]
+}
