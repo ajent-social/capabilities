@@ -29,3 +29,35 @@ links now point to that merged revision and its exact CI run. Two headless
 Opus 5.5 review rounds and focused follow-ups found and corrected security,
 portability and evidence issues. AI review does not count as human maintainer
 review; the capability remains CANDIDATE and HUMAN_REVIEW is NOT_RUN.
+
+## 2026-09-23 — MCP OAuth candidate contract
+
+identity.mcp-oauth added as CANDIDATE / EXTRACT: a bounded OAuth 2.1
+authorization server plus bearer verification for one MCP resource with public
+PKCE S256 clients, exact redirect binding, RFC 8707 resource binding, public-only
+dynamic client registration, fixed-issuer metadata, expiry and revocation.
+Login, consent rendering, CSRF and live ownership policy stay with the product.
+Refresh tokens and remote client metadata fetches are excluded from the first
+slice and are not advertised.
+
+Provenance is an existing maintainer implementation (restricted, not
+independently verifiable) with a proposed public first consumer. The Go
+extraction is on an unmerged branch, so no implementation revision is recorded
+and all four verification kinds are NOT_RUN placeholders pointing at the branch;
+they must be replaced with a pinned commit, its CI run and consumer verification
+before any promotion. No adoption, deployment or human review is claimed.
+
+Catalog regenerated and checked with 13 records; 12 catalog tests pass.
+
+## 2026-09-24 — MCP OAuth contract aligned with implementation
+
+Added strict rotating refresh grants required by native client registration,
+separate default-off localhost callback compatibility, pinned Go implementation
+and passing public library CI evidence. Linked the real Serenity consumer PR
+evidence; public consumer CI and human maintainer review remain pending.
+Status remains CANDIDATE. No private source identity or production adoption
+is published. Catalog generation/check and all 12 schema tests pass.
+
+Consumer evidence update: Serenity PR #271 public hosted-browser job passes
+six real-service signup/consent flows. REAL_CONSUMER is PASS for that candidate
+integration only; no production adoption or cloud qualification is inferred.
