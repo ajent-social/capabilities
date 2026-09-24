@@ -25,7 +25,7 @@
       "visibility": "PUBLIC",
       "basis": "AWS RDS component CANDIDATE with PubliclyAccessible=false and managed master secret ARN; no live AWS apply claimed.",
       "verification": "PUBLICLY_REPRODUCIBLE",
-      "url": "https://github.com/ajent-social/pulumi/tree/ddc00fc74abb8f0ea60376c7d7940db121a0998f/aws/privatedatabase"
+      "url": "https://github.com/ajent-social/pulumi/tree/3fad4a36f3802faac1f22ee4fbd207d22e1195fc/aws/privatedatabase"
     }
   ],
   "alternatives": [
@@ -37,30 +37,30 @@
   ],
   "implementations": [
     {
-      "url": "https://github.com/ajent-social/pulumi/tree/ddc00fc74abb8f0ea60376c7d7940db121a0998f/aws/privatedatabase",
-      "revision": "ddc00fc74abb8f0ea60376c7d7940db121a0998f"
+      "url": "https://github.com/ajent-social/pulumi/tree/3fad4a36f3802faac1f22ee4fbd207d22e1195fc/aws/privatedatabase",
+      "revision": "3fad4a36f3802faac1f22ee4fbd207d22e1195fc"
     }
   ],
   "verification": [
     {
       "kind": "CONTRACT_TEST",
       "result": "PASS",
-      "evidence_url": "https://github.com/ajent-social/pulumi/blob/ddc00fc74abb8f0ea60376c7d7940db121a0998f/contracts/private-database.md"
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/3fad4a36f3802faac1f22ee4fbd207d22e1195fc/contracts/private-database.md"
     },
     {
       "kind": "SECURITY_TEST",
       "result": "NOT_RUN",
-      "evidence_url": "https://github.com/ajent-social/pulumi/blob/ddc00fc74abb8f0ea60376c7d7940db121a0998f/contracts/private-database.md"
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/3fad4a36f3802faac1f22ee4fbd207d22e1195fc/contracts/private-database.md"
     },
     {
       "kind": "REAL_CONSUMER",
       "result": "NOT_RUN",
-      "evidence_url": "https://github.com/ajent-social/pulumi/blob/ddc00fc74abb8f0ea60376c7d7940db121a0998f/contracts/private-database.md"
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/3fad4a36f3802faac1f22ee4fbd207d22e1195fc/contracts/private-database.md"
     },
     {
       "kind": "HUMAN_REVIEW",
       "result": "NOT_RUN",
-      "evidence_url": "https://github.com/ajent-social/pulumi/blob/ddc00fc74abb8f0ea60376c7d7940db121a0998f/contracts/private-database.md"
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/3fad4a36f3802faac1f22ee4fbd207d22e1195fc/contracts/private-database.md"
     }
   ],
   "open_questions": [
