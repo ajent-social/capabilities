@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "id": "billing.customer-portal",
+  "name": "Customer billing portal",
+  "domain": "billing",
+  "status": "CANDIDATE",
+  "disposition": "EXTRACT",
+  "summary": "Open a provider billing portal session for an existing local customer binding.",
+  "use_when": [
+    "Users manage payment method, invoices, or cancellation after checkout."
+  ],
+  "non_goals": [
+    "Price catalog",
+    "Entitlement policy"
+  ],
+  "proposed_guarantees": [
+    "Portal requires an existing customer binding"
+  ],
+  "failure_modes": [
+    "Missing customer binding"
+  ],
+  "evidence": [
+    {
+      "visibility": "PUBLIC",
+      "basis": "Original CANDIDATE wrapping Stripe Billing Portal around checkout.Store.",
+      "verification": "PUBLICLY_REPRODUCIBLE",
+      "url": "https://github.com/ajent-social/go/tree/23975e354f3daa66c7a2009081be8932f2bcb1df/billing/portal"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "Stripe Customer Portal",
+      "url": "https://docs.stripe.com/customer-management/customer-portal",
+      "assessment": "Required provider surface; AMSL binds local account to portal session."
+    }
+  ],
+  "implementations": [
+    {
+      "url": "https://github.com/ajent-social/go/tree/23975e354f3daa66c7a2009081be8932f2bcb1df/billing/portal",
+      "revision": "23975e354f3daa66c7a2009081be8932f2bcb1df"
+    }
+  ],
+  "verification": [
+    {
+      "kind": "CONTRACT_TEST",
+      "result": "PASS",
+      "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/recipes/cli-to-hosted-paid-mcp.md"
+    },
+    {
+      "kind": "SECURITY_TEST",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/recipes/cli-to-hosted-paid-mcp.md"
+    },
+    {
+      "kind": "REAL_CONSUMER",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/recipes/cli-to-hosted-paid-mcp.md"
+    },
+    {
+      "kind": "HUMAN_REVIEW",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/recipes/cli-to-hosted-paid-mcp.md"
+    }
+  ],
+  "open_questions": [
+    "Human review pending; retain CANDIDATE."
+  ]
+}

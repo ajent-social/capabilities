@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "identity.passkeys",
+  "name": "Passkey WebAuthn ceremonies",
+  "domain": "identity",
+  "status": "CANDIDATE",
+  "disposition": "EXTRACT",
+  "summary": "Coordinate discoverable user-verified WebAuthn ceremonies around go-webauthn.",
+  "use_when": [
+    "A product offers passkey register/login with durable ceremony and credential storage."
+  ],
+  "non_goals": [
+    "Login UI",
+    "Browser session minting",
+    "Universal user directory"
+  ],
+  "proposed_guarantees": [
+    "RP ID and origins come from configuration only",
+    "Ceremonies are single-use (consumed before verification)"
+  ],
+  "failure_modes": [
+    "Replay of ceremony handle",
+    "Clone-detected authenticator"
+  ],
+  "evidence": [
+    {
+      "visibility": "RESTRICTED",
+      "basis": "Ceremony consume-before-verify and configured-origin RP binding match patterns in a restricted product (ajent-social human accounts). Identifying paths are not published. No private source was copied into AMSL.",
+      "verification": "MAINTAINER_REPORTED"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "go-webauthn",
+      "url": "https://github.com/go-webauthn/webauthn",
+      "assessment": "Required dependency for protocol validation; AMSL owns ceremony/credential coordination."
+    }
+  ],
+  "implementations": [
+    {
+      "url": "https://github.com/ajent-social/go/tree/23975e354f3daa66c7a2009081be8932f2bcb1df/passkey",
+      "revision": "23975e354f3daa66c7a2009081be8932f2bcb1df"
+    }
+  ],
+  "verification": [
+    {
+      "kind": "CONTRACT_TEST",
+      "result": "PASS",
+      "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/passkey-worklog.md"
+    },
+    {
+      "kind": "SECURITY_TEST",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/passkey-worklog.md"
+    },
+    {
+      "kind": "REAL_CONSUMER",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/passkey-worklog.md"
+    },
+    {
+      "kind": "HUMAN_REVIEW",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/passkey-worklog.md"
+    }
+  ],
+  "open_questions": [
+    "SQL Store adapter and Path C consumer still open.",
+    "Human maintainer review pending; retain CANDIDATE."
+  ]
+}

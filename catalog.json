@@ -91,6 +91,74 @@
     {
       "alternatives": [
         {
+          "assessment": "Required provider surface; AMSL binds local account to portal session.",
+          "name": "Stripe Customer Portal",
+          "url": "https://docs.stripe.com/customer-management/customer-portal"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "billing",
+      "evidence": [
+        {
+          "basis": "Original CANDIDATE wrapping Stripe Billing Portal around checkout.Store.",
+          "url": "https://github.com/ajent-social/go/tree/23975e354f3daa66c7a2009081be8932f2bcb1df/billing/portal",
+          "verification": "PUBLICLY_REPRODUCIBLE",
+          "visibility": "PUBLIC"
+        }
+      ],
+      "failure_modes": [
+        "Missing customer binding"
+      ],
+      "id": "billing.customer-portal",
+      "implementations": [
+        {
+          "revision": "23975e354f3daa66c7a2009081be8932f2bcb1df",
+          "url": "https://github.com/ajent-social/go/tree/23975e354f3daa66c7a2009081be8932f2bcb1df/billing/portal"
+        }
+      ],
+      "name": "Customer billing portal",
+      "non_goals": [
+        "Price catalog",
+        "Entitlement policy"
+      ],
+      "open_questions": [
+        "Human review pending; retain CANDIDATE."
+      ],
+      "proposed_guarantees": [
+        "Portal requires an existing customer binding"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "Open a provider billing portal session for an existing local customer binding.",
+      "use_when": [
+        "Users manage payment method, invoices, or cancellation after checkout."
+      ],
+      "verification": [
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/recipes/cli-to-hosted-paid-mcp.md",
+          "kind": "CONTRACT_TEST",
+          "result": "PASS"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/recipes/cli-to-hosted-paid-mcp.md",
+          "kind": "SECURITY_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/recipes/cli-to-hosted-paid-mcp.md",
+          "kind": "REAL_CONSUMER",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/recipes/cli-to-hosted-paid-mcp.md",
+          "kind": "HUMAN_REVIEW",
+          "result": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "alternatives": [
+        {
           "assessment": "Use provider verification; local state/recovery still needs a contract.",
           "name": "Stripe webhooks",
           "url": "https://docs.stripe.com/webhooks"
@@ -375,6 +443,149 @@
     {
       "alternatives": [
         {
+          "assessment": "RFC rejects a universal user model; this package stays intentionally thin.",
+          "name": "Product-owned user table",
+          "url": "https://github.com/ajent-social/capabilities/blob/main/docs/rfc/0001-amsl-bootstrap.md"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "identity",
+      "evidence": [
+        {
+          "basis": "Original thin registry CANDIDATE; not a universal IAM.",
+          "url": "https://github.com/ajent-social/go/tree/23975e354f3daa66c7a2009081be8932f2bcb1df/accounts",
+          "verification": "PUBLICLY_REPRODUCIBLE",
+          "visibility": "PUBLIC"
+        }
+      ],
+      "failure_modes": [
+        "Duplicate email",
+        "Auth after disable"
+      ],
+      "id": "identity.accounts",
+      "implementations": [
+        {
+          "revision": "23975e354f3daa66c7a2009081be8932f2bcb1df",
+          "url": "https://github.com/ajent-social/go/tree/23975e354f3daa66c7a2009081be8932f2bcb1df/accounts"
+        }
+      ],
+      "name": "Thin account registry",
+      "non_goals": [
+        "Organizations and RBAC",
+        "Profile UI",
+        "Billing entitlement"
+      ],
+      "open_questions": [
+        "Whether Path C consumers prefer product tables only.",
+        "Human review pending; retain CANDIDATE."
+      ],
+      "proposed_guarantees": [
+        "Disabled accounts are distinguishable for fail-closed auth"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "Minimal subject registry for linking auth methods without a universal user model.",
+      "use_when": [
+        "A product needs create/lookup/disable for subjects that own credentials and billing."
+      ],
+      "verification": [
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/accounts.md",
+          "kind": "CONTRACT_TEST",
+          "result": "PASS"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/accounts.md",
+          "kind": "SECURITY_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/accounts.md",
+          "kind": "REAL_CONSUMER",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/accounts.md",
+          "kind": "HUMAN_REVIEW",
+          "result": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "alternatives": [
+        {
+          "assessment": "Prefer when the product already commits to a hosted IdP; otherwise local challenge storage remains.",
+          "name": "Provider magic-link (Auth0, Clerk, etc.)",
+          "url": "https://auth0.com/docs/authenticate/passwordless"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "identity",
+      "evidence": [
+        {
+          "basis": "Original CANDIDATE package; mail delivery left to Mailer seam.",
+          "url": "https://github.com/ajent-social/go/tree/23975e354f3daa66c7a2009081be8932f2bcb1df/magiclink",
+          "verification": "PUBLICLY_REPRODUCIBLE",
+          "visibility": "PUBLIC"
+        }
+      ],
+      "failure_modes": [
+        "Token replay",
+        "Expired challenge"
+      ],
+      "id": "identity.magic-link",
+      "implementations": [
+        {
+          "revision": "23975e354f3daa66c7a2009081be8932f2bcb1df",
+          "url": "https://github.com/ajent-social/go/tree/23975e354f3daa66c7a2009081be8932f2bcb1df/magiclink"
+        }
+      ],
+      "name": "Email magic-link challenges",
+      "non_goals": [
+        "Mail transport",
+        "HTML templates",
+        "Session cookies"
+      ],
+      "open_questions": [
+        "SQL Store and rate-limit guidance for multi-host.",
+        "Human review pending; retain CANDIDATE."
+      ],
+      "proposed_guarantees": [
+        "Tokens are stored hashed",
+        "Consume is single-use"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "Issue and consume single-use hashed email sign-in challenges.",
+      "use_when": [
+        "A product offers passwordless email login or email verification."
+      ],
+      "verification": [
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/magic-link.md",
+          "kind": "CONTRACT_TEST",
+          "result": "PASS"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/magic-link.md",
+          "kind": "SECURITY_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/magic-link.md",
+          "kind": "REAL_CONSUMER",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/magic-link.md",
+          "kind": "HUMAN_REVIEW",
+          "result": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "alternatives": [
+        {
           "assessment": "Provides resource-side bearer verification hooks, protected resource metadata and client-side OAuth primitives. It does not provide an authorization server with consent, registration, code issuance or token storage; reuse it for the MCP server and resource metadata.",
           "name": "Official MCP Go SDK auth and oauthex packages",
           "url": "https://github.com/modelcontextprotocol/go-sdk"
@@ -508,6 +719,77 @@
           "evidence_url": "https://github.com/ajent-social/go/pull/2",
           "kind": "HUMAN_REVIEW",
           "result": "PASS"
+        }
+      ]
+    },
+    {
+      "alternatives": [
+        {
+          "assessment": "Required dependency for protocol validation; AMSL owns ceremony/credential coordination.",
+          "name": "go-webauthn",
+          "url": "https://github.com/go-webauthn/webauthn"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "identity",
+      "evidence": [
+        {
+          "basis": "Ceremony consume-before-verify and configured-origin RP binding match patterns in a restricted product (ajent-social human accounts). Identifying paths are not published. No private source was copied into AMSL.",
+          "verification": "MAINTAINER_REPORTED",
+          "visibility": "RESTRICTED"
+        }
+      ],
+      "failure_modes": [
+        "Replay of ceremony handle",
+        "Clone-detected authenticator"
+      ],
+      "id": "identity.passkeys",
+      "implementations": [
+        {
+          "revision": "23975e354f3daa66c7a2009081be8932f2bcb1df",
+          "url": "https://github.com/ajent-social/go/tree/23975e354f3daa66c7a2009081be8932f2bcb1df/passkey"
+        }
+      ],
+      "name": "Passkey WebAuthn ceremonies",
+      "non_goals": [
+        "Login UI",
+        "Browser session minting",
+        "Universal user directory"
+      ],
+      "open_questions": [
+        "SQL Store adapter and Path C consumer still open.",
+        "Human maintainer review pending; retain CANDIDATE."
+      ],
+      "proposed_guarantees": [
+        "RP ID and origins come from configuration only",
+        "Ceremonies are single-use (consumed before verification)"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "Coordinate discoverable user-verified WebAuthn ceremonies around go-webauthn.",
+      "use_when": [
+        "A product offers passkey register/login with durable ceremony and credential storage."
+      ],
+      "verification": [
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/passkey-worklog.md",
+          "kind": "CONTRACT_TEST",
+          "result": "PASS"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/passkey-worklog.md",
+          "kind": "SECURITY_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/passkey-worklog.md",
+          "kind": "REAL_CONSUMER",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/passkey-worklog.md",
+          "kind": "HUMAN_REVIEW",
+          "result": "NOT_RUN"
         }
       ]
     },
