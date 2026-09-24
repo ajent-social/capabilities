@@ -61,3 +61,12 @@ is published. Catalog generation/check and all 12 schema tests pass.
 Consumer evidence update: Serenity PR #271 public hosted-browser job passes
 six real-service signup/consent flows. REAL_CONSUMER is PASS for that candidate
 integration only; no production adoption or cloud qualification is inferred.
+
+## 2026-09-24 — owner acceptance of MCP OAuth candidate
+
+The owner selected the explicit approval option after the design, strict
+refresh tradeoff, evidence and three PRs were presented. The agent recorded
+that authorization in Go PR #2; the conversation itself is restricted. This
+satisfies the maintainer gate for this candidate merge and Serenity deployment,
+not an independent audit or status promotion. HUMAN_REVIEW records that
+maintainer-reported acceptance; status remains CANDIDATE.
