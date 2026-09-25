@@ -708,7 +708,7 @@
       "evidence": [
         {
           "basis": "Census of admin-owned active repos (2026-09-25) found golangci-lint in 14 workflow files across multiple orgs.",
-          "url": "https://github.com/ajent-social/workflows/blob/main/docs/active-repo-census-2026-09.md",
+          "url": "https://github.com/ajent-social/capabilities/blob/catalog/p2-go-lint-cloudflare/docs/examples/active-repo-census-2026-09.md",
           "verification": "PUBLICLY_REPRODUCIBLE",
           "visibility": "PUBLIC"
         }
