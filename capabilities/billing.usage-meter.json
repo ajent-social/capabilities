@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "billing.usage-meter",
+  "name": "Usage meter",
+  "domain": "billing",
+  "status": "CANDIDATE",
+  "disposition": "EXTRACT",
+  "summary": "Durable per-owner counters with CAS consume against an explicit limit.",
+  "use_when": [
+    "Bound model steps or API calls per period."
+  ],
+  "non_goals": [
+    "Stripe meters",
+    "Invoicing"
+  ],
+  "proposed_guarantees": [
+    "CAS retries",
+    "ErrDenied on exceed"
+  ],
+  "failure_modes": [
+    "Clock skew on period keys",
+    "Lost updates under extreme contention"
+  ],
+  "evidence": [
+    {
+      "visibility": "PUBLIC",
+      "basis": "Original public AMSL; contract tests only; no live AWS/Stripe apply claimed.",
+      "verification": "PUBLICLY_REPRODUCIBLE",
+      "url": "https://github.com/ajent-social/go/tree/606fe768022cb2f423751678fcc0fea72f6f861c/usage"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "Product-local helpers",
+      "url": "https://github.com/ajent-social/capabilities",
+      "assessment": "Prefer AMSL when multiple products share the seam."
+    }
+  ],
+  "implementations": [
+    {
+      "url": "https://github.com/ajent-social/go/tree/606fe768022cb2f423751678fcc0fea72f6f861c/usage",
+      "revision": "606fe768022cb2f423751678fcc0fea72f6f861c"
+    }
+  ],
+  "verification": [
+    {
+      "kind": "CONTRACT_TEST",
+      "result": "PASS",
+      "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/usage-meter.md"
+    },
+    {
+      "kind": "SECURITY_TEST",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/usage-meter.md"
+    },
+    {
+      "kind": "REAL_CONSUMER",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/usage-meter.md"
+    },
+    {
+      "kind": "HUMAN_REVIEW",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/usage-meter.md"
+    }
+  ],
+  "open_questions": [
+    "Human review pending; retain CANDIDATE."
+  ]
+}

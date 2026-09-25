@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "billing.stripe-webhook-verify",
+  "name": "Stripe webhook signature verify",
+  "domain": "billing",
+  "status": "CANDIDATE",
+  "disposition": "EXTRACT",
+  "summary": "Verify Stripe-Signature and map events to subscription.VerifiedEvent.",
+  "use_when": [
+    "HTTP webhook handlers feeding AcceptVerifiedEvent."
+  ],
+  "non_goals": [
+    "HTTP routing",
+    "Entitlement"
+  ],
+  "proposed_guarantees": [
+    "Official stripe-go ConstructEvent",
+    "Map subscription object fields"
+  ],
+  "failure_modes": [
+    "Wrong signing secret",
+    "API version mismatch unless ignored"
+  ],
+  "evidence": [
+    {
+      "visibility": "PUBLIC",
+      "basis": "Original public AMSL; contract tests only; no live AWS/Stripe apply claimed.",
+      "verification": "PUBLICLY_REPRODUCIBLE",
+      "url": "https://github.com/ajent-social/go/tree/606fe768022cb2f423751678fcc0fea72f6f861c/billing/stripeverify"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "Product-local helpers",
+      "url": "https://github.com/ajent-social/capabilities",
+      "assessment": "Prefer AMSL when multiple products share the seam."
+    }
+  ],
+  "implementations": [
+    {
+      "url": "https://github.com/ajent-social/go/tree/606fe768022cb2f423751678fcc0fea72f6f861c/billing/stripeverify",
+      "revision": "606fe768022cb2f423751678fcc0fea72f6f861c"
+    }
+  ],
+  "verification": [
+    {
+      "kind": "CONTRACT_TEST",
+      "result": "PASS",
+      "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/billing-stripe-verify.md"
+    },
+    {
+      "kind": "SECURITY_TEST",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/billing-stripe-verify.md"
+    },
+    {
+      "kind": "REAL_CONSUMER",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/billing-stripe-verify.md"
+    },
+    {
+      "kind": "HUMAN_REVIEW",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/billing-stripe-verify.md"
+    }
+  ],
+  "open_questions": [
+    "Human review pending; retain CANDIDATE."
+  ]
+}

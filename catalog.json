@@ -159,6 +159,146 @@
     {
       "alternatives": [
         {
+          "assessment": "Prefer AMSL when multiple products share the seam.",
+          "name": "Product-local helpers",
+          "url": "https://github.com/ajent-social/capabilities"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "billing",
+      "evidence": [
+        {
+          "basis": "Original public AMSL; contract tests only; no live AWS/Stripe apply claimed.",
+          "url": "https://github.com/ajent-social/go/tree/606fe768022cb2f423751678fcc0fea72f6f861c/billing/entitlement",
+          "verification": "PUBLICLY_REPRODUCIBLE",
+          "visibility": "PUBLIC"
+        }
+      ],
+      "failure_modes": [
+        "Missing customer binding",
+        "past_due without explicit allow"
+      ],
+      "id": "billing.entitlement",
+      "implementations": [
+        {
+          "revision": "606fe768022cb2f423751678fcc0fea72f6f861c",
+          "url": "https://github.com/ajent-social/go/tree/606fe768022cb2f423751678fcc0fea72f6f861c/billing/entitlement"
+        }
+      ],
+      "name": "Subscription entitlement gate",
+      "non_goals": [
+        "Grace policy",
+        "Stripe API"
+      ],
+      "open_questions": [
+        "Human review pending; retain CANDIDATE."
+      ],
+      "proposed_guarantees": [
+        "Default active/trialing allow-list",
+        "Redirect never treated as paid"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "Fail-closed allow when local subscription projection status is in an explicit list.",
+      "use_when": [
+        "Gate MCP or tenant provision on paid status."
+      ],
+      "verification": [
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/billing-entitlement.md",
+          "kind": "CONTRACT_TEST",
+          "result": "PASS"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/billing-entitlement.md",
+          "kind": "SECURITY_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/billing-entitlement.md",
+          "kind": "REAL_CONSUMER",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/billing-entitlement.md",
+          "kind": "HUMAN_REVIEW",
+          "result": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "alternatives": [
+        {
+          "assessment": "Prefer AMSL when multiple products share the seam.",
+          "name": "Product-local helpers",
+          "url": "https://github.com/ajent-social/capabilities"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "billing",
+      "evidence": [
+        {
+          "basis": "Original public AMSL; contract tests only; no live AWS/Stripe apply claimed.",
+          "url": "https://github.com/ajent-social/go/tree/606fe768022cb2f423751678fcc0fea72f6f861c/billing/stripeverify",
+          "verification": "PUBLICLY_REPRODUCIBLE",
+          "visibility": "PUBLIC"
+        }
+      ],
+      "failure_modes": [
+        "Wrong signing secret",
+        "API version mismatch unless ignored"
+      ],
+      "id": "billing.stripe-webhook-verify",
+      "implementations": [
+        {
+          "revision": "606fe768022cb2f423751678fcc0fea72f6f861c",
+          "url": "https://github.com/ajent-social/go/tree/606fe768022cb2f423751678fcc0fea72f6f861c/billing/stripeverify"
+        }
+      ],
+      "name": "Stripe webhook signature verify",
+      "non_goals": [
+        "HTTP routing",
+        "Entitlement"
+      ],
+      "open_questions": [
+        "Human review pending; retain CANDIDATE."
+      ],
+      "proposed_guarantees": [
+        "Official stripe-go ConstructEvent",
+        "Map subscription object fields"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "Verify Stripe-Signature and map events to subscription.VerifiedEvent.",
+      "use_when": [
+        "HTTP webhook handlers feeding AcceptVerifiedEvent."
+      ],
+      "verification": [
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/billing-stripe-verify.md",
+          "kind": "CONTRACT_TEST",
+          "result": "PASS"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/billing-stripe-verify.md",
+          "kind": "SECURITY_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/billing-stripe-verify.md",
+          "kind": "REAL_CONSUMER",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/billing-stripe-verify.md",
+          "kind": "HUMAN_REVIEW",
+          "result": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "alternatives": [
+        {
           "assessment": "Use provider verification; local state/recovery still needs a contract.",
           "name": "Stripe webhooks",
           "url": "https://docs.stripe.com/webhooks"
@@ -235,6 +375,76 @@
     {
       "alternatives": [
         {
+          "assessment": "Prefer AMSL when multiple products share the seam.",
+          "name": "Product-local helpers",
+          "url": "https://github.com/ajent-social/capabilities"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "billing",
+      "evidence": [
+        {
+          "basis": "Original public AMSL; contract tests only; no live AWS/Stripe apply claimed.",
+          "url": "https://github.com/ajent-social/go/tree/606fe768022cb2f423751678fcc0fea72f6f861c/usage",
+          "verification": "PUBLICLY_REPRODUCIBLE",
+          "visibility": "PUBLIC"
+        }
+      ],
+      "failure_modes": [
+        "Clock skew on period keys",
+        "Lost updates under extreme contention"
+      ],
+      "id": "billing.usage-meter",
+      "implementations": [
+        {
+          "revision": "606fe768022cb2f423751678fcc0fea72f6f861c",
+          "url": "https://github.com/ajent-social/go/tree/606fe768022cb2f423751678fcc0fea72f6f861c/usage"
+        }
+      ],
+      "name": "Usage meter",
+      "non_goals": [
+        "Stripe meters",
+        "Invoicing"
+      ],
+      "open_questions": [
+        "Human review pending; retain CANDIDATE."
+      ],
+      "proposed_guarantees": [
+        "CAS retries",
+        "ErrDenied on exceed"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "Durable per-owner counters with CAS consume against an explicit limit.",
+      "use_when": [
+        "Bound model steps or API calls per period."
+      ],
+      "verification": [
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/usage-meter.md",
+          "kind": "CONTRACT_TEST",
+          "result": "PASS"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/usage-meter.md",
+          "kind": "SECURITY_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/usage-meter.md",
+          "kind": "REAL_CONSUMER",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/usage-meter.md",
+          "kind": "HUMAN_REVIEW",
+          "result": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "alternatives": [
+        {
           "assessment": "Use established signing tooling; specify promotion gates.",
           "name": "Sigstore Cosign",
           "url": "https://docs.sigstore.dev/cosign/"
@@ -285,8 +495,8 @@
       "domain": "delivery",
       "evidence": [
         {
-          "basis": "AWS ECS Fargate component CANDIDATE; no live AWS apply claimed.",
-          "url": "https://github.com/ajent-social/pulumi/tree/3fad4a36f3802faac1f22ee4fbd207d22e1195fc/aws/containerdeploy",
+          "basis": "AWS ECS Fargate component CANDIDATE; no live AWS apply claimed. SQL store adapter added for multi-host.",
+          "url": "https://github.com/ajent-social/pulumi/tree/d235718ede42ced196217b96c88de75ac122ac0e/aws/containerdeploy",
           "verification": "PUBLICLY_REPRODUCIBLE",
           "visibility": "PUBLIC"
         }
@@ -298,8 +508,8 @@
       "id": "delivery.container-deploy",
       "implementations": [
         {
-          "revision": "3fad4a36f3802faac1f22ee4fbd207d22e1195fc",
-          "url": "https://github.com/ajent-social/pulumi/tree/3fad4a36f3802faac1f22ee4fbd207d22e1195fc/aws/containerdeploy"
+          "revision": "d235718ede42ced196217b96c88de75ac122ac0e",
+          "url": "https://github.com/ajent-social/pulumi/tree/d235718ede42ced196217b96c88de75ac122ac0e/aws/containerdeploy"
         }
       ],
       "name": "Container deploy",
@@ -324,22 +534,91 @@
       ],
       "verification": [
         {
-          "evidence_url": "https://github.com/ajent-social/pulumi/blob/3fad4a36f3802faac1f22ee4fbd207d22e1195fc/contracts/container-deploy.md",
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/d235718ede42ced196217b96c88de75ac122ac0e/contracts/container-deploy.md",
           "kind": "CONTRACT_TEST",
           "result": "PASS"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/pulumi/blob/3fad4a36f3802faac1f22ee4fbd207d22e1195fc/contracts/container-deploy.md",
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/d235718ede42ced196217b96c88de75ac122ac0e/contracts/container-deploy.md",
           "kind": "SECURITY_TEST",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/pulumi/blob/3fad4a36f3802faac1f22ee4fbd207d22e1195fc/contracts/container-deploy.md",
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/d235718ede42ced196217b96c88de75ac122ac0e/contracts/container-deploy.md",
           "kind": "REAL_CONSUMER",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/pulumi/blob/3fad4a36f3802faac1f22ee4fbd207d22e1195fc/contracts/container-deploy.md",
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/d235718ede42ced196217b96c88de75ac122ac0e/contracts/container-deploy.md",
+          "kind": "HUMAN_REVIEW",
+          "result": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "alternatives": [
+        {
+          "assessment": "Prefer AMSL when multiple products share the seam.",
+          "name": "Product-local helpers",
+          "url": "https://github.com/ajent-social/capabilities"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "delivery",
+      "evidence": [
+        {
+          "basis": "Original public AMSL; contract tests only; no live AWS/Stripe apply claimed.",
+          "url": "https://github.com/ajent-social/pulumi/tree/d235718ede42ced196217b96c88de75ac122ac0e/aws/ecscluster",
+          "verification": "PUBLICLY_REPRODUCIBLE",
+          "visibility": "PUBLIC"
+        }
+      ],
+      "failure_modes": [
+        "Over-broad Resource * with region condition only"
+      ],
+      "id": "delivery.ecs-cluster",
+      "implementations": [
+        {
+          "revision": "d235718ede42ced196217b96c88de75ac122ac0e",
+          "url": "https://github.com/ajent-social/pulumi/tree/d235718ede42ced196217b96c88de75ac122ac0e/aws/ecscluster"
+        }
+      ],
+      "name": "ECS cluster substrate",
+      "non_goals": [
+        "Service definition",
+        "Spot capacity"
+      ],
+      "open_questions": [
+        "Human review pending; retain CANDIDATE."
+      ],
+      "proposed_guarantees": [
+        "Region-scoped exec policy",
+        "Empty task role for product attach"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "ECS cluster plus Fargate execution and task IAM roles.",
+      "use_when": [
+        "Compose with containerdeploy."
+      ],
+      "verification": [
+        {
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/d235718ede42ced196217b96c88de75ac122ac0e/contracts/ecs-cluster.md",
+          "kind": "CONTRACT_TEST",
+          "result": "PASS"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/d235718ede42ced196217b96c88de75ac122ac0e/contracts/ecs-cluster.md",
+          "kind": "SECURITY_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/d235718ede42ced196217b96c88de75ac122ac0e/contracts/ecs-cluster.md",
+          "kind": "REAL_CONSUMER",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/d235718ede42ced196217b96c88de75ac122ac0e/contracts/ecs-cluster.md",
           "kind": "HUMAN_REVIEW",
           "result": "NOT_RUN"
         }
@@ -806,8 +1085,8 @@
       "domain": "identity",
       "evidence": [
         {
-          "basis": "Original OIDC coordinator CANDIDATE around go-oidc / x/oauth2; not a session store.",
-          "url": "https://github.com/ajent-social/go/tree/97e5ea30715b281edb7c68c582fc388be5a0dfe1/oidc",
+          "basis": "Original OIDC coordinator CANDIDATE around go-oidc / x/oauth2; not a session store. SQL store adapter added for multi-host.",
+          "url": "https://github.com/ajent-social/go/tree/606fe768022cb2f423751678fcc0fea72f6f861c/oidc",
           "verification": "PUBLICLY_REPRODUCIBLE",
           "visibility": "PUBLIC"
         }
@@ -820,8 +1099,8 @@
       "id": "identity.oidc-social",
       "implementations": [
         {
-          "revision": "97e5ea30715b281edb7c68c582fc388be5a0dfe1",
-          "url": "https://github.com/ajent-social/go/tree/97e5ea30715b281edb7c68c582fc388be5a0dfe1/oidc"
+          "revision": "606fe768022cb2f423751678fcc0fea72f6f861c",
+          "url": "https://github.com/ajent-social/go/tree/606fe768022cb2f423751678fcc0fea72f6f861c/oidc"
         }
       ],
       "name": "OIDC social login",
@@ -847,22 +1126,22 @@
       ],
       "verification": [
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/97e5ea30715b281edb7c68c582fc388be5a0dfe1/docs/oidc-social.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/oidc-social.md",
           "kind": "CONTRACT_TEST",
           "result": "PASS"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/97e5ea30715b281edb7c68c582fc388be5a0dfe1/docs/oidc-social.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/oidc-social.md",
           "kind": "SECURITY_TEST",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/97e5ea30715b281edb7c68c582fc388be5a0dfe1/docs/oidc-social.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/oidc-social.md",
           "kind": "REAL_CONSUMER",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/97e5ea30715b281edb7c68c582fc388be5a0dfe1/docs/oidc-social.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/oidc-social.md",
           "kind": "HUMAN_REVIEW",
           "result": "NOT_RUN"
         }
@@ -1248,6 +1527,75 @@
     {
       "alternatives": [
         {
+          "assessment": "Prefer AMSL when multiple products share the seam.",
+          "name": "Product-local helpers",
+          "url": "https://github.com/ajent-social/capabilities"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "infrastructure",
+      "evidence": [
+        {
+          "basis": "Original public AMSL; contract tests only; no live AWS/Stripe apply claimed.",
+          "url": "https://github.com/ajent-social/go/tree/606fe768022cb2f423751678fcc0fea72f6f861c/sealedvault",
+          "verification": "PUBLICLY_REPRODUCIBLE",
+          "visibility": "PUBLIC"
+        }
+      ],
+      "failure_modes": [
+        "Caller logs plaintext",
+        "Empty ciphertext rejected"
+      ],
+      "id": "infrastructure.sealed-vault",
+      "implementations": [
+        {
+          "revision": "606fe768022cb2f423751678fcc0fea72f6f861c",
+          "url": "https://github.com/ajent-social/go/tree/606fe768022cb2f423751678fcc0fea72f6f861c/sealedvault"
+        }
+      ],
+      "name": "Sealed secret vault",
+      "non_goals": [
+        "KMS key mgmt",
+        "Plaintext accept"
+      ],
+      "open_questions": [
+        "Human review pending; retain CANDIDATE."
+      ],
+      "proposed_guarantees": [
+        "Ciphertext-only Put/Get/Delete"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "Store caller-sealed ciphertext by owner+name; no encryption in AMSL.",
+      "use_when": [
+        "Hosted connection secrets sealed by product KMS."
+      ],
+      "verification": [
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/sealed-vault.md",
+          "kind": "CONTRACT_TEST",
+          "result": "PASS"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/sealed-vault.md",
+          "kind": "SECURITY_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/sealed-vault.md",
+          "kind": "REAL_CONSUMER",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/sealed-vault.md",
+          "kind": "HUMAN_REVIEW",
+          "result": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "alternatives": [
+        {
           "assessment": "Compose provider resources with explicit wildcard SAN and validation DNS.",
           "name": "Pulumi AWS ACM Certificate",
           "url": "https://www.pulumi.com/registry/packages/aws/api-docs/acm/certificate/"
@@ -1329,8 +1677,8 @@
       "domain": "infrastructure",
       "evidence": [
         {
-          "basis": "Original tenant lifecycle CANDIDATE; Runtime is a product/Pulumi seam.",
-          "url": "https://github.com/ajent-social/go/tree/97e5ea30715b281edb7c68c582fc388be5a0dfe1/tenant",
+          "basis": "Original tenant lifecycle CANDIDATE; Runtime is a product/Pulumi seam. SQL store adapter added for multi-host.",
+          "url": "https://github.com/ajent-social/go/tree/606fe768022cb2f423751678fcc0fea72f6f861c/tenant",
           "verification": "PUBLICLY_REPRODUCIBLE",
           "visibility": "PUBLIC"
         }
@@ -1343,8 +1691,8 @@
       "id": "infrastructure.tenant-instance",
       "implementations": [
         {
-          "revision": "97e5ea30715b281edb7c68c582fc388be5a0dfe1",
-          "url": "https://github.com/ajent-social/go/tree/97e5ea30715b281edb7c68c582fc388be5a0dfe1/tenant"
+          "revision": "606fe768022cb2f423751678fcc0fea72f6f861c",
+          "url": "https://github.com/ajent-social/go/tree/606fe768022cb2f423751678fcc0fea72f6f861c/tenant"
         }
       ],
       "name": "Tenant instance lifecycle",
@@ -1370,22 +1718,22 @@
       ],
       "verification": [
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/97e5ea30715b281edb7c68c582fc388be5a0dfe1/docs/tenant-instance.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/tenant-instance.md",
           "kind": "CONTRACT_TEST",
           "result": "PASS"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/97e5ea30715b281edb7c68c582fc388be5a0dfe1/docs/tenant-instance.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/tenant-instance.md",
           "kind": "SECURITY_TEST",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/97e5ea30715b281edb7c68c582fc388be5a0dfe1/docs/tenant-instance.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/tenant-instance.md",
           "kind": "REAL_CONSUMER",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/97e5ea30715b281edb7c68c582fc388be5a0dfe1/docs/tenant-instance.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/606fe768022cb2f423751678fcc0fea72f6f861c/docs/tenant-instance.md",
           "kind": "HUMAN_REVIEW",
           "result": "NOT_RUN"
         }
