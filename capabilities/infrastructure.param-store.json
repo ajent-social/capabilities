@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "id": "infrastructure.param-store",
+  "name": "SSM parameter shells",
+  "domain": "infrastructure",
+  "status": "CANDIDATE",
+  "disposition": "EXTRACT",
+  "summary": "Create SSM Parameter Store name shells under a prefix without accepting plaintext Values.",
+  "use_when": [
+    "An app needs named SSM parameters populated out of band."
+  ],
+  "non_goals": [
+    "Secrets Manager (see infrastructure.app-secrets)",
+    "Accepting Values in Pulumi Args"
+  ],
+  "proposed_guarantees": [
+    "Overwrite=false so out-of-band values are not clobbered",
+    "SecureString requires KMSKeyID",
+    "Outputs are ARNs and names only"
+  ],
+  "failure_modes": [
+    "Placeholder left in production",
+    "Plaintext leaked via Pulumi Args"
+  ],
+  "evidence": [
+    {
+      "visibility": "PUBLIC",
+      "basis": "Original public CANDIDATE; behavioral boundaries informed by repeated product SSM param patterns; no private source copied.",
+      "verification": "PUBLICLY_REPRODUCIBLE",
+      "url": "https://github.com/ajent-social/pulumi/tree/main/aws/paramstore"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "infrastructure.app-secrets",
+      "url": "https://github.com/ajent-social/pulumi/tree/main/aws/appsecrets",
+      "assessment": "Prefer Secrets Manager for long-lived application secrets."
+    }
+  ],
+  "implementations": [],
+  "verification": [
+    {
+      "kind": "CONTRACT_TEST",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/main/contracts/param-store.md"
+    },
+    {
+      "kind": "SECURITY_TEST",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/main/contracts/param-store.md"
+    },
+    {
+      "kind": "REAL_CONSUMER",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/main/contracts/param-store.md"
+    },
+    {
+      "kind": "HUMAN_REVIEW",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/main/contracts/param-store.md"
+    }
+  ],
+  "open_questions": [
+    "Human review pending; retain CANDIDATE."
+  ]
+}

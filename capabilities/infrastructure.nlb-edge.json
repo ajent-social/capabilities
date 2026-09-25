@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "id": "infrastructure.nlb-edge",
+  "name": "NLB TLS edge",
+  "domain": "infrastructure",
+  "status": "CANDIDATE",
+  "disposition": "EXTRACT",
+  "summary": "Internet-facing NLB with TLS termination and TCP IP target groups for gRPC/TCP backends.",
+  "use_when": [
+    "TLS termination is required in front of TCP or gRPC container services."
+  ],
+  "non_goals": [
+    "ALB/HTTPS application routing (see infrastructure.https-edge)",
+    "WAF",
+    "CloudFront"
+  ],
+  "proposed_guarantees": [
+    "Internal NLBs rejected",
+    "ProxyProtocolV2 and PreserveClientIP default false",
+    "HTTP health checks on traffic port"
+  ],
+  "failure_modes": [
+    "PROXY header enabled before backends parse it",
+    "Certificate mis-issuance"
+  ],
+  "evidence": [
+    {
+      "visibility": "PUBLIC",
+      "basis": "Original public CANDIDATE; behavioral boundaries informed by repeated product NLB+gRPC patterns; no private source copied.",
+      "verification": "PUBLICLY_REPRODUCIBLE",
+      "url": "https://github.com/ajent-social/pulumi/tree/main/aws/nlbedge"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "infrastructure.https-edge",
+      "url": "https://github.com/ajent-social/pulumi/tree/main/aws/httpsedge",
+      "assessment": "Use ALB for HTTP(S) application routing."
+    }
+  ],
+  "implementations": [],
+  "verification": [
+    {
+      "kind": "CONTRACT_TEST",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/main/contracts/nlb-edge.md"
+    },
+    {
+      "kind": "SECURITY_TEST",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/main/contracts/nlb-edge.md"
+    },
+    {
+      "kind": "REAL_CONSUMER",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/main/contracts/nlb-edge.md"
+    },
+    {
+      "kind": "HUMAN_REVIEW",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/main/contracts/nlb-edge.md"
+    }
+  ],
+  "open_questions": [
+    "Live TLS handshake evidence before promotion.",
+    "Human review pending; retain CANDIDATE."
+  ]
+}

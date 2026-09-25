@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "id": "delivery.webhook-ingress",
+  "name": "Webhook ingress (AMSL HMAC)",
+  "domain": "delivery",
+  "status": "CANDIDATE",
+  "disposition": "EXTRACT",
+  "summary": "Verify inbound AMSL X-AMSL-Signature HMAC headers on HTTP requests.",
+  "use_when": [
+    "A product receives AMSL-signed webhooks from another AMSL egress producer."
+  ],
+  "non_goals": [
+    "Provider webhook formats (Stripe, Svix, GitHub)",
+    "Outbound delivery"
+  ],
+  "proposed_guarantees": [
+    "Same t=,v1= scheme as webhookegress",
+    "Bounded body read via VerifyRequest",
+    "Default five-minute skew"
+  ],
+  "failure_modes": [
+    "Accepting provider signatures as AMSL",
+    "Replay outside skew"
+  ],
+  "evidence": [
+    {
+      "visibility": "PUBLIC",
+      "basis": "Original public CANDIDATE package and contract tests; no private source copied.",
+      "verification": "PUBLICLY_REPRODUCIBLE",
+      "url": "https://github.com/ajent-social/go/tree/main/webhookingress"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "Provider SDK / billing.stripe-webhook-verify",
+      "url": "https://github.com/ajent-social/go/tree/main/billing/stripeverify",
+      "assessment": "Keep provider algorithms local or in dedicated packages."
+    }
+  ],
+  "implementations": [],
+  "verification": [
+    {
+      "kind": "CONTRACT_TEST",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/main/docs/webhook-ingress.md"
+    },
+    {
+      "kind": "SECURITY_TEST",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/main/docs/webhook-ingress.md"
+    },
+    {
+      "kind": "REAL_CONSUMER",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/main/docs/webhook-ingress.md"
+    },
+    {
+      "kind": "HUMAN_REVIEW",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/main/docs/webhook-ingress.md"
+    }
+  ],
+  "open_questions": [
+    "Human review pending; retain CANDIDATE.",
+    "Record first real consumer after merge."
+  ]
+}
