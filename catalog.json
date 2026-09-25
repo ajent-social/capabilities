@@ -707,10 +707,9 @@
       "domain": "delivery",
       "evidence": [
         {
-          "basis": "Census of admin-owned active repos (2026-09-25) found golangci-lint in 14 workflow files across multiple orgs.",
-          "url": "https://github.com/ajent-social/capabilities/blob/catalog/p2-go-lint-cloudflare/docs/examples/active-repo-census-2026-09.md",
-          "verification": "PUBLICLY_REPRODUCIBLE",
-          "visibility": "PUBLIC"
+          "basis": "Candidate boundary informed by maintainer inspection of repeated golangci-lint workflow usage across admin-owned active repositories; identifying inventory is not published.",
+          "verification": "MAINTAINER_REPORTED",
+          "visibility": "RESTRICTED"
         }
       ],
       "failure_modes": [
@@ -2061,12 +2060,6 @@
         {
           "basis": "ajent-social production infra documents DNS-only Cloudflare CNAME to the load balancer.",
           "url": "https://github.com/ajent-social/ajent-social/blob/main/infra/README.md",
-          "verification": "PUBLICLY_REPRODUCIBLE",
-          "visibility": "PUBLIC"
-        },
-        {
-          "basis": "Active-repo census (2026-09-25) maps Cloudflare DNS-only alias as a repeated extract candidate.",
-          "url": "https://github.com/ajent-social/capabilities/blob/catalog/p2-go-lint-cloudflare/docs/examples/active-repo-census-2026-09.md",
           "verification": "PUBLICLY_REPRODUCIBLE",
           "visibility": "PUBLIC"
         }

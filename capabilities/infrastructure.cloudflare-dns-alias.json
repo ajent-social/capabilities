@@ -33,12 +33,6 @@
       "basis": "ajent-social production infra documents DNS-only Cloudflare CNAME to the load balancer.",
       "verification": "PUBLICLY_REPRODUCIBLE",
       "url": "https://github.com/ajent-social/ajent-social/blob/main/infra/README.md"
-    },
-    {
-      "visibility": "PUBLIC",
-      "basis": "Active-repo census (2026-09-25) maps Cloudflare DNS-only alias as a repeated extract candidate.",
-      "verification": "PUBLICLY_REPRODUCIBLE",
-      "url": "https://github.com/ajent-social/capabilities/blob/catalog/p2-go-lint-cloudflare/docs/examples/active-repo-census-2026-09.md"
     }
   ],
   "alternatives": [
