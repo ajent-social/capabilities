@@ -29,7 +29,7 @@
       "visibility": "PUBLIC",
       "basis": "Original OIDC coordinator CANDIDATE around go-oidc / x/oauth2; not a session store.",
       "verification": "PUBLICLY_REPRODUCIBLE",
-      "url": "https://github.com/ajent-social/go/tree/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/oidc"
+      "url": "https://github.com/ajent-social/go/tree/e4ee7567048ded41fde8c19b678db8958e142c61/oidc"
     }
   ],
   "alternatives": [
@@ -41,30 +41,30 @@
   ],
   "implementations": [
     {
-      "url": "https://github.com/ajent-social/go/tree/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/oidc",
-      "revision": "50c231b1a56cab0b857d5d82bcc8afffef25ddaf"
+      "url": "https://github.com/ajent-social/go/tree/e4ee7567048ded41fde8c19b678db8958e142c61/oidc",
+      "revision": "e4ee7567048ded41fde8c19b678db8958e142c61"
     }
   ],
   "verification": [
     {
       "kind": "CONTRACT_TEST",
       "result": "PASS",
-      "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/oidc-social.md"
+      "evidence_url": "https://github.com/ajent-social/go/blob/e4ee7567048ded41fde8c19b678db8958e142c61/docs/oidc-social.md"
     },
     {
       "kind": "SECURITY_TEST",
       "result": "NOT_RUN",
-      "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/oidc-social.md"
+      "evidence_url": "https://github.com/ajent-social/go/blob/e4ee7567048ded41fde8c19b678db8958e142c61/docs/oidc-social.md"
     },
     {
       "kind": "REAL_CONSUMER",
       "result": "NOT_RUN",
-      "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/oidc-social.md"
+      "evidence_url": "https://github.com/ajent-social/go/blob/e4ee7567048ded41fde8c19b678db8958e142c61/docs/oidc-social.md"
     },
     {
       "kind": "HUMAN_REVIEW",
       "result": "NOT_RUN",
-      "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/oidc-social.md"
+      "evidence_url": "https://github.com/ajent-social/go/blob/e4ee7567048ded41fde8c19b678db8958e142c61/docs/oidc-social.md"
     }
   ],
   "open_questions": [

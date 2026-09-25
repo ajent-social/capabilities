@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "id": "delivery.ecs-cluster",
+  "name": "ECS cluster substrate",
+  "domain": "delivery",
+  "status": "CANDIDATE",
+  "disposition": "EXTRACT",
+  "summary": "ECS cluster plus Fargate execution and task IAM roles.",
+  "use_when": [
+    "Compose with containerdeploy."
+  ],
+  "non_goals": [
+    "Service definition",
+    "Spot capacity"
+  ],
+  "proposed_guarantees": [
+    "Region-scoped exec policy",
+    "Empty task role for product attach"
+  ],
+  "failure_modes": [
+    "Over-broad Resource * with region condition only"
+  ],
+  "evidence": [
+    {
+      "visibility": "PUBLIC",
+      "basis": "Original public AMSL; contract tests only; no live AWS/Stripe apply claimed.",
+      "verification": "PUBLICLY_REPRODUCIBLE",
+      "url": "https://github.com/ajent-social/pulumi/tree/b7d6162a442cada1f69c4f05960e7502ec569951/aws/ecscluster"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "Product-local helpers",
+      "url": "https://github.com/ajent-social/capabilities",
+      "assessment": "Prefer AMSL when multiple products share the seam."
+    }
+  ],
+  "implementations": [
+    {
+      "url": "https://github.com/ajent-social/pulumi/tree/b7d6162a442cada1f69c4f05960e7502ec569951/aws/ecscluster",
+      "revision": "b7d6162a442cada1f69c4f05960e7502ec569951"
+    }
+  ],
+  "verification": [
+    {
+      "kind": "CONTRACT_TEST",
+      "result": "PASS",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/b7d6162a442cada1f69c4f05960e7502ec569951/contracts/ecs-cluster.md"
+    },
+    {
+      "kind": "SECURITY_TEST",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/b7d6162a442cada1f69c4f05960e7502ec569951/contracts/ecs-cluster.md"
+    },
+    {
+      "kind": "REAL_CONSUMER",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/b7d6162a442cada1f69c4f05960e7502ec569951/contracts/ecs-cluster.md"
+    },
+    {
+      "kind": "HUMAN_REVIEW",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/b7d6162a442cada1f69c4f05960e7502ec569951/contracts/ecs-cluster.md"
+    }
+  ],
+  "open_questions": [
+    "Human review pending; retain CANDIDATE."
+  ]
+}
