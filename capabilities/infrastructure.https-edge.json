@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "id": "infrastructure.https-edge",
+  "name": "HTTPS application edge",
+  "domain": "infrastructure",
+  "status": "CANDIDATE",
+  "disposition": "EXTRACT",
+  "summary": "Internet-facing ALB with TLS 1.3 policy, HTTP redirect, and IP target groups for Fargate.",
+  "use_when": [
+    "HTTPS termination is required in front of container services."
+  ],
+  "non_goals": [
+    "WAF",
+    "CloudFront",
+    "NLB/gRPC"
+  ],
+  "proposed_guarantees": [
+    "DropInvalidHeaderFields",
+    "HTTP redirects to HTTPS",
+    "Weak TLS policies rejected in validation"
+  ],
+  "failure_modes": [
+    "Certificate mis-issuance",
+    "Health check path mismatch"
+  ],
+  "evidence": [
+    {
+      "visibility": "PUBLIC",
+      "basis": "Original public AMSL Pulumi component; contract tests only; no live AWS apply claimed.",
+      "verification": "PUBLICLY_REPRODUCIBLE",
+      "url": "https://github.com/ajent-social/pulumi/tree/c668f05a2a5c274c991ec55c89a65fcdd0cede34/aws/httpsedge"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "Pulumi AWS provider resources",
+      "url": "https://www.pulumi.com/registry/packages/aws/",
+      "assessment": "Use raw resources with policy; AMSL encodes fail-closed defaults."
+    }
+  ],
+  "implementations": [
+    {
+      "url": "https://github.com/ajent-social/pulumi/tree/c668f05a2a5c274c991ec55c89a65fcdd0cede34/aws/httpsedge",
+      "revision": "c668f05a2a5c274c991ec55c89a65fcdd0cede34"
+    }
+  ],
+  "verification": [
+    {
+      "kind": "CONTRACT_TEST",
+      "result": "PASS",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/c668f05a2a5c274c991ec55c89a65fcdd0cede34/contracts/https-edge.md"
+    },
+    {
+      "kind": "SECURITY_TEST",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/c668f05a2a5c274c991ec55c89a65fcdd0cede34/contracts/https-edge.md"
+    },
+    {
+      "kind": "REAL_CONSUMER",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/c668f05a2a5c274c991ec55c89a65fcdd0cede34/contracts/https-edge.md"
+    },
+    {
+      "kind": "HUMAN_REVIEW",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/c668f05a2a5c274c991ec55c89a65fcdd0cede34/contracts/https-edge.md"
+    }
+  ],
+  "open_questions": [
+    "Live TLS handshake evidence before promotion.",
+    "Human review pending; retain CANDIDATE."
+  ]
+}
