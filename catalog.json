@@ -470,7 +470,8 @@
         "Universal builder or deployer"
       ],
       "open_questions": [
-        "Define scan failure and provenance verification behavior."
+        "Pin immutable SHA after workflows merge; two real callers before promotion.",
+        "Human review pending; retain CANDIDATE."
       ],
       "proposed_guarantees": [
         "Verified digest returned only after required checks"
@@ -722,7 +723,8 @@
         "Universal version scheme"
       ],
       "open_questions": [
-        "Set source/tag binding and product gate preservation."
+        "Pin immutable SHA after workflows merge; two real callers before promotion.",
+        "Human review pending; retain CANDIDATE."
       ],
       "proposed_guarantees": [
         "Required assets checked before publication",
@@ -847,7 +849,8 @@
         "Automatic production apply"
       ],
       "open_questions": [
-        "Set trusted-event rules and live permission tests."
+        "Pin immutable SHA after workflows merge; two real callers before promotion.",
+        "Human review pending; retain CANDIDATE."
       ],
       "proposed_guarantees": [
         "Narrow preview identity",
@@ -926,6 +929,73 @@
         },
         {
           "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/webhook-egress.md",
+          "kind": "HUMAN_REVIEW",
+          "result": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "alternatives": [
+        {
+          "assessment": "Keep provider algorithms local or in dedicated packages.",
+          "name": "Provider SDK / billing.stripe-webhook-verify",
+          "url": "https://github.com/ajent-social/go/tree/main/billing/stripeverify"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "delivery",
+      "evidence": [
+        {
+          "basis": "Original public CANDIDATE package and contract tests; no private source copied.",
+          "url": "https://github.com/ajent-social/go/tree/main/webhookingress",
+          "verification": "PUBLICLY_REPRODUCIBLE",
+          "visibility": "PUBLIC"
+        }
+      ],
+      "failure_modes": [
+        "Accepting provider signatures as AMSL",
+        "Replay outside skew"
+      ],
+      "id": "delivery.webhook-ingress",
+      "implementations": [],
+      "name": "Webhook ingress (AMSL HMAC)",
+      "non_goals": [
+        "Provider webhook formats (Stripe, Svix, GitHub)",
+        "Outbound delivery"
+      ],
+      "open_questions": [
+        "Human review pending; retain CANDIDATE.",
+        "Record first real consumer after merge."
+      ],
+      "proposed_guarantees": [
+        "Same t=,v1= scheme as webhookegress",
+        "Bounded body read via VerifyRequest",
+        "Default five-minute skew"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "Verify inbound AMSL X-AMSL-Signature HMAC headers on HTTP requests.",
+      "use_when": [
+        "A product receives AMSL-signed webhooks from another AMSL egress producer."
+      ],
+      "verification": [
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/main/docs/webhook-ingress.md",
+          "kind": "CONTRACT_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/main/docs/webhook-ingress.md",
+          "kind": "SECURITY_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/main/docs/webhook-ingress.md",
+          "kind": "REAL_CONSUMER",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/main/docs/webhook-ingress.md",
           "kind": "HUMAN_REVIEW",
           "result": "NOT_RUN"
         }
@@ -2086,6 +2156,140 @@
         },
         {
           "evidence_url": "https://github.com/ajent-social/pulumi/blob/c668f05a2a5c274c991ec55c89a65fcdd0cede34/contracts/https-edge.md",
+          "kind": "HUMAN_REVIEW",
+          "result": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "alternatives": [
+        {
+          "assessment": "Use ALB for HTTP(S) application routing.",
+          "name": "infrastructure.https-edge",
+          "url": "https://github.com/ajent-social/pulumi/tree/main/aws/httpsedge"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "infrastructure",
+      "evidence": [
+        {
+          "basis": "Original public CANDIDATE; behavioral boundaries informed by repeated product NLB+gRPC patterns; no private source copied.",
+          "url": "https://github.com/ajent-social/pulumi/tree/main/aws/nlbedge",
+          "verification": "PUBLICLY_REPRODUCIBLE",
+          "visibility": "PUBLIC"
+        }
+      ],
+      "failure_modes": [
+        "PROXY header enabled before backends parse it",
+        "Certificate mis-issuance"
+      ],
+      "id": "infrastructure.nlb-edge",
+      "implementations": [],
+      "name": "NLB TLS edge",
+      "non_goals": [
+        "ALB/HTTPS application routing (see infrastructure.https-edge)",
+        "WAF",
+        "CloudFront"
+      ],
+      "open_questions": [
+        "Live TLS handshake evidence before promotion.",
+        "Human review pending; retain CANDIDATE."
+      ],
+      "proposed_guarantees": [
+        "Internal NLBs rejected",
+        "ProxyProtocolV2 and PreserveClientIP default false",
+        "HTTP health checks on traffic port"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "Internet-facing NLB with TLS termination and TCP IP target groups for gRPC/TCP backends.",
+      "use_when": [
+        "TLS termination is required in front of TCP or gRPC container services."
+      ],
+      "verification": [
+        {
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/main/contracts/nlb-edge.md",
+          "kind": "CONTRACT_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/main/contracts/nlb-edge.md",
+          "kind": "SECURITY_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/main/contracts/nlb-edge.md",
+          "kind": "REAL_CONSUMER",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/main/contracts/nlb-edge.md",
+          "kind": "HUMAN_REVIEW",
+          "result": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "alternatives": [
+        {
+          "assessment": "Prefer Secrets Manager for long-lived application secrets.",
+          "name": "infrastructure.app-secrets",
+          "url": "https://github.com/ajent-social/pulumi/tree/main/aws/appsecrets"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "infrastructure",
+      "evidence": [
+        {
+          "basis": "Original public CANDIDATE; behavioral boundaries informed by repeated product SSM param patterns; no private source copied.",
+          "url": "https://github.com/ajent-social/pulumi/tree/main/aws/paramstore",
+          "verification": "PUBLICLY_REPRODUCIBLE",
+          "visibility": "PUBLIC"
+        }
+      ],
+      "failure_modes": [
+        "Placeholder left in production",
+        "Plaintext leaked via Pulumi Args"
+      ],
+      "id": "infrastructure.param-store",
+      "implementations": [],
+      "name": "SSM parameter shells",
+      "non_goals": [
+        "Secrets Manager (see infrastructure.app-secrets)",
+        "Accepting Values in Pulumi Args"
+      ],
+      "open_questions": [
+        "Human review pending; retain CANDIDATE."
+      ],
+      "proposed_guarantees": [
+        "Overwrite=false so out-of-band values are not clobbered",
+        "SecureString requires KMSKeyID",
+        "Outputs are ARNs and names only"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "Create SSM Parameter Store name shells under a prefix without accepting plaintext Values.",
+      "use_when": [
+        "An app needs named SSM parameters populated out of band."
+      ],
+      "verification": [
+        {
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/main/contracts/param-store.md",
+          "kind": "CONTRACT_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/main/contracts/param-store.md",
+          "kind": "SECURITY_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/main/contracts/param-store.md",
+          "kind": "REAL_CONSUMER",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/main/contracts/param-store.md",
           "kind": "HUMAN_REVIEW",
           "result": "NOT_RUN"
         }

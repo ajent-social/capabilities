@@ -37,6 +37,7 @@
   "implementations": [],
   "verification": [],
   "open_questions": [
-    "Set trusted-event rules and live permission tests."
+    "Pin immutable SHA after workflows merge; two real callers before promotion.",
+    "Human review pending; retain CANDIDATE."
   ]
 }
