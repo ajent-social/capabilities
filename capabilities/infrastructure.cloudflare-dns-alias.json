@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "id": "infrastructure.cloudflare-dns-alias",
+  "name": "Cloudflare DNS-only alias",
+  "domain": "infrastructure",
+  "status": "CANDIDATE",
+  "disposition": "EXTRACT",
+  "summary": "Create DNS-only Cloudflare records that alias hostnames to origin edges and ACM validation CNAMEs.",
+  "use_when": [
+    "A product uses Cloudflare DNS in front of an ALB/NLB and must keep proxying off."
+  ],
+  "non_goals": [
+    "Proxied/orange-cloud records",
+    "Zone creation",
+    "Page Rules / WAF / SSL mode"
+  ],
+  "proposed_guarantees": [
+    "Proxied forced false",
+    "Zone and API token remain caller-owned"
+  ],
+  "failure_modes": [
+    "Proxying enabled and origin SG blocks Cloudflare edges",
+    "ACM validation CNAME proxied"
+  ],
+  "evidence": [
+    {
+      "visibility": "PUBLIC",
+      "basis": "Behavioral boundaries informed by repeated DNS-only Cloudflare+ALB patterns in active maintainer products; no private source copied.",
+      "verification": "MAINTAINER_REPORTED"
+    },
+    {
+      "visibility": "PUBLIC",
+      "basis": "ajent-social production infra documents DNS-only Cloudflare CNAME to the load balancer.",
+      "verification": "PUBLICLY_REPRODUCIBLE",
+      "url": "https://github.com/ajent-social/ajent-social/blob/main/infra/README.md"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "infrastructure.tenant-dns-tls",
+      "url": "https://github.com/ajent-social/pulumi/tree/main/aws/tenantdnstls",
+      "assessment": "Use Route53 when the zone is on Route53; use dnsalias when the zone is on Cloudflare."
+    }
+  ],
+  "implementations": [],
+  "verification": [
+    {
+      "kind": "CONTRACT_TEST",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/main/contracts/cloudflare-dns-alias.md"
+    },
+    {
+      "kind": "SECURITY_TEST",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/main/contracts/cloudflare-dns-alias.md"
+    },
+    {
+      "kind": "REAL_CONSUMER",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/main/contracts/cloudflare-dns-alias.md"
+    },
+    {
+      "kind": "HUMAN_REVIEW",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/main/contracts/cloudflare-dns-alias.md"
+    }
+  ],
+  "open_questions": [
+    "Live Cloudflare apply evidence before promotion.",
+    "Human review pending; retain CANDIDATE."
+  ]
+}
