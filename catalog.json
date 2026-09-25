@@ -698,6 +698,72 @@
     {
       "alternatives": [
         {
+          "assessment": "AMSL wraps the maintained action with fail-closed inputs and SHA pins.",
+          "name": "golangci/golangci-lint-action",
+          "url": "https://github.com/golangci/golangci-lint-action"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "delivery",
+      "evidence": [
+        {
+          "basis": "Candidate boundary informed by maintainer inspection of repeated golangci-lint workflow usage across admin-owned active repositories; identifying inventory is not published.",
+          "verification": "MAINTAINER_REPORTED",
+          "visibility": "RESTRICTED"
+        }
+      ],
+      "failure_modes": [
+        "Required check skipped",
+        "Caller events lost"
+      ],
+      "id": "delivery.go-lint",
+      "implementations": [],
+      "name": "Go lint",
+      "non_goals": [
+        "Universal lint rule sets",
+        "Merging lint into go-validation"
+      ],
+      "open_questions": [
+        "Pin immutable SHA after workflows merge; two real callers before promotion.",
+        "Human review pending; retain CANDIDATE."
+      ],
+      "proposed_guarantees": [
+        "Failed lint fails the called job",
+        "No arbitrary shell hooks; inputs pattern-validated",
+        "Caller retains .golangci.yml policy"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "Run bounded credential-free golangci-lint with predictable outcomes.",
+      "use_when": [
+        "A Go module needs CI lint as a reusable required check."
+      ],
+      "verification": [
+        {
+          "evidence_url": "https://github.com/ajent-social/workflows/blob/main/contracts/go-lint.md",
+          "kind": "CONTRACT_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/workflows/blob/main/contracts/go-lint.md",
+          "kind": "SECURITY_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/workflows/blob/main/contracts/go-lint.md",
+          "kind": "REAL_CONSUMER",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/workflows/blob/main/contracts/go-lint.md",
+          "kind": "HUMAN_REVIEW",
+          "result": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "alternatives": [
+        {
           "assessment": "Prefer existing release tooling; share justified validation around it.",
           "name": "GoReleaser",
           "url": "https://goreleaser.com/"
@@ -1970,6 +2036,78 @@
         },
         {
           "evidence_url": "https://github.com/ajent-social/pulumi/blob/c668f05a2a5c274c991ec55c89a65fcdd0cede34/contracts/app-secrets.md",
+          "kind": "HUMAN_REVIEW",
+          "result": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "alternatives": [
+        {
+          "assessment": "Use Route53 when the zone is on Route53; use dnsalias when the zone is on Cloudflare.",
+          "name": "infrastructure.tenant-dns-tls",
+          "url": "https://github.com/ajent-social/pulumi/tree/main/aws/tenantdnstls"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "infrastructure",
+      "evidence": [
+        {
+          "basis": "Behavioral boundaries informed by repeated DNS-only Cloudflare+ALB patterns in active maintainer products; identifying private paths are not published.",
+          "verification": "MAINTAINER_REPORTED",
+          "visibility": "RESTRICTED"
+        },
+        {
+          "basis": "ajent-social production infra documents DNS-only Cloudflare CNAME to the load balancer.",
+          "url": "https://github.com/ajent-social/ajent-social/blob/main/infra/README.md",
+          "verification": "PUBLICLY_REPRODUCIBLE",
+          "visibility": "PUBLIC"
+        }
+      ],
+      "failure_modes": [
+        "Proxying enabled and origin SG blocks Cloudflare edges",
+        "ACM validation CNAME proxied"
+      ],
+      "id": "infrastructure.cloudflare-dns-alias",
+      "implementations": [],
+      "name": "Cloudflare DNS-only alias",
+      "non_goals": [
+        "Proxied/orange-cloud records",
+        "Zone creation",
+        "Page Rules / WAF / SSL mode"
+      ],
+      "open_questions": [
+        "Live Cloudflare apply evidence before promotion.",
+        "Human review pending; retain CANDIDATE."
+      ],
+      "proposed_guarantees": [
+        "Proxied forced false",
+        "Zone and API token remain caller-owned"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "Create DNS-only Cloudflare records that alias hostnames to origin edges and ACM validation CNAMEs.",
+      "use_when": [
+        "A product uses Cloudflare DNS in front of an ALB/NLB and must keep proxying off."
+      ],
+      "verification": [
+        {
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/main/contracts/cloudflare-dns-alias.md",
+          "kind": "CONTRACT_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/main/contracts/cloudflare-dns-alias.md",
+          "kind": "SECURITY_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/main/contracts/cloudflare-dns-alias.md",
+          "kind": "REAL_CONSUMER",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/pulumi/blob/main/contracts/cloudflare-dns-alias.md",
           "kind": "HUMAN_REVIEW",
           "result": "NOT_RUN"
         }

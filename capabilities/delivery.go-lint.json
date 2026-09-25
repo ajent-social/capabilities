@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "id": "delivery.go-lint",
+  "name": "Go lint",
+  "domain": "delivery",
+  "status": "CANDIDATE",
+  "disposition": "EXTRACT",
+  "summary": "Run bounded credential-free golangci-lint with predictable outcomes.",
+  "use_when": [
+    "A Go module needs CI lint as a reusable required check."
+  ],
+  "non_goals": [
+    "Universal lint rule sets",
+    "Merging lint into go-validation"
+  ],
+  "proposed_guarantees": [
+    "Failed lint fails the called job",
+    "No arbitrary shell hooks; inputs pattern-validated",
+    "Caller retains .golangci.yml policy"
+  ],
+  "failure_modes": [
+    "Required check skipped",
+    "Caller events lost"
+  ],
+  "evidence": [
+    {
+      "visibility": "RESTRICTED",
+      "basis": "Candidate boundary informed by maintainer inspection of repeated golangci-lint workflow usage across admin-owned active repositories; identifying inventory is not published.",
+      "verification": "MAINTAINER_REPORTED"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "golangci/golangci-lint-action",
+      "url": "https://github.com/golangci/golangci-lint-action",
+      "assessment": "AMSL wraps the maintained action with fail-closed inputs and SHA pins."
+    }
+  ],
+  "implementations": [],
+  "verification": [
+    {
+      "kind": "CONTRACT_TEST",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/workflows/blob/main/contracts/go-lint.md"
+    },
+    {
+      "kind": "SECURITY_TEST",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/workflows/blob/main/contracts/go-lint.md"
+    },
+    {
+      "kind": "REAL_CONSUMER",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/workflows/blob/main/contracts/go-lint.md"
+    },
+    {
+      "kind": "HUMAN_REVIEW",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/workflows/blob/main/contracts/go-lint.md"
+    }
+  ],
+  "open_questions": [
+    "Pin immutable SHA after workflows merge; two real callers before promotion.",
+    "Human review pending; retain CANDIDATE."
+  ]
+}
