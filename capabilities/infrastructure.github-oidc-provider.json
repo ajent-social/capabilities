@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "id": "infrastructure.github-oidc-provider",
+  "name": "GitHub Actions OIDC provider",
+  "domain": "infrastructure",
+  "status": "CANDIDATE",
+  "disposition": "EXTRACT",
+  "summary": "Account-level IAM OIDC provider for GitHub Actions federation.",
+  "use_when": [
+    "Deployment roles must trust GitHub OIDC without static keys."
+  ],
+  "non_goals": [
+    "Creating deployment roles",
+    "Permissions boundaries"
+  ],
+  "proposed_guarantees": [
+    "Issuer fixed to token.actions.githubusercontent.com",
+    "Audience defaults to sts.amazonaws.com"
+  ],
+  "failure_modes": [
+    "Duplicate provider in same account",
+    "Over-broad role subjects if miswired"
+  ],
+  "evidence": [
+    {
+      "visibility": "PUBLIC",
+      "basis": "Original public AMSL Pulumi component; contract tests only; no live AWS apply claimed.",
+      "verification": "PUBLICLY_REPRODUCIBLE",
+      "url": "https://github.com/ajent-social/pulumi/tree/c668f05a2a5c274c991ec55c89a65fcdd0cede34/aws/oidcprovider"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "Pulumi AWS provider resources",
+      "url": "https://www.pulumi.com/registry/packages/aws/",
+      "assessment": "Use raw resources with policy; AMSL encodes fail-closed defaults."
+    }
+  ],
+  "implementations": [
+    {
+      "url": "https://github.com/ajent-social/pulumi/tree/c668f05a2a5c274c991ec55c89a65fcdd0cede34/aws/oidcprovider",
+      "revision": "c668f05a2a5c274c991ec55c89a65fcdd0cede34"
+    }
+  ],
+  "verification": [
+    {
+      "kind": "CONTRACT_TEST",
+      "result": "PASS",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/c668f05a2a5c274c991ec55c89a65fcdd0cede34/contracts/github-oidc-provider.md"
+    },
+    {
+      "kind": "SECURITY_TEST",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/c668f05a2a5c274c991ec55c89a65fcdd0cede34/contracts/github-oidc-provider.md"
+    },
+    {
+      "kind": "REAL_CONSUMER",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/c668f05a2a5c274c991ec55c89a65fcdd0cede34/contracts/github-oidc-provider.md"
+    },
+    {
+      "kind": "HUMAN_REVIEW",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/pulumi/blob/c668f05a2a5c274c991ec55c89a65fcdd0cede34/contracts/github-oidc-provider.md"
+    }
+  ],
+  "open_questions": [
+    "Confirm one-provider-per-account operationally.",
+    "Human review pending; retain CANDIDATE."
+  ]
+}
