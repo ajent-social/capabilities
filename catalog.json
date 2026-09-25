@@ -515,6 +515,76 @@
     {
       "alternatives": [
         {
+          "assessment": "Extract only coordination seams; keep product policy local.",
+          "name": "Product-local implementation",
+          "url": "https://github.com/ajent-social/capabilities/blob/main/docs/rfc/0001-amsl-bootstrap.md"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "delivery",
+      "evidence": [
+        {
+          "basis": "Original public CANDIDATE; behavioral boundaries informed by restricted maintainer inspection without copying private source.",
+          "url": "https://github.com/ajent-social/go/tree/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/webhookegress",
+          "verification": "PUBLICLY_REPRODUCIBLE",
+          "visibility": "PUBLIC"
+        }
+      ],
+      "failure_modes": [
+        "Unsigned delivery",
+        "Open redirect / SSRF via http"
+      ],
+      "id": "delivery.webhook-egress",
+      "implementations": [
+        {
+          "revision": "50c231b1a56cab0b857d5d82bcc8afffef25ddaf",
+          "url": "https://github.com/ajent-social/go/tree/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/webhookegress"
+        }
+      ],
+      "name": "Webhook egress",
+      "non_goals": [
+        "Inbound provider webhook verification",
+        "Product event taxonomy"
+      ],
+      "open_questions": [
+        "Human review pending; retain CANDIDATE."
+      ],
+      "proposed_guarantees": [
+        "HTTPS or loopback endpoints only",
+        "Stable X-AMSL-Signature scheme"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "HMAC-signed outbound webhook delivery with durable attempts and per-owner rate limits.",
+      "use_when": [
+        "A product emits events to customer HTTPS endpoints."
+      ],
+      "verification": [
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/webhook-egress.md",
+          "kind": "CONTRACT_TEST",
+          "result": "PASS"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/webhook-egress.md",
+          "kind": "SECURITY_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/webhook-egress.md",
+          "kind": "REAL_CONSUMER",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/webhook-egress.md",
+          "kind": "HUMAN_REVIEW",
+          "result": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "alternatives": [
+        {
           "assessment": "RFC rejects a universal user model; this package stays intentionally thin.",
           "name": "Product-owned user table",
           "url": "https://github.com/ajent-social/capabilities/blob/main/docs/rfc/0001-amsl-bootstrap.md"
@@ -578,6 +648,75 @@
         },
         {
           "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/accounts.md",
+          "kind": "HUMAN_REVIEW",
+          "result": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "alternatives": [
+        {
+          "assessment": "Extract only coordination seams; keep product policy local.",
+          "name": "Product-local implementation",
+          "url": "https://github.com/ajent-social/capabilities/blob/main/docs/rfc/0001-amsl-bootstrap.md"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "identity",
+      "evidence": [
+        {
+          "basis": "Original public CANDIDATE; behavioral boundaries informed by restricted maintainer inspection without copying private source.",
+          "url": "https://github.com/ajent-social/go/tree/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/deviceflow",
+          "verification": "PUBLICLY_REPRODUCIBLE",
+          "visibility": "PUBLIC"
+        }
+      ],
+      "failure_modes": [
+        "Hard-coded vendor URLs",
+        "Ignoring slow_down"
+      ],
+      "id": "identity.device-flow",
+      "implementations": [
+        {
+          "revision": "50c231b1a56cab0b857d5d82bcc8afffef25ddaf",
+          "url": "https://github.com/ajent-social/go/tree/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/deviceflow"
+        }
+      ],
+      "name": "OAuth device flow",
+      "non_goals": [
+        "Credential file paths",
+        "Browser sessions"
+      ],
+      "open_questions": [
+        "Human review pending; retain CANDIDATE."
+      ],
+      "proposed_guarantees": [
+        "Configured absolute endpoints only"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "RFC 8628 device authorization grant coordinator for CLI login.",
+      "use_when": [
+        "A CLI must authenticate against a configured OAuth device endpoint."
+      ],
+      "verification": [
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/device-flow.md",
+          "kind": "CONTRACT_TEST",
+          "result": "PASS"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/device-flow.md",
+          "kind": "SECURITY_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/device-flow.md",
+          "kind": "REAL_CONSUMER",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/device-flow.md",
           "kind": "HUMAN_REVIEW",
           "result": "NOT_RUN"
         }
@@ -650,6 +789,79 @@
         },
         {
           "evidence_url": "https://github.com/ajent-social/go/blob/23975e354f3daa66c7a2009081be8932f2bcb1df/docs/magic-link.md",
+          "kind": "HUMAN_REVIEW",
+          "result": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "alternatives": [
+        {
+          "assessment": "Extract only coordination seams; keep product policy local.",
+          "name": "Product-local implementation",
+          "url": "https://github.com/ajent-social/capabilities/blob/main/docs/rfc/0001-amsl-bootstrap.md"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "identity",
+      "evidence": [
+        {
+          "basis": "Original public CANDIDATE; behavioral boundaries informed by restricted maintainer inspection without copying private source.",
+          "url": "https://github.com/ajent-social/go/tree/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/mcpclientoauth",
+          "verification": "PUBLICLY_REPRODUCIBLE",
+          "visibility": "PUBLIC"
+        }
+      ],
+      "failure_modes": [
+        "State replay",
+        "Plaintext token logging",
+        "Host-derived redirect"
+      ],
+      "id": "identity.mcp-client-oauth",
+      "implementations": [
+        {
+          "revision": "50c231b1a56cab0b857d5d82bcc8afffef25ddaf",
+          "url": "https://github.com/ajent-social/go/tree/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/mcpclientoauth"
+        }
+      ],
+      "name": "MCP client OAuth",
+      "non_goals": [
+        "Authorization server role",
+        "KMS key management",
+        "MCP transport"
+      ],
+      "open_questions": [
+        "Human review pending; retain CANDIDATE."
+      ],
+      "proposed_guarantees": [
+        "State is consume-once",
+        "Redirect URLs are configured absolutes",
+        "Tokens stored only as caller-sealed ciphertext"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "OAuth 2.1 PKCE client with sealed tokens when the product connects to remote MCP authorization servers.",
+      "use_when": [
+        "A product must obtain and refresh tokens for remote MCP servers as an OAuth client."
+      ],
+      "verification": [
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/mcp-client-oauth.md",
+          "kind": "CONTRACT_TEST",
+          "result": "PASS"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/mcp-client-oauth.md",
+          "kind": "SECURITY_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/mcp-client-oauth.md",
+          "kind": "REAL_CONSUMER",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/mcp-client-oauth.md",
           "kind": "HUMAN_REVIEW",
           "result": "NOT_RUN"
         }
@@ -807,7 +1019,7 @@
       "evidence": [
         {
           "basis": "Original OIDC coordinator CANDIDATE around go-oidc / x/oauth2; not a session store.",
-          "url": "https://github.com/ajent-social/go/tree/97e5ea30715b281edb7c68c582fc388be5a0dfe1/oidc",
+          "url": "https://github.com/ajent-social/go/tree/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/oidc",
           "verification": "PUBLICLY_REPRODUCIBLE",
           "visibility": "PUBLIC"
         }
@@ -820,8 +1032,8 @@
       "id": "identity.oidc-social",
       "implementations": [
         {
-          "revision": "97e5ea30715b281edb7c68c582fc388be5a0dfe1",
-          "url": "https://github.com/ajent-social/go/tree/97e5ea30715b281edb7c68c582fc388be5a0dfe1/oidc"
+          "revision": "50c231b1a56cab0b857d5d82bcc8afffef25ddaf",
+          "url": "https://github.com/ajent-social/go/tree/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/oidc"
         }
       ],
       "name": "OIDC social login",
@@ -831,7 +1043,7 @@
         "Universal IdP marketplace"
       ],
       "open_questions": [
-        "Whether a separate non-OIDC GitHub adapter belongs in AMSL.",
+        "GitHub/Apple/Microsoft adapters landed under oidc/*; tenant IdP registry still deferred.",
         "Human review pending; retain CANDIDATE."
       ],
       "proposed_guarantees": [
@@ -847,22 +1059,22 @@
       ],
       "verification": [
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/97e5ea30715b281edb7c68c582fc388be5a0dfe1/docs/oidc-social.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/oidc-social.md",
           "kind": "CONTRACT_TEST",
           "result": "PASS"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/97e5ea30715b281edb7c68c582fc388be5a0dfe1/docs/oidc-social.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/oidc-social.md",
           "kind": "SECURITY_TEST",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/97e5ea30715b281edb7c68c582fc388be5a0dfe1/docs/oidc-social.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/oidc-social.md",
           "kind": "REAL_CONSUMER",
           "result": "NOT_RUN"
         },
         {
-          "evidence_url": "https://github.com/ajent-social/go/blob/97e5ea30715b281edb7c68c582fc388be5a0dfe1/docs/oidc-social.md",
+          "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/oidc-social.md",
           "kind": "HUMAN_REVIEW",
           "result": "NOT_RUN"
         }
@@ -978,6 +1190,146 @@
         "Password authentication is required."
       ],
       "verification": []
+    },
+    {
+      "alternatives": [
+        {
+          "assessment": "Extract only coordination seams; keep product policy local.",
+          "name": "Product-local implementation",
+          "url": "https://github.com/ajent-social/capabilities/blob/main/docs/rfc/0001-amsl-bootstrap.md"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "identity",
+      "evidence": [
+        {
+          "basis": "Original public CANDIDATE; behavioral boundaries informed by restricted maintainer inspection without copying private source.",
+          "url": "https://github.com/ajent-social/go/tree/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/passwordreset",
+          "verification": "PUBLICLY_REPRODUCIBLE",
+          "visibility": "PUBLIC"
+        }
+      ],
+      "failure_modes": [
+        "Token replay",
+        "Logging plaintext token"
+      ],
+      "id": "identity.password-reset",
+      "implementations": [
+        {
+          "revision": "50c231b1a56cab0b857d5d82bcc8afffef25ddaf",
+          "url": "https://github.com/ajent-social/go/tree/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/passwordreset"
+        }
+      ],
+      "name": "Password reset",
+      "non_goals": [
+        "Password hashing",
+        "Session minting"
+      ],
+      "open_questions": [
+        "Human review pending; retain CANDIDATE."
+      ],
+      "proposed_guarantees": [
+        "Token hashed at rest",
+        "Single-use consume"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "Consume-once password-reset tokens with TTL and notifier seam.",
+      "use_when": [
+        "A product needs email password recovery without building token storage."
+      ],
+      "verification": [
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/password-reset.md",
+          "kind": "CONTRACT_TEST",
+          "result": "PASS"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/password-reset.md",
+          "kind": "SECURITY_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/password-reset.md",
+          "kind": "REAL_CONSUMER",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/password-reset.md",
+          "kind": "HUMAN_REVIEW",
+          "result": "NOT_RUN"
+        }
+      ]
+    },
+    {
+      "alternatives": [
+        {
+          "assessment": "Extract only coordination seams; keep product policy local.",
+          "name": "Product-local implementation",
+          "url": "https://github.com/ajent-social/capabilities/blob/main/docs/rfc/0001-amsl-bootstrap.md"
+        }
+      ],
+      "disposition": "EXTRACT",
+      "domain": "identity",
+      "evidence": [
+        {
+          "basis": "Original public CANDIDATE; behavioral boundaries informed by restricted maintainer inspection without copying private source.",
+          "url": "https://github.com/ajent-social/go/tree/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/publishablekey",
+          "verification": "PUBLICLY_REPRODUCIBLE",
+          "visibility": "PUBLIC"
+        }
+      ],
+      "failure_modes": [
+        "Treating publishable key as machine credential",
+        "Host header as origin"
+      ],
+      "id": "identity.publishable-key",
+      "implementations": [
+        {
+          "revision": "50c231b1a56cab0b857d5d82bcc8afffef25ddaf",
+          "url": "https://github.com/ajent-social/go/tree/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/publishablekey"
+        }
+      ],
+      "name": "Publishable key",
+      "non_goals": [
+        "Backend machine secrets",
+        "Session minting"
+      ],
+      "open_questions": [
+        "Human review pending; retain CANDIDATE."
+      ],
+      "proposed_guarantees": [
+        "Plaintext returned once",
+        "Origin never from request Host"
+      ],
+      "schema_version": 1,
+      "status": "CANDIDATE",
+      "summary": "Issue-once browser-embeddable public identifiers with hashed storage and origin allowlists.",
+      "use_when": [
+        "A product embeds a public key in a customer website with origin binding."
+      ],
+      "verification": [
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/publishable-key.md",
+          "kind": "CONTRACT_TEST",
+          "result": "PASS"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/publishable-key.md",
+          "kind": "SECURITY_TEST",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/publishable-key.md",
+          "kind": "REAL_CONSUMER",
+          "result": "NOT_RUN"
+        },
+        {
+          "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/publishable-key.md",
+          "kind": "HUMAN_REVIEW",
+          "result": "NOT_RUN"
+        }
+      ]
     },
     {
       "alternatives": [

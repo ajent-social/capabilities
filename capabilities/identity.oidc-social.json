@@ -29,7 +29,7 @@
       "visibility": "PUBLIC",
       "basis": "Original OIDC coordinator CANDIDATE around go-oidc / x/oauth2; not a session store.",
       "verification": "PUBLICLY_REPRODUCIBLE",
-      "url": "https://github.com/ajent-social/go/tree/97e5ea30715b281edb7c68c582fc388be5a0dfe1/oidc"
+      "url": "https://github.com/ajent-social/go/tree/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/oidc"
     }
   ],
   "alternatives": [
@@ -41,34 +41,34 @@
   ],
   "implementations": [
     {
-      "url": "https://github.com/ajent-social/go/tree/97e5ea30715b281edb7c68c582fc388be5a0dfe1/oidc",
-      "revision": "97e5ea30715b281edb7c68c582fc388be5a0dfe1"
+      "url": "https://github.com/ajent-social/go/tree/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/oidc",
+      "revision": "50c231b1a56cab0b857d5d82bcc8afffef25ddaf"
     }
   ],
   "verification": [
     {
       "kind": "CONTRACT_TEST",
       "result": "PASS",
-      "evidence_url": "https://github.com/ajent-social/go/blob/97e5ea30715b281edb7c68c582fc388be5a0dfe1/docs/oidc-social.md"
+      "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/oidc-social.md"
     },
     {
       "kind": "SECURITY_TEST",
       "result": "NOT_RUN",
-      "evidence_url": "https://github.com/ajent-social/go/blob/97e5ea30715b281edb7c68c582fc388be5a0dfe1/docs/oidc-social.md"
+      "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/oidc-social.md"
     },
     {
       "kind": "REAL_CONSUMER",
       "result": "NOT_RUN",
-      "evidence_url": "https://github.com/ajent-social/go/blob/97e5ea30715b281edb7c68c582fc388be5a0dfe1/docs/oidc-social.md"
+      "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/oidc-social.md"
     },
     {
       "kind": "HUMAN_REVIEW",
       "result": "NOT_RUN",
-      "evidence_url": "https://github.com/ajent-social/go/blob/97e5ea30715b281edb7c68c582fc388be5a0dfe1/docs/oidc-social.md"
+      "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/oidc-social.md"
     }
   ],
   "open_questions": [
-    "Whether a separate non-OIDC GitHub adapter belongs in AMSL.",
+    "GitHub/Apple/Microsoft adapters landed under oidc/*; tenant IdP registry still deferred.",
     "Human review pending; retain CANDIDATE."
   ]
 }

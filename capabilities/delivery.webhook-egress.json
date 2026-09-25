@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "id": "delivery.webhook-egress",
+  "name": "Webhook egress",
+  "domain": "delivery",
+  "status": "CANDIDATE",
+  "disposition": "EXTRACT",
+  "summary": "HMAC-signed outbound webhook delivery with durable attempts and per-owner rate limits.",
+  "use_when": [
+    "A product emits events to customer HTTPS endpoints."
+  ],
+  "non_goals": [
+    "Inbound provider webhook verification",
+    "Product event taxonomy"
+  ],
+  "proposed_guarantees": [
+    "HTTPS or loopback endpoints only",
+    "Stable X-AMSL-Signature scheme"
+  ],
+  "failure_modes": [
+    "Unsigned delivery",
+    "Open redirect / SSRF via http"
+  ],
+  "evidence": [
+    {
+      "visibility": "PUBLIC",
+      "basis": "Original public CANDIDATE; behavioral boundaries informed by restricted maintainer inspection without copying private source.",
+      "verification": "PUBLICLY_REPRODUCIBLE",
+      "url": "https://github.com/ajent-social/go/tree/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/webhookegress"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "Product-local implementation",
+      "url": "https://github.com/ajent-social/capabilities/blob/main/docs/rfc/0001-amsl-bootstrap.md",
+      "assessment": "Extract only coordination seams; keep product policy local."
+    }
+  ],
+  "implementations": [
+    {
+      "url": "https://github.com/ajent-social/go/tree/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/webhookegress",
+      "revision": "50c231b1a56cab0b857d5d82bcc8afffef25ddaf"
+    }
+  ],
+  "verification": [
+    {
+      "kind": "CONTRACT_TEST",
+      "result": "PASS",
+      "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/webhook-egress.md"
+    },
+    {
+      "kind": "SECURITY_TEST",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/webhook-egress.md"
+    },
+    {
+      "kind": "REAL_CONSUMER",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/webhook-egress.md"
+    },
+    {
+      "kind": "HUMAN_REVIEW",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/ajent-social/go/blob/50c231b1a56cab0b857d5d82bcc8afffef25ddaf/docs/webhook-egress.md"
+    }
+  ],
+  "open_questions": [
+    "Human review pending; retain CANDIDATE."
+  ]
+}
