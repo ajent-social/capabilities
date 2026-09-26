@@ -87,12 +87,13 @@ All four repositories are public and Apache-2.0 for original work. The public or
 - **Billing:** local integration and reconciliation around established providers.
 - **Infrastructure:** Pulumi components and resource-level policy.
 - **Delivery:** GitHub Actions workflows and justified shared steps.
+- **Agent-host integration (discovered extension):** investigate thin, host-native adapters that expose an existing CLI through coding-agent plugins. This is a narrow protocol candidate, not a new runtime or plugin framework.
 
-Discovery within a domain does not authorize every imaginable package.
+Discovery within a domain does not authorize every imaginable package. The agent-host extension still needs evidence that wrapper behavior is reusable and worth maintaining.
 
 ### Out of scope
 
-No empty language repositories, Swift/Python/JavaScript SDK projects, skills repository, blueprints, broad SaaS framework, generic queue, ORM, utility collection or mass migration is proposed.
+No empty language repositories, Swift/Python/JavaScript SDK projects, skills repository, blueprints, broad SaaS framework, generic queue, ORM, utility collection or mass migration is proposed. The agent-host extension does not propose an AMSL-owned skills corpus, marketplace, universal plugin API or duplicate of an existing tool's engine.
 
 Implementation formats follow the capability: Go packages, Pulumi components/policies, or workflow YAML. Workflow automation is distinct from a generic runtime workflow engine, which remains out of scope.
 
@@ -182,6 +183,18 @@ Promotion is not inferred from a green package test. Reject or pause when semant
 | Release verification | Exact source revision, expected version/assets, checksums and outputs | Version scheme, approvals and updater conventions |
 | Container artifact | Declared platforms, scanning/signing gates, verified digest and provenance | Builder, registry identity and promotion policy |
 | Infrastructure preview | Repeatable setup, narrowly scoped identity and bounded results | Stack, backend, provider access and apply approval |
+
+### Agent-host protocol (discovered)
+
+Three public Narrate repositories provide concrete host-specific packaging examples: a Codex plugin manifest and marketplace installer, a Claude Code plugin and marketplace installer, and Cursor project commands copied into the target project. They package Narrate; they are not Quorum plugins. Quorum now provides original Codex, Claude Code, and Cursor packages that call its existing CLI, with no copied Narrate implementation. The AMSL record `protocol.cli-agent-plugin` remains `DISCOVERED` / `INVESTIGATE`: package conformance and a no-network CLI dry-run pass, but actual host use, independent downstream consumers, and human review are not recorded. The [CLI-backed host plugin contract](../protocols/cli-agent-plugin.md) describes the boundary and conformance evidence.
+
+| Contract to investigate | Product-specific choices |
+| :--- | :--- |
+| Host entry point invokes an installed, version-compatible CLI; product behavior stays in the canonical CLI | Supported host versions, CLI installation/update path, permitted commands/arguments, input selection and result presentation |
+| Host permissions and access to local configuration, credentials, documents and output locations are explicit | Whether each host invokes a process, installs a repository-local command, or uses another supported mechanism |
+| Missing or incompatible CLI versions fail visibly; wrappers do not silently fork or substitute behavior | Version pinning, upgrade policy and any required distribution channels |
+
+These sources establish public packaging examples only. They do not establish that Quorum works in any host. The Quorum package is an original thin adapter and invokes the canonical CLI. Before promoting the capability, demonstrate the workflow in each actual host, record security and failure behavior, and determine whether the shared wrapper contract holds across independent consumers. Review source provenance and license before copying any third-party implementation files.
 
 Session lifecycle should evaluate established session libraries first. A universal user model, provider-independent billing engine or universal entitlement predicate is not established by the census. MCP should reference the official SDK. These distinctions belong in the catalog.
 
@@ -292,6 +305,7 @@ The first capability extraction is complete only when provenance is cleared, a c
 | Runtime | Scoped service credentials |
 | Delivery | Credential-free Go validation |
 | Infrastructure | Deployment identity |
+| Protocol (discovery only) | Thin adapters for an existing CLI in agent hosts; `protocol.cli-agent-plugin` remains `DISCOVERED` until consumer and reuse evidence support extraction |
 
 These are ordered proposals within their domains, not authorization to migrate the portfolio simultaneously. Finish a complete consumer-verified slice before expanding that domain.
 
@@ -323,7 +337,7 @@ No blueprint, extra language repository, fake provider adapter, hosted auth/bill
 2. What evidence should justify extraction, and what should count as independent consumer verification?
 3. Can a public library responsibly use restricted source evidence? What must be publicly reproducible before promotion?
 4. Which existing registries, libraries and workflow catalogs already solve this well? Where is the remaining gap?
-5. Are identity, billing, infrastructure and delivery a coherent initial scope, or should the first experiment be narrower?
+5. Are identity, billing, infrastructure and delivery a coherent initial scope? Does the discovered CLI-backed agent-host adapter belong as a fifth protocol candidate, or do host-specific packaging conventions make it too narrow to standardize?
 6. What review and release controls make agent maintenance trustworthy without requiring humans to recheck everything manually?
 7. Which repeated problem would you bring, and which abstraction would you reject?
 

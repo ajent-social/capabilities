@@ -6,6 +6,8 @@ This is the language-neutral catalog for Ajent's Agent-Maintained Standard Libra
 
 **Status: bootstrap plus the first candidate implementation merged in Go. No capability is stable.** Scoped service credentials have source and contract tests plus a restricted maintainer-reported integration note. Public REAL_CONSUMER verification remains NOT_RUN; no merged consumer release or production deployment is claimed. Restricted evidence is explicitly labelled; no private source is published.
 
+The catalog includes `protocol.cli-agent-plugin` with a Quorum reference package for Codex, Claude Code, and Cursor. Its status remains DISCOVERED / INVESTIGATE: package checks pass, but actual host use, independent consumers, and human review are not yet recorded.
+
 **[Join the RFC discussion](https://github.com/ajent-social/capabilities/issues/1).**
 
 **Open for feedback:** read the [proposal](docs/rfc/0001-amsl-bootstrap.md), [examples](docs/examples/repeated-product-work.md) and [review questions](docs/review-guide.md). This is a companion to [ajent.social](https://ajent.social), which explores shared knowledge between coding agents. Using AMSL will not require an Ajent account or runtime connection.
