@@ -70,3 +70,25 @@ that authorization in Go PR #2; the conversation itself is restricted. This
 satisfies the maintainer gate for this candidate merge and Serenity deployment,
 not an independent audit or status promotion. HUMAN_REVIEW records that
 maintainer-reported acceptance; status remains CANDIDATE.
+
+## 2026-09-26 — CLI-backed agent-host plugin discovery
+
+Added `protocol.cli-agent-plugin` as DISCOVERED / INVESTIGATE. Public Narrate
+repositories demonstrate distinct Codex, Claude Code, and Cursor packaging
+around Narrate's existing CLI. Quorum is a separate public Apache-2.0 CLI and
+is recorded only as a possible canonical engine. None of the Narrate plugins is
+a Quorum integration. No source was copied. Quorum host installation, permission
+boundaries, contract tests, actual consumer verification, and upstream license
+review remain undone. RFC scope and review question now make the new narrow
+protocol seam explicit; no plugin framework or skills repository is proposed.
+
+## 2026-09-26 — CLI-backed host plugin reference packages
+
+Implemented original, instruction-only Codex, Claude Code, and Cursor packages
+in Quorum. They invoke the installed Quorum CLI; they do not copy the Narrate
+implementations or bundle a second review engine. Package conformance and a
+Quorum dry-run passed, and Claude Code accepted the plugin and marketplace
+manifests. The Cursor CLI is present but its IDE is not installed in this
+environment, so no Cursor in-app run is claimed. No host installation, paid
+model call, independent consumer, or human review is recorded. The capability
+stays DISCOVERED / INVESTIGATE pending that evidence.

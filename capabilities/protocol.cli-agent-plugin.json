@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "id": "protocol.cli-agent-plugin",
+  "name": "CLI-backed coding-agent host plugin",
+  "domain": "protocol",
+  "status": "DISCOVERED",
+  "disposition": "INVESTIGATE",
+  "summary": "Expose an existing command-line capability through native agent-host entry points while keeping its engine canonical; Quorum provides a reference package for Codex, Claude Code, and Cursor.",
+  "use_when": [
+    "An existing command-line tool needs a native entry point in one or more coding-agent hosts.",
+    "Host-specific plugin conventions already exist and the core tool should remain usable independently."
+  ],
+  "non_goals": [
+    "Reimplement the command-line tool or maintain host-specific forks of its engine.",
+    "A universal plugin runtime, marketplace, or cross-host plugin API.",
+    "Move application authentication, secrets, billing, or policy decisions into the host adapter."
+  ],
+  "proposed_guarantees": [
+    "Each host adapter invokes a documented, version-compatible installation of the canonical CLI.",
+    "Host-specific instructions and entry points remain thin and do not duplicate product behavior.",
+    "Missing or incompatible CLI installations fail clearly without silently switching behavior.",
+    "Adapter permissions, arguments, environment access, and output locations are explicit."
+  ],
+  "failure_modes": [
+    "A host changes its manifest, command, or plugin installation convention.",
+    "The CLI is missing, incompatible, or different from the version the adapter expects.",
+    "An adapter leaks credentials or permits unintended CLI arguments or file access.",
+    "Host packages and the canonical CLI drift in version or behavior."
+  ],
+  "evidence": [
+    {
+      "visibility": "PUBLIC",
+      "basis": "Narrate maintains a Codex plugin with a host manifest and installer around its separate CLI. This is packaging precedent, not a Quorum plugin or consumer verification.",
+      "verification": "PUBLICLY_REPRODUCIBLE",
+      "url": "https://github.com/narrate-it/narrate-codex"
+    },
+    {
+      "visibility": "PUBLIC",
+      "basis": "Narrate maintains a separate Claude Code plugin and marketplace installer around the same CLI. This is a host-specific example, not evidence of Quorum compatibility.",
+      "verification": "PUBLICLY_REPRODUCIBLE",
+      "url": "https://github.com/narrate-it/narrate-claude-code"
+    },
+    {
+      "visibility": "PUBLIC",
+      "basis": "Narrate maintains a Cursor project-command package and installer around its CLI. This has a different host shape from the Codex and Claude plugins.",
+      "verification": "PUBLICLY_REPRODUCIBLE",
+      "url": "https://github.com/narrate-it/narrate-cursor"
+    },
+    {
+      "visibility": "PUBLIC",
+      "basis": "Quorum is an existing Apache-2.0 Go CLI for independent document reviews; its repository is the proposed canonical engine, not a host plugin integration.",
+      "verification": "PUBLICLY_REPRODUCIBLE",
+      "url": "https://github.com/dndungu/quorum"
+    }
+  ],
+  "alternatives": [
+    {
+      "name": "Keep using the CLI directly",
+      "url": "https://github.com/dndungu/quorum",
+      "assessment": "Already provides the review behavior and avoids adapter maintenance; a plugin is useful only if it makes the host workflow materially easier."
+    },
+    {
+      "name": "Narrate host-specific plugin examples",
+      "url": "https://github.com/narrate-it",
+      "assessment": "Provides public Codex, Claude Code, and Cursor packaging examples. They target Narrate and should not be represented as Quorum integrations or copied before provenance and license review."
+    }
+  ],
+  "implementations": [
+    {
+      "url": "https://github.com/dndungu/quorum/tree/feature/amsl-agent-host-plugins/plugins",
+      "revision": "feature/amsl-agent-host-plugins"
+    }
+  ],
+  "verification": [
+    {
+      "kind": "CONTRACT_TEST",
+      "result": "PASS",
+      "evidence_url": "https://github.com/dndungu/quorum/blob/feature/amsl-agent-host-plugins/plugins/validate.py"
+    },
+    {
+      "kind": "REAL_CONSUMER",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/dndungu/quorum/tree/feature/amsl-agent-host-plugins/plugins"
+    },
+    {
+      "kind": "HUMAN_REVIEW",
+      "result": "NOT_RUN",
+      "evidence_url": "https://github.com/dndungu/quorum/tree/feature/amsl-agent-host-plugins/plugins"
+    }
+  ],
+  "open_questions": [
+    "Do these host adapters represent independent reusable behavior, or are their manifests and installation flows too host-specific for an AMSL contract?",
+    "No actual installation or review in Codex, Claude Code, or Cursor, and no independent downstream consumer has been verified.",
+    "Which host and CLI versions, installation/update mechanism, arguments, configuration, key access, and output locations should each adapter support?",
+    "What security review is needed for host-executed commands and access to local Quorum configuration and documents?",
+    "The Quorum packages use the CLI's currently documented options; host or CLI changes may require synchronized updates.",
+    "Review upstream plugin repository provenance and licenses before copying any code or packaging files."
+  ]
+}
