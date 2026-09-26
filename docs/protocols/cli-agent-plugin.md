@@ -54,10 +54,10 @@ Do not promote maturity based on those checks alone.
 ## Quorum reference implementation
 
 Quorum provides Codex, Claude Code, and Cursor entry points in the public
-[`dndungu/quorum` repository](https://github.com/dndungu/quorum/tree/main/plugins).
+[`dndungu/quorum` repository](https://github.com/dndungu/quorum/tree/feature/amsl-agent-host-plugins/plugins).
 All invoke the installed `quorum` CLI. They provide no hooks, MCP server,
 credential handler, background process, or alternate review engine. The
-[`plugins/README.md`](https://github.com/dndungu/quorum/blob/main/plugins/README.md)
+[`plugins/README.md`](https://github.com/dndungu/quorum/blob/feature/amsl-agent-host-plugins/plugins/README.md)
 documents installation and host-specific limits.
 
 This implementation is an example against which to test the contract. Its
